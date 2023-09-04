@@ -46,6 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Booking.cs" />
+    <Compile Include="Business\ConfirmationLetterGenerator.cs" />
+    <Compile Include="Business\Customer.cs" />
+    <Compile Include="Business\Guest.cs" />
+    <Compile Include="Business\OccupancyReportGenerator.cs" />
+    <Compile Include="Business\PaymentProcessor.cs" />
+    <Compile Include="Business\Person.cs" />
+    <Compile Include="Business\Receptionist.cs" />
+    <Compile Include="Business\Reservation.cs" />
+    <Compile Include="Business\Room.cs" />
     <Compile Include="Data\BookingDB.cs" />
     <Compile Include="Data\CustomerDB.cs" />
     <Compile Include="Data\DB.cs" />
@@ -56,8 +66,59 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\CreateCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\CreateCustomerForm.Designer.cs">
+      <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DeleteBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\DeleteBookingForm.Designer.cs">
+      <DependentUpon>DeleteBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\EditBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\EditBookingForm.Designer.cs">
+      <DependentUpon>EditBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\MakeBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\MakeBookingForm.Designer.cs">
+      <DependentUpon>MakeBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ReviewBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ReviewBookingForm.Designer.cs">
+      <DependentUpon>ReviewBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewCustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ViewCustomersForm.Designer.cs">
+      <DependentUpon>ViewCustomersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,9 +141,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Presentation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
