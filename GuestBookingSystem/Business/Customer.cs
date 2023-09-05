@@ -10,5 +10,6 @@ namespace GuestBookingSystem.Business
     {
 
         private String name;
+        private int id;
     }
 }
