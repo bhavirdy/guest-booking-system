@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace GuestBookingSystem.Business
         private String leaveDate;
         private int roomNumber;
         private double deposit;
+        private Collection<Room> rooms;
 
         #endregion
 
