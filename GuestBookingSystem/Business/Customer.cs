@@ -9,7 +9,7 @@ namespace GuestBookingSystem.Business
     internal class Customer : Person
     {
         #region Data Members
-        
+
         private int custID;
         private String cardNumber;
         private int bookingID;
@@ -17,7 +17,8 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
-        public Customer(String cardTemp) : base() {
+        public Customer(String cardTemp) : base()
+        {
             cardNumber = cardTemp;
             bookingID = null;
         }
@@ -25,7 +26,7 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Property Members
-       
+
 
         public int CustID
         {
@@ -48,3 +49,4 @@ namespace GuestBookingSystem.Business
 
         #endregion 
     }
+}
