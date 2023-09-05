@@ -8,16 +8,18 @@ namespace GuestBookingSystem.Business
 {
     internal class Customer : Person
     {
-        #region Instance Variables
+        #region Data Members
         
         private int custID;
         private String cardNumber;
+        private int bookingID;
 
         #endregion
 
         #region Constructor
         public Customer(String cardTemp) : base() {
             cardNumber = cardTemp;
+            bookingID = null;
         }
 
         #endregion
@@ -36,6 +38,12 @@ namespace GuestBookingSystem.Business
         {
             get { return cardNumber; }
             set { cardNumber = value; }
+        }
+
+        public int BookingID
+        {
+            get { return bookingID; }
+            set { bookingID = value; }
         }
 
         #endregion 
