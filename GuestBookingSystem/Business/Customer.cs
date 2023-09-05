@@ -8,5 +8,7 @@ namespace GuestBookingSystem.Business
 {
     internal class Customer
     {
+
+        private String name;
     }
 }
