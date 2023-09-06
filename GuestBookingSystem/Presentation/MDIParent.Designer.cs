@@ -81,6 +81,7 @@
             this.viewCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createABookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewBookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteABookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -385,7 +386,8 @@
             // 
             this.bookingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createABookingToolStripMenuItem,
-            this.viewBookingsToolStripMenuItem});
+            this.viewBookingsToolStripMenuItem,
+            this.deleteABookingToolStripMenuItem});
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
             this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.bookingsToolStripMenuItem.Text = "Bookings";
@@ -514,7 +516,13 @@
             // 
             this.viewBookingsToolStripMenuItem.Name = "viewBookingsToolStripMenuItem";
             this.viewBookingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.viewBookingsToolStripMenuItem.Text = "View bookings";
+            this.viewBookingsToolStripMenuItem.Text = "Edit a Booking";
+            // 
+            // deleteABookingToolStripMenuItem
+            // 
+            this.deleteABookingToolStripMenuItem.Name = "deleteABookingToolStripMenuItem";
+            this.deleteABookingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteABookingToolStripMenuItem.Text = "Delete a Booking";
             // 
             // MDIParent
             // 
@@ -593,6 +601,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewCustomersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createABookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewBookingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteABookingToolStripMenuItem;
     }
 }
 
