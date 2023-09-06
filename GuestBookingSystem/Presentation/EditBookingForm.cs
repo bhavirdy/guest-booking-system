@@ -16,5 +16,15 @@ namespace GuestBookingSystem.Presentation
         {
             InitializeComponent();
         }
+
+        private void lblHeadingEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRoomNum_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
