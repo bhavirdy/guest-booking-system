@@ -6,7 +6,47 @@ using System.Threading.Tasks;
 
 namespace GuestBookingSystem.Business
 {
-    internal class Customer
+    internal class Customer : Person
     {
+        #region Data Members
+
+        private int custID;
+        private String cardNumber;
+        private int bookingID;
+
+        #endregion
+
+        #region Constructor
+        public Customer(String cardTemp) : base()
+        {
+            cardNumber = cardTemp;
+            bookingID = null;
+        }
+
+        #endregion
+
+        #region Property Members
+
+
+        public int CustID
+        {
+            get { return custID; }
+            set { custID = value; }
+        }
+
+
+        public String CardNumber
+        {
+            get { return cardNumber; }
+            set { cardNumber = value; }
+        }
+
+        public int BookingID
+        {
+            get { return bookingID; }
+            set { bookingID = value; }
+        }
+
+        #endregion 
     }
 }
