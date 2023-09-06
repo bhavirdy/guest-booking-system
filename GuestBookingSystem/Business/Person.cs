@@ -14,6 +14,7 @@ namespace GuestBookingSystem.Business
         private String email;
         private String country;
         private String phone;
+        
 
         #endregion
 
