@@ -40,11 +40,12 @@
             this.txtRoomNum = new System.Windows.Forms.TextBox();
             this.lblDeposit = new System.Windows.Forms.Label();
             this.txtDeposit = new System.Windows.Forms.TextBox();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dateTimePickerArrival
             // 
-            this.dateTimePickerArrival.Location = new System.Drawing.Point(251, 117);
+            this.dateTimePickerArrival.Location = new System.Drawing.Point(251, 140);
             this.dateTimePickerArrival.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerArrival.Name = "dateTimePickerArrival";
             this.dateTimePickerArrival.Size = new System.Drawing.Size(200, 22);
@@ -53,7 +54,7 @@
             // lblADate
             // 
             this.lblADate.AutoSize = true;
-            this.lblADate.Location = new System.Drawing.Point(57, 122);
+            this.lblADate.Location = new System.Drawing.Point(57, 140);
             this.lblADate.Name = "lblADate";
             this.lblADate.Size = new System.Drawing.Size(77, 16);
             this.lblADate.TabIndex = 1;
@@ -62,7 +63,7 @@
             // lblLeaveDate
             // 
             this.lblLeaveDate.AutoSize = true;
-            this.lblLeaveDate.Location = new System.Drawing.Point(57, 170);
+            this.lblLeaveDate.Location = new System.Drawing.Point(60, 189);
             this.lblLeaveDate.Name = "lblLeaveDate";
             this.lblLeaveDate.Size = new System.Drawing.Size(99, 16);
             this.lblLeaveDate.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // dateTimePickerDepartureDate
             // 
-            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(251, 165);
+            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(251, 189);
             this.dateTimePickerDepartureDate.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerDepartureDate.Name = "dateTimePickerDepartureDate";
             this.dateTimePickerDepartureDate.Size = new System.Drawing.Size(200, 22);
@@ -98,7 +99,7 @@
             // lblCustID
             // 
             this.lblCustID.AutoSize = true;
-            this.lblCustID.Location = new System.Drawing.Point(54, 73);
+            this.lblCustID.Location = new System.Drawing.Point(57, 94);
             this.lblCustID.Name = "lblCustID";
             this.lblCustID.Size = new System.Drawing.Size(80, 16);
             this.lblCustID.TabIndex = 6;
@@ -106,7 +107,7 @@
             // 
             // txtCustID
             // 
-            this.txtCustID.Location = new System.Drawing.Point(251, 73);
+            this.txtCustID.Location = new System.Drawing.Point(251, 94);
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(200, 22);
             this.txtCustID.TabIndex = 7;
@@ -130,7 +131,7 @@
             // lblDeposit
             // 
             this.lblDeposit.AutoSize = true;
-            this.lblDeposit.Location = new System.Drawing.Point(60, 313);
+            this.lblDeposit.Location = new System.Drawing.Point(60, 293);
             this.lblDeposit.Name = "lblDeposit";
             this.lblDeposit.Size = new System.Drawing.Size(54, 16);
             this.lblDeposit.TabIndex = 10;
@@ -138,16 +139,27 @@
             // 
             // txtDeposit
             // 
-            this.txtDeposit.Location = new System.Drawing.Point(251, 306);
+            this.txtDeposit.Location = new System.Drawing.Point(251, 290);
             this.txtDeposit.Name = "txtDeposit";
             this.txtDeposit.Size = new System.Drawing.Size(200, 22);
             this.txtDeposit.TabIndex = 11;
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Location = new System.Drawing.Point(37, 9);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(357, 54);
+            this.lblHeading.TabIndex = 12;
+            this.lblHeading.Text = "Make a Booking";
             // 
             // MakeBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.txtDeposit);
             this.Controls.Add(this.lblDeposit);
             this.Controls.Add(this.txtRoomNum);
@@ -181,5 +193,6 @@
         private System.Windows.Forms.TextBox txtRoomNum;
         private System.Windows.Forms.Label lblDeposit;
         private System.Windows.Forms.TextBox txtDeposit;
+        private System.Windows.Forms.Label lblHeading;
     }
 }
