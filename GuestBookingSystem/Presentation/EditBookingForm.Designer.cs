@@ -59,9 +59,9 @@
             this.lblHeadingEdit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblHeadingEdit.Location = new System.Drawing.Point(37, 9);
             this.lblHeadingEdit.Name = "lblHeadingEdit";
-            this.lblHeadingEdit.Size = new System.Drawing.Size(358, 54);
+            this.lblHeadingEdit.Size = new System.Drawing.Size(337, 54);
             this.lblHeadingEdit.TabIndex = 13;
-            this.lblHeadingEdit.Text = "View Bookings";
+            this.lblHeadingEdit.Text = "Edit Bookings";
             this.lblHeadingEdit.Click += new System.EventHandler(this.lblHeadingEdit_Click);
             // 
             // txtRoomNum
