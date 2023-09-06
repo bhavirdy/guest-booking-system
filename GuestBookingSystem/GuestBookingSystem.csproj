@@ -80,6 +80,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotelBookingDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelBookingDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\CreateCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +147,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="HotelBookingDatabaseDataSet.xsc">
+      <DependentUpon>HotelBookingDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HotelBookingDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HotelBookingDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HotelBookingDatabaseDataSet.xss">
+      <DependentUpon>HotelBookingDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
