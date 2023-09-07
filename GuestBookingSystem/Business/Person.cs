@@ -17,7 +17,6 @@ namespace GuestBookingSystem.Business
         private String postalCode;
         private String phone;
         
-
         #endregion
 
         #region Property Members
