@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuestBookingSystem.Data
+namespace GuestBookingSystem.Business
 {
-    internal class CustomerDB
+    internal class CustomerController
     {
-
 
     }
 }
