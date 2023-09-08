@@ -8,5 +8,6 @@ namespace GuestBookingSystem.Data
 {
     internal class ReceptionistDB
     {
+
     }
 }
