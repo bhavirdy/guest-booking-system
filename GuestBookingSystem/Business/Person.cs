@@ -46,11 +46,11 @@ namespace GuestBookingSystem.Business
             set { email = value; }
         }
 
-        public String StreetAddress
-        {
-            get { return streetAddress; }
-            set { streetAddress = value; }
-        }
+        //public String StreetAddress
+        //{
+        //    get { return streetAddress; }
+        //    set { streetAddress = value; }
+        //}
 
         public String City
         {
