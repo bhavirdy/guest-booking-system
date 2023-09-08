@@ -67,7 +67,7 @@ namespace GuestBookingSystem.Data
                 cnMain.Open();
                 daMain.Update(dsMain, tableTemp);
                 cnMain.Close();
-                FillDataSet(sqlLocalTemp, tableTemp;
+                FillDataSet(sqlLocalTemp, tableTemp);
                 success = true;
             }
             catch (Exception errObj)
