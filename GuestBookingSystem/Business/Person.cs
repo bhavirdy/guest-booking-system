@@ -63,6 +63,7 @@ namespace GuestBookingSystem.Business
         {
             get { return postalCode; }
             set { postalCode = value; }
+        }
 
         #endregion
 
