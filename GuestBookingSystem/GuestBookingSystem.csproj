@@ -69,7 +69,6 @@
     <Compile Include="Business\PaymentProcessor.cs" />
     <Compile Include="Business\Person.cs" />
     <Compile Include="Business\Receptionist.cs" />
-    <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\BookingDB.cs" />
     <Compile Include="Data\CustomerDB.cs" />
