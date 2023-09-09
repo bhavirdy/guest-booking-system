@@ -13,8 +13,6 @@ namespace GuestBookingSystem.Business
         private int roomID;
         private bool serviced;
         private int numBeds;
-        private int pricePerNight;
-        private bool available;
         #endregion
 
         #region Property Members
@@ -36,29 +34,15 @@ namespace GuestBookingSystem.Business
             set { numBeds = value; }
         }
 
-        public int PricePerNight
-        {
-            get { return pricePerNight; }
-            set { pricePerNight = value; }
-        }
-
-        public bool Available
-        {
-            get { return available; }
-            set { value = available; }
-        }
-
         #endregion
 
         #region Constructor
 
-        public Room(int roomIDTemp,  bool servicedTemp, int numBedsTemp, int priceTemp, bool availTemp)
+        public Room(int roomIDTemp,  bool servicedTemp, int numBedsTemp)
         {
             roomID = roomIDTemp;
             serviced = servicedTemp;
             numBeds = numBedsTemp;
-            pricePerNight = priceTemp;
-            available = availTemp;
         }
 
         #endregion 
