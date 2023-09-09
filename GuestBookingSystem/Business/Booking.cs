@@ -15,7 +15,8 @@ namespace GuestBookingSystem.Business
         private String leaveDate;
         private int roomNumber;
         private double deposit;
-        private Collection<Room> rooms;
+        private double pricePerNight;
+        private double totalPrice;
 
         #endregion
 
@@ -49,17 +50,31 @@ namespace GuestBookingSystem.Business
             set { deposit = value; }
         }
 
+        public double PricePerNight
+        {
+            get { return pricePerNight; }
+            set { pricePerNight = value; }
+        }
+
+        public double TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; }
+        }
+
         #endregion
 
         #region Constructor
 
-        public Booking(int custTemp, String aDate, String lDate, int rNum, double dTemp)
+        public Booking(int custTemp, String aDate, String lDate, int rNum, double dTemp, double pricePerNightTemp, double totalPriceTemp)
         {
             customerID = custTemp;
             arriveDate = aDate;
             leaveDate = lDate;
             roomNumber = rNum;
             deposit = dTemp;
+            pricePerNight = pricePerNightTemp;
+            totalPrice = totalPriceTemp;
         }
 
         #endregion 
