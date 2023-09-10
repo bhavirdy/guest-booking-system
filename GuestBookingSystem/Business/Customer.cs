@@ -20,7 +20,7 @@ namespace GuestBookingSystem.Business
         public Customer(String cardTemp) : base()
         {
             cardNumber = cardTemp;
-            bookingID = null;
+            bookingID = 0;
         }
 
         #endregion

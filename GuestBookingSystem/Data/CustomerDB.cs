@@ -8,5 +8,7 @@ namespace GuestBookingSystem.Data
 {
     internal class CustomerDB
     {
+
+
     }
 }

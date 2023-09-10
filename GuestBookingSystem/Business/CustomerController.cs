@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace GuestBookingSystem.Business
 {
-    internal class Reservation
+    internal class CustomerController
     {
+
+
     }
 }

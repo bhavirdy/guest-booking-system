@@ -64,11 +64,11 @@
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\ConfirmationLetterGenerator.cs" />
     <Compile Include="Business\Customer.cs" />
+    <Compile Include="Business\CustomerController.cs" />
     <Compile Include="Business\OccupancyReportGenerator.cs" />
     <Compile Include="Business\PaymentProcessor.cs" />
     <Compile Include="Business\Person.cs" />
     <Compile Include="Business\Receptionist.cs" />
-    <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\BookingDB.cs" />
     <Compile Include="Data\CustomerDB.cs" />
@@ -206,6 +206,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DB Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

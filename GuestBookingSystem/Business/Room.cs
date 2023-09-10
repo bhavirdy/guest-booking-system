@@ -13,8 +13,6 @@ namespace GuestBookingSystem.Business
         private int roomID;
         private bool serviced;
         private int numBeds;
-        private int pricePerNight;
-        private bool available;
 
         #endregion
 
