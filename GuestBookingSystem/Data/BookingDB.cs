@@ -108,7 +108,7 @@ namespace GuestBookingSystem.Data
             param = new SqlParameter("@Deposit", SqlDbType.NVarChar, 15, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@TotalPrice", SqlDbType.NVarChar, 15, "@TotalPrice");
-
+            daMain.InsertCommand.Parameters.Add(param);
 
 
         }
