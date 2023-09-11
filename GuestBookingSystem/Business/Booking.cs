@@ -11,11 +11,10 @@ namespace GuestBookingSystem.Business
     {
         #region Data Members
         private int customerID;
-        private String arriveDate;
-        private String leaveDate;
+        private DateTime arriveDate;
+        private DateTime leaveDate;
         private int roomNumber;
         private double deposit;
-        private double pricePerNight;
         private double totalPrice;
 
         #endregion
@@ -26,13 +25,13 @@ namespace GuestBookingSystem.Business
             get { return customerID; }
             set { customerID = value; }
         }
-        public String ArriveDate
+        public DateTime ArriveDate
         {
             get { return arriveDate; }
             set { arriveDate = value; }
         }
 
-        public String LeaveDate
+        public DateTime LeaveDate
         {
             get { return leaveDate; }
             set { leaveDate = value; }
@@ -50,11 +49,6 @@ namespace GuestBookingSystem.Business
             set { deposit = value; }
         }
 
-        public double PricePerNight
-        {
-            get { return pricePerNight; }
-            set { pricePerNight = value; }
-        }
 
         public double TotalPrice
         {
@@ -65,6 +59,11 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
+
+        public Booking()
+        {
+
+        }
 
         public Booking(int custTemp, String aDate, String lDate, int rNum, double dTemp, double pricePerNightTemp, double totalPriceTemp)
         {
