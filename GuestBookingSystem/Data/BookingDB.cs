@@ -13,28 +13,40 @@ namespace GuestBookingSystem.Data
     internal class BookingDB : DB
     {
 
+        #region Data Members
+
         private String table = "Booking";
         private String sqlSt = "Select * From Booking";
         private Collection<Booking> bookings;
 
+        #endregion
+
+        #region Property Methods
         public Collection<Booking> AllBookings
         {
             get { return bookings; }
         }
 
+        #endregion
+
+        #region Constructor
+
         public BookingDB() : base()
         {
             bookings = new Collection<Booking>();
             FillDataSet(sqlSt, table);
-            AddToCollection(table);
+            Add2Collection(table);
         }
+
+        #endregion
 
         public DataSet GetDataSet()
         {
             return dsMain;
         }
 
-        private void AddToCollection(String tableTemp)
+        #region Utility Methods
+        private void Add2Collection(String tableTemp)
         {
             DataRow myRow = null;
             Booking bookTemp;
@@ -68,6 +80,9 @@ namespace GuestBookingSystem.Data
             rowTemp["TotalPrice"] = bookTemp.Deposit;
             rowTemp["RoomID"] = bookTemp.RoomNumber;
         }
+        #endregion
+
+        #region Database CRUD
 
         public void DataSetChange(Booking bookTemp)
         {
@@ -106,8 +121,13 @@ namespace GuestBookingSystem.Data
 
         public bool UpdateDataSource(Booking bTemp)
         {
-
+            bool success = true;
+            CREATE_INSERT_Command(bTemp);
+            success = UpdateDataSource(sqlSt, table);
+            return success;
         }
+
+        #endregion
     }
 
 }
