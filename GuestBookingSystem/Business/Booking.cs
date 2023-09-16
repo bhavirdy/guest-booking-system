@@ -72,14 +72,13 @@ namespace GuestBookingSystem.Business
 
         }
 
-        public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum, double dTemp, double pricePerNightTemp, double totalPriceTemp)
+        public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum, double dTemp, double totalPriceTemp)
         {
             customerID = custTemp;
             arriveDate = aDate;
             leaveDate = lDate;
             roomNumber = rNum;
             deposit = dTemp;
-            pricePerNight = pricePerNightTemp;
             totalPrice = totalPriceTemp;
 
             DateTime midSeasonStartDate = new DateTime(2023, 12, 8);
