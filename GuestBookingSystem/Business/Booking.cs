@@ -57,6 +57,12 @@ namespace GuestBookingSystem.Business
             set { totalPrice = value; }
         }
 
+        public double PricePerNight
+        {
+            get { return pricePerNight; }
+            set { pricePerNight = value; }
+        }
+
         #endregion
 
         #region Constructor
