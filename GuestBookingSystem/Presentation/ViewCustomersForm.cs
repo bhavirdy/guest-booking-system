@@ -16,5 +16,10 @@ namespace GuestBookingSystem.Presentation
         {
             InitializeComponent();
         }
+
+        private void lblHeadingEditC_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
