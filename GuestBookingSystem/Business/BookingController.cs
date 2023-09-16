@@ -37,7 +37,7 @@ namespace GuestBookingSystem.Business
         public void DataMaintanence(Booking bookingTemp, DB.DBOperation opp)
         {
             int index = 0;
-            bookingDB.DataSetChange(bookingTemp, opp);
+            bookingDB.DataSetChange(bookingTemp);
             switch (opp)
             {
                 case DB.DBOperation.Add:
