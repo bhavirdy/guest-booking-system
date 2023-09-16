@@ -16,6 +16,12 @@ namespace GuestBookingSystem.Business
         private int roomNumber;
         private double deposit;
         private double totalPrice;
+        public enum season
+        {
+            low = 0,
+            mid = 1,
+            high = 2,
+        }
 
         #endregion
 
