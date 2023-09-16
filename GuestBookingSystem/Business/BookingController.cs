@@ -10,16 +10,14 @@ namespace GuestBookingSystem.Business
 {
     internal class BookingController
     {
+
         #region Data Members
         BookingDB bookingDB;
-        Collection<Booking> bookingCollection;
+        Collection<Booking> bookings;   
 
-        #endregion
-
-        #region Property Methods
-        public Collection<Booking> BookingCollection
+        public Collection<Booking> Bookings
         {
-            get { return BookingCollection; }
+            get { return bookings; }
         }
 
         #endregion
@@ -28,22 +26,33 @@ namespace GuestBookingSystem.Business
 
         public BookingController()
         {
-            bookingDB = new bookingDB();
-            bookingCollection = bookingDB.AllBookings;
-
+            bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
         }
 
-        #endregion 
+        #endregion
+        #region Databse Communication
 
-        public void DataMaintanence(Booking bookTemp)
+        public void DataMaintanence(Booking bookingTemp, DB.DBOperation opp)
         {
-            bookingDB.DataSetChange(bookTemp);
-            bookingCollection.Add(bookTemp);
+            int index = 0;
+            bookingDB.DataSetChange(bookingTemp, opp);
+            switch (opp)
+            {
+                case DB.DBOperation.Add:
+                    bookings.Add(bookingTemp);
+                    break;
+
+                case DB.DBOperation.Edit:
+                    index = FindIndex(bookingTemp);
+                    bookings.Insert(index, bookingTemp);
+                    break;
+
+                case DB.DBOperation.Delete:
+
+            }
+
         }
 
-        public bool FinalizeChanges(Booking bookTemp)
-        {
-            return bookingDB.UpdateDataSource(bookTemp);
-        }
     }
 }
