@@ -12,8 +12,9 @@ namespace GuestBookingSystem.Business
         private String name;
         private String surname;
         private String email;
-        private String streetAdress;
-        private String city;
+        private String streetAddress;
+        private String townOrCity;
+        private String province;
         private String postalCode;
         private String phone;
         
@@ -52,31 +53,39 @@ namespace GuestBookingSystem.Business
             set { streetAddress = value; }
         }
 
-        public String City
+        public String TownOrCity
         {
-            get { return city; }
-            set { city = value; }
+            get { return townOrCity; }
+            set { townOrCity = value; }
 
+        }
+
+        public String Province
+        {
+            get { return province; }
+            set { province = value; }
         }
 
         public String PostalCode
         {
             get { return postalCode; }
             set { postalCode = value; }
+        }
 
         #endregion
 
         #region Constructor
 
-        public Person(String nTemp, String sTemp, String eTemp, String pTemp, String streetTemp, String postalTemp, String cityTemp)
+        public Person(String nTemp, String sTemp, String eTemp, String pTemp, String streetTemp, String postalTemp, String townOrCityTemp, String provinceTemp)
         {
             name = nTemp;
             surname = sTemp;
             email = eTemp;
             phone = pTemp;
-            city = cityTemp;
+            streetAddress = streetTemp;
+            townOrCity = townOrCityTemp;
+            province = provinceTemp;
             postalCode = postalTemp;
-            streetAdress = streetTemp;
        
         }
 
