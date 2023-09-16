@@ -22,6 +22,7 @@ namespace GuestBookingSystem.Business
             mid = 1,
             high = 2,
         }
+        protected season seasonVal;
 
         #endregion
 
