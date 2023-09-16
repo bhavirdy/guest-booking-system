@@ -23,6 +23,11 @@ namespace GuestBookingSystem.Business
             bookingID = 0;
         }
 
+        public Customer()
+        {
+
+        }
+
         #endregion
 
         #region Property Members
