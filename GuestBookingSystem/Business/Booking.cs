@@ -72,7 +72,7 @@ namespace GuestBookingSystem.Business
 
         }
 
-        public Booking(int custTemp, String aDate, String lDate, int rNum, double dTemp, double pricePerNightTemp, double totalPriceTemp)
+        public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum, double dTemp, double pricePerNightTemp, double totalPriceTemp)
         {
             customerID = custTemp;
             arriveDate = aDate;
