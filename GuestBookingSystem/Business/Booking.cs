@@ -81,6 +81,24 @@ namespace GuestBookingSystem.Business
             deposit = dTemp;
             pricePerNight = pricePerNightTemp;
             totalPrice = totalPriceTemp;
+
+            DateTime midSeasonStartDate = new DateTime(2023, 12, 8);
+            DateTime midSeasonEndDate = new DateTime(2023, 12, 15);
+            DateTime highSeasonStartDate = new DateTime(2023, 12, 16);
+            DateTime highSeasonEndDate = new DateTime(2023, 12, 31);
+
+            if (aDate >= highSeasonStartDate && aDate <= highSeasonEndDate)
+            {
+                pricePerNight = 995;
+            }
+            else if (aDate >= midSeasonStartDate && aDate <= midSeasonEndDate)
+            {
+                pricePerNight = 750;
+            }
+            else
+            {
+                pricePerNight = 550;
+            }
         }
 
         #endregion 
