@@ -10,7 +10,7 @@ namespace GuestBookingSystem.Business
     {
         #region Data Members
 
-        private int custID;
+        private String custID;
         private String cardNumber;
         private int bookingID;
 
@@ -33,7 +33,7 @@ namespace GuestBookingSystem.Business
         #region Property Members
 
 
-        public int CustID
+        public String CustID
         {
             get { return custID; }
             set { custID = value; }

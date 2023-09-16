@@ -153,6 +153,7 @@
             this.btnCancelEditC.TabIndex = 8;
             this.btnCancelEditC.Text = "Cancel";
             this.btnCancelEditC.UseVisualStyleBackColor = true;
+            this.btnCancelEditC.Click += new System.EventHandler(this.btnCancelEditC_Click);
             // 
             // btnClearEditC
             // 
@@ -176,6 +177,7 @@
             this.btnSubmitEditC.TabIndex = 10;
             this.btnSubmitEditC.Text = "Submit";
             this.btnSubmitEditC.UseVisualStyleBackColor = true;
+            this.btnSubmitEditC.Click += new System.EventHandler(this.btnSubmitEditC_Click);
             // 
             // txtName
             // 
@@ -323,6 +325,7 @@
             this.Controls.Add(this.lblHeadingEditC);
             this.Name = "EditCustomersForm";
             this.Text = "ViewCustomersForm";
+            this.Load += new System.EventHandler(this.EditCustomersForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
