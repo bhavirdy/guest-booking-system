@@ -10,7 +10,7 @@ namespace GuestBookingSystem.Business
     internal class Booking
     {
         #region Data Members
-        private int bookingID;
+        private String bookingID;
         private int customerID;
         private DateTime arriveDate;
         private DateTime leaveDate;
@@ -57,7 +57,7 @@ namespace GuestBookingSystem.Business
             set { totalPrice = value; }
         }
 
-        public int BookingID
+        public String BookingID
         {
             get { return bookingID; }
             set {  bookingID = value; }

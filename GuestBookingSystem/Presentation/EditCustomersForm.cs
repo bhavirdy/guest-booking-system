@@ -103,9 +103,10 @@ namespace GuestBookingSystem.Presentation
                 customerDetails.SubItems.Add(customer.Phone.ToString());
                 customerDetails.SubItems.Add(customer.CardNumber.ToString());
 
+                listView1.Items.Add(customerDetails);
             }
 
-            listView1.Items.Add(customerDetails);
+            
             listView1.Refresh();
             listView1.GridLines = true;
         }
@@ -118,7 +119,7 @@ namespace GuestBookingSystem.Presentation
 
             if(listView1.SelectedItems.Count > 0)
             {
-                customer = custController.Find(listView1);
+                customer = custController.Find(listView1.SelectedItems[0].Text);
                 PopulateTextBoxes(customer);
             }
         }

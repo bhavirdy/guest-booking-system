@@ -68,7 +68,7 @@ namespace GuestBookingSystem.Business
 
         #region Search Methods
 
-        public Booking Find(int ID)
+        public Booking Find(String ID)
         {
             int index = 0;
             bool found = (bookings[index].BookingID == ID);
