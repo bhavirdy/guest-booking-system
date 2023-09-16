@@ -1,6 +1,6 @@
 ﻿namespace GuestBookingSystem.Presentation
 {
-    partial class ViewCustomersForm
+    partial class EditCustomersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             this.lblHeadingEditC.AutoSize = true;
             this.lblHeadingEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeadingEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblHeadingEditC.Location = new System.Drawing.Point(12, 9);
+            this.lblHeadingEditC.Location = new System.Drawing.Point(27, 21);
             this.lblHeadingEditC.Name = "lblHeadingEditC";
             this.lblHeadingEditC.Size = new System.Drawing.Size(389, 54);
             this.lblHeadingEditC.TabIndex = 0;
@@ -290,7 +290,7 @@
             this.txtPostalCode.Size = new System.Drawing.Size(229, 22);
             this.txtPostalCode.TabIndex = 24;
             // 
-            // ViewCustomersForm
+            // EditCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -320,7 +320,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblHeadingEditC);
-            this.Name = "ViewCustomersForm";
+            this.Name = "EditCustomersForm";
             this.Text = "ViewCustomersForm";
             this.ResumeLayout(false);
             this.PerformLayout();
