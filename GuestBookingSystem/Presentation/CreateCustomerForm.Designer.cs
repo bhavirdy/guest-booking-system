@@ -51,7 +51,7 @@
             this.lblPostalCode = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.lblSuburb = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSuburb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblHeadingCreateCustomer
@@ -143,6 +143,7 @@
             this.btnCancelC.TabIndex = 7;
             this.btnCancelC.Text = "Cancel";
             this.btnCancelC.UseVisualStyleBackColor = true;
+            this.btnCancelC.Click += new System.EventHandler(this.btnCancelC_Click);
             // 
             // btnClearC
             // 
@@ -154,6 +155,7 @@
             this.btnClearC.TabIndex = 8;
             this.btnClearC.Text = "Clear";
             this.btnClearC.UseVisualStyleBackColor = true;
+            this.btnClearC.Click += new System.EventHandler(this.btnClearC_Click);
             // 
             // btnSubmitC
             // 
@@ -165,6 +167,7 @@
             this.btnSubmitC.TabIndex = 9;
             this.btnSubmitC.Text = "Submit";
             this.btnSubmitC.UseVisualStyleBackColor = true;
+            this.btnSubmitC.Click += new System.EventHandler(this.btnSubmitC_Click);
             // 
             // txtName
             // 
@@ -275,19 +278,19 @@
             this.lblSuburb.TabIndex = 22;
             this.lblSuburb.Text = "Suburb";
             // 
-            // textBox1
+            // txtSuburb
             // 
-            this.textBox1.Location = new System.Drawing.Point(288, 284);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 22);
-            this.textBox1.TabIndex = 23;
+            this.txtSuburb.Location = new System.Drawing.Point(288, 284);
+            this.txtSuburb.Name = "txtSuburb";
+            this.txtSuburb.Size = new System.Drawing.Size(333, 22);
+            this.txtSuburb.TabIndex = 23;
             // 
             // CreateCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 558);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSuburb);
             this.Controls.Add(this.lblSuburb);
             this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.lblPostalCode);
@@ -313,6 +316,7 @@
             this.Controls.Add(this.lblHeadingCreateCustomer);
             this.Name = "CreateCustomerForm";
             this.Text = "CreateCustomerForm";
+            this.Load += new System.EventHandler(this.CreateCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +347,6 @@
         private System.Windows.Forms.Label lblPostalCode;
         private System.Windows.Forms.TextBox txtPostalCode;
         private System.Windows.Forms.Label lblSuburb;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSuburb;
     }
 }

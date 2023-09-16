@@ -14,7 +14,8 @@ namespace GuestBookingSystem.Business
         private String email;
         private String streetAddress;
         private String townOrCity;
-        private String province;
+        private String suburb;
+        private String country;
         private String postalCode;
         private String phone;
         
@@ -60,10 +61,10 @@ namespace GuestBookingSystem.Business
 
         }
 
-        public String Province
+       public String Suburb
         {
-            get { return province; }
-            set { province = value; }
+            get { return suburb; }
+            set { suburb = value; }
         }
 
         public String PostalCode
