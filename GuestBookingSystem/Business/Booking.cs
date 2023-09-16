@@ -16,6 +16,7 @@ namespace GuestBookingSystem.Business
         private int roomNumber;
         private double deposit;
         private double totalPrice;
+        private double pricePerNight;
 
         #endregion
 
