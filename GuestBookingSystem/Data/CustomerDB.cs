@@ -25,7 +25,7 @@ namespace GuestBookingSystem.Data
         #region Property Methods
         public Collection<Customer> AllCustomers
         {
-            get { return bookings; }
+            get { return customers; }
         }
 
         #endregion
@@ -50,7 +50,7 @@ namespace GuestBookingSystem.Data
         private void Add2Collection(String tableTemp)
         {
             DataRow myRow = null;
-            Customer custTemp;
+            Customer custTemp = null;
 
             foreach (DataRow myRow_loopVariable in dsMain.Tables[tableTemp].Rows)
             {
@@ -68,14 +68,15 @@ namespace GuestBookingSystem.Data
 
         private void FillRow(DataRow rowTemp, Customer custTemp)
         {
-            rowTemp["CustomerID"] = custTemp.CustomerID;
+            rowTemp["CustomerID"] = custTemp.CustID;
             rowTemp["Name"] = custTemp.Name;
             rowTemp["Surname"] = custTemp.Surname;
             rowTemp["Email"] = custTemp.Email;
             rowTemp["StreetAdress"] = custTemp.StreetAddress;
-            rowTemp["Town"] = custTemp.TownOrCity;
-            //rowTemp["City"] = bookTemp.RoomNumber;
-            rowTemp["PostalCode"] = custTemp.PostalCode
+            //rowTem["Suburb"] = custTemp.Suburb;
+            rowTemp["City"] = custTemp.TownOrCity;
+            //rowTemp["Country"] = custTemp.Country;
+            rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
             rowTemp["CardNumber"] = custTemp.CardNumber;
         }
@@ -83,7 +84,7 @@ namespace GuestBookingSystem.Data
 
         #region Database CRUD
 
-        public void DataSetChange(Customer custTermp)
+        public void DataSetChange(Customer custTemp)
         {
             DataRow rowTemp = null;
             String dataTable = table;
