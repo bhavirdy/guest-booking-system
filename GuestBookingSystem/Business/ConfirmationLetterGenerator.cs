@@ -8,5 +8,11 @@ namespace GuestBookingSystem.Business
 {
     internal class ConfirmationLetterGenerator
     {
+        public ConfirmationLetterGenerator() { }
+
+        public void generateConfirmationLetter()
+        {
+
+        }
     }
 }
