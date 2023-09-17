@@ -130,6 +130,26 @@ namespace GuestBookingSystem.Business
             deposit = 0.1 * totalPrice;
         }
 
+
+        public bool updateDates(DateTime newArriveDate, DateTime newLeaveDate)
+        {
+            this.ArriveDate = newArriveDate;
+            this.LeaveDate = newLeaveDate;    
+            return true; 
+        }
+
+        public bool cancel()
+        { return false; }
+
+        public bool isCancelled() 
+        { 
+            return false; 
+        }
+
+        public bool getStatus()
+        {
+            return false;
+        }
         #endregion
     }
 }
