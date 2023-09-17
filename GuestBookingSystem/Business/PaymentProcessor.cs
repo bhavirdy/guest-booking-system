@@ -8,5 +8,11 @@ namespace GuestBookingSystem.Business
 {
     internal class PaymentProcessor
     {
+        public PaymentProcessor() { }
+
+        public bool processPayment(int cardNo, double amount)
+        {
+            return true;
+        }
     }
 }
