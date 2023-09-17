@@ -150,6 +150,11 @@ namespace GuestBookingSystem.Business
         {
             return false;
         }
+
+        public bool confirmBooking()
+        {
+            return false;
+        }
         #endregion
     }
 }
