@@ -14,7 +14,10 @@ namespace GuestBookingSystem.Business
 
         #region Data Members
         BookingDB bookingDB;
-        Collection<Booking> bookings;   
+        Collection<Booking> bookings;
+
+        //go through rooms and find one that is not assigned
+        Collection<Room> rooms;
 
         public Collection<Booking> Bookings
         {
@@ -34,26 +37,13 @@ namespace GuestBookingSystem.Business
         #endregion
         #region Databse Communication
 
-        public void DataMaintanence(Booking bookingTemp, DB.DBOperation opp)
+        public void DataMaintanence(Booking bookingTemp)
         {
-            int index = 0;
+            //need to assign the room and deposit 
+
             bookingDB.DataSetChange(bookingTemp);
-            switch (opp)
-            {
-                case DB.DBOperation.Add:
-                    bookings.Add(bookingTemp);
-                    break;
-
-                case DB.DBOperation.Edit:
-                    index = FindIndex(bookingTemp);
-                    bookings.Insert(index, bookingTemp);
-                    break;
-
-                case DB.DBOperation.Delete:
-                    index = FindIndex(bookingTemp);
-                    bookings.Insert(index, bookingTemp);
-                    break;
-            }
+            bookings.Add(bookingTemp);
+            
 
             //perform a given database operation
 

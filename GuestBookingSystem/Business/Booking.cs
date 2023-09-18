@@ -11,7 +11,7 @@ namespace GuestBookingSystem.Business
     {
         #region Data Members
         private String bookingID;
-        private int customerID;
+        private String customerID;
         private DateTime arriveDate;
         private DateTime leaveDate;
         private int roomNumber;
