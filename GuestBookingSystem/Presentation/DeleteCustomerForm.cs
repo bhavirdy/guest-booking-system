@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GuestBookingSystem.Presentation
 {
-    public partial class ViewCustomersForm : Form
+    public partial class DeleteCustomerForm : Form
     {
-        public ViewCustomersForm()
+        public DeleteCustomerForm()
         {
             InitializeComponent();
         }

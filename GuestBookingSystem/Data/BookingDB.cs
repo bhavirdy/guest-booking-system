@@ -49,7 +49,7 @@ namespace GuestBookingSystem.Data
         private void Add2Collection(String tableTemp)
         {
             DataRow myRow = null;
-            Booking bookTemp;
+            Booking bookTemp = null;
 
             foreach (DataRow myRow_loopVariable in dsMain.Tables[tableTemp].Rows)
             {
@@ -98,13 +98,13 @@ namespace GuestBookingSystem.Data
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@CustomerID", SqlDbType.NVarChar, 15, "CustomerID");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, DateTime, "ArriveDate");
+            param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 100, "ArriveDate");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, DateTime, "LeaveDate");
-            daMain.InsertCommand.Paramters.Add(param);
+            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 100,  "LeaveDate");
+            daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 15, "RoomID");
-            daMain.InsertCommand.Parameters.Insert(param);
+            daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Deposit", SqlDbType.NVarChar, 15, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@TotalPrice", SqlDbType.NVarChar, 15, "@TotalPrice");

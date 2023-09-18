@@ -38,14 +38,14 @@
             this.txtCustID = new System.Windows.Forms.TextBox();
             this.lblRoomNum = new System.Windows.Forms.Label();
             this.txtRoomNum = new System.Windows.Forms.TextBox();
-            this.lblDeposit = new System.Windows.Forms.Label();
-            this.txtDeposit = new System.Windows.Forms.TextBox();
             this.lblHeading = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBookingID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dateTimePickerArrival
             // 
-            this.dateTimePickerArrival.Location = new System.Drawing.Point(251, 155);
+            this.dateTimePickerArrival.Location = new System.Drawing.Point(251, 190);
             this.dateTimePickerArrival.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerArrival.Name = "dateTimePickerArrival";
             this.dateTimePickerArrival.Size = new System.Drawing.Size(271, 22);
@@ -56,7 +56,7 @@
             this.lblADate.AutoSize = true;
             this.lblADate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblADate.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblADate.Location = new System.Drawing.Point(57, 156);
+            this.lblADate.Location = new System.Drawing.Point(57, 190);
             this.lblADate.Name = "lblADate";
             this.lblADate.Size = new System.Drawing.Size(116, 21);
             this.lblADate.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.lblLeaveDate.AutoSize = true;
             this.lblLeaveDate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLeaveDate.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblLeaveDate.Location = new System.Drawing.Point(57, 208);
+            this.lblLeaveDate.Location = new System.Drawing.Point(57, 250);
             this.lblLeaveDate.Name = "lblLeaveDate";
             this.lblLeaveDate.Size = new System.Drawing.Size(146, 21);
             this.lblLeaveDate.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             // dateTimePickerDepartureDate
             // 
-            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(251, 208);
+            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(251, 249);
             this.dateTimePickerDepartureDate.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerDepartureDate.Name = "dateTimePickerDepartureDate";
             this.dateTimePickerDepartureDate.Size = new System.Drawing.Size(271, 22);
@@ -92,6 +92,7 @@
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -109,7 +110,7 @@
             this.lblCustID.AutoSize = true;
             this.lblCustID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustID.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCustID.Location = new System.Drawing.Point(57, 100);
+            this.lblCustID.Location = new System.Drawing.Point(57, 142);
             this.lblCustID.Name = "lblCustID";
             this.lblCustID.Size = new System.Drawing.Size(120, 21);
             this.lblCustID.TabIndex = 6;
@@ -117,17 +118,18 @@
             // 
             // txtCustID
             // 
-            this.txtCustID.Location = new System.Drawing.Point(251, 100);
+            this.txtCustID.Location = new System.Drawing.Point(251, 141);
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(271, 22);
             this.txtCustID.TabIndex = 7;
+            this.txtCustID.TextChanged += new System.EventHandler(this.txtCustID_TextChanged);
             // 
             // lblRoomNum
             // 
             this.lblRoomNum.AutoSize = true;
             this.lblRoomNum.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRoomNum.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblRoomNum.Location = new System.Drawing.Point(57, 260);
+            this.lblRoomNum.Location = new System.Drawing.Point(57, 295);
             this.lblRoomNum.Name = "lblRoomNum";
             this.lblRoomNum.Size = new System.Drawing.Size(137, 21);
             this.lblRoomNum.TabIndex = 8;
@@ -135,28 +137,10 @@
             // 
             // txtRoomNum
             // 
-            this.txtRoomNum.Location = new System.Drawing.Point(251, 261);
+            this.txtRoomNum.Location = new System.Drawing.Point(251, 296);
             this.txtRoomNum.Name = "txtRoomNum";
             this.txtRoomNum.Size = new System.Drawing.Size(271, 22);
             this.txtRoomNum.TabIndex = 9;
-            // 
-            // lblDeposit
-            // 
-            this.lblDeposit.AutoSize = true;
-            this.lblDeposit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeposit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblDeposit.Location = new System.Drawing.Point(57, 324);
-            this.lblDeposit.Name = "lblDeposit";
-            this.lblDeposit.Size = new System.Drawing.Size(77, 21);
-            this.lblDeposit.TabIndex = 10;
-            this.lblDeposit.Text = "Deposit";
-            // 
-            // txtDeposit
-            // 
-            this.txtDeposit.Location = new System.Drawing.Point(251, 323);
-            this.txtDeposit.Name = "txtDeposit";
-            this.txtDeposit.Size = new System.Drawing.Size(271, 22);
-            this.txtDeposit.TabIndex = 11;
             // 
             // lblHeading
             // 
@@ -169,14 +153,32 @@
             this.lblHeading.TabIndex = 12;
             this.lblHeading.Text = "Make a Booking";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(57, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 21);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Booking ID";
+            // 
+            // txtBookingID
+            // 
+            this.txtBookingID.Location = new System.Drawing.Point(251, 93);
+            this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.Size = new System.Drawing.Size(271, 22);
+            this.txtBookingID.TabIndex = 14;
+            // 
             // MakeBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 480);
+            this.Controls.Add(this.txtBookingID);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblHeading);
-            this.Controls.Add(this.txtDeposit);
-            this.Controls.Add(this.lblDeposit);
             this.Controls.Add(this.txtRoomNum);
             this.Controls.Add(this.lblRoomNum);
             this.Controls.Add(this.txtCustID);
@@ -189,6 +191,7 @@
             this.Controls.Add(this.dateTimePickerArrival);
             this.Name = "MakeBookingForm";
             this.Text = "MakeBookingForm";
+            this.Load += new System.EventHandler(this.MakeBookingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,8 +209,8 @@
         private System.Windows.Forms.TextBox txtCustID;
         private System.Windows.Forms.Label lblRoomNum;
         private System.Windows.Forms.TextBox txtRoomNum;
-        private System.Windows.Forms.Label lblDeposit;
-        private System.Windows.Forms.TextBox txtDeposit;
         private System.Windows.Forms.Label lblHeading;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBookingID;
     }
 }

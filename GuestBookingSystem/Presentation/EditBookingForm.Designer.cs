@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.bookingView = new System.Windows.Forms.ListView();
             this.lblHeadingEdit = new System.Windows.Forms.Label();
             this.txtRoomNum = new System.Windows.Forms.TextBox();
             this.lblRoomNum = new System.Windows.Forms.Label();
@@ -43,14 +43,14 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // bookingView
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(30, 66);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(595, 260);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.bookingView.HideSelection = false;
+            this.bookingView.Location = new System.Drawing.Point(30, 66);
+            this.bookingView.Name = "bookingView";
+            this.bookingView.Size = new System.Drawing.Size(595, 260);
+            this.bookingView.TabIndex = 0;
+            this.bookingView.UseCompatibleStateImageBehavior = false;
             // 
             // lblHeadingEdit
             // 
@@ -89,6 +89,7 @@
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(271, 22);
             this.txtCustID.TabIndex = 20;
+            this.txtCustID.TextChanged += new System.EventHandler(this.txtCustID_TextChanged);
             // 
             // lblCustID
             // 
@@ -149,6 +150,7 @@
             this.btnSubmitV.TabIndex = 23;
             this.btnSubmitV.Text = "Submit";
             this.btnSubmitV.UseVisualStyleBackColor = true;
+            this.btnSubmitV.Click += new System.EventHandler(this.btnSubmitV_Click);
             // 
             // btnExitV
             // 
@@ -160,6 +162,7 @@
             this.btnExitV.TabIndex = 24;
             this.btnExitV.Text = "Cancel";
             this.btnExitV.UseVisualStyleBackColor = true;
+            this.btnExitV.Click += new System.EventHandler(this.btnExitV_Click);
             // 
             // btnClear
             // 
@@ -171,6 +174,7 @@
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // EditBookingForm
             // 
@@ -189,9 +193,10 @@
             this.Controls.Add(this.lblADate);
             this.Controls.Add(this.dateTimePickerArrival);
             this.Controls.Add(this.lblHeadingEdit);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.bookingView);
             this.Name = "EditBookingForm";
             this.Text = "EditBookingForm";
+            this.Load += new System.EventHandler(this.EditBookingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +204,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView bookingView;
         private System.Windows.Forms.Label lblHeadingEdit;
         private System.Windows.Forms.TextBox txtRoomNum;
         private System.Windows.Forms.Label lblRoomNum;
