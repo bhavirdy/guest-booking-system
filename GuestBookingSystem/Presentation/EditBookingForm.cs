@@ -52,7 +52,7 @@ namespace GuestBookingSystem.Presentation
 
         #region ListView Setup
 
-        public void setUpEmployeeListView()
+        public void setUpCustomerListView()
         {
             ListViewItem bookingDetails = null;
 
@@ -109,7 +109,7 @@ namespace GuestBookingSystem.Presentation
 
         //not complete
 
-        public void PopulateTextBoxes(Booking bookTemp)
+        private void PopulateTextBoxes(Booking bookTemp)
         {
             txtCustID.Text = bookTemp.CustomerID.ToString();
             dateTimePickerArrival.Text = bookTemp.ArriveDate.ToString();
@@ -131,6 +131,35 @@ namespace GuestBookingSystem.Presentation
         private void EditBookingForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCustID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubmitV_Click(object sender, EventArgs e)
+        {
+            //needs to check if inputted room is available
+            if (txtCustID.Text.Equals("") || txtRoomNum.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill out all the fields");
+            }
+            else
+                if (dateTimePickerArrival.Value > dateTimePickerDepartureDate.Value)
+            {
+                MessageBox.Show("Arrival date cannot be after departure date");
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void btnExitV_Click(object sender, EventArgs e)
+        {
+            this.listFormClosed = true;
         }
     }
 }

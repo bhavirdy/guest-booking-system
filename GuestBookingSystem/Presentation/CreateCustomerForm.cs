@@ -35,33 +35,10 @@ namespace GuestBookingSystem.Presentation
 
         #region Utility methods
 
-        private void ShowAll(bool value)
-        {
-            lblName.Visible = value;
-            lblSurname.Visible = value;
-            lblPhoneNumber.Visible = value;
-            lblPostalCode.Visible = value;
-            lblCountry.Visible = value;
-            lblCity.Visible = value;
-            lblEmail.Visible = value;
-            lblCardNumber.Visible = value;
-            lblStreetAdress.Visible = value;
-            lblSuburb.Visible = value;
-            txtCardNumber.Visible = value;
-            txtCity.Visible = value;
-            txtCountry.Visible = value;
-            txtEmail.Visible = value;
-            txtName.Visible = value;
-            txtPhoneNum.Visible = value;
-            txtPostalCode.Visible = value;
-            txtStreetA.Visible = value;
-            txtSurname.Visible = value;
-            
-        }
-
+    
         private void ClearAll()
         {
-            txtCardNumber.Text = "";
+           
             txtCity.Text = "";
             txtCountry.Text = "";
             txtEmail.Text = "";
@@ -77,13 +54,13 @@ namespace GuestBookingSystem.Presentation
         private void PopulateObject()
         {
             customer.StreetAddress = txtStreetA.Text;
-            customer.CardNumber = txtCardNumber.Text;
             customer.Email = txtEmail.Text;
             customer.Name = txtName.Text;
             customer.PostalCode = txtPostalCode.Text;
             customer.Phone = txtPhoneNum.Text;
             customer.Surname = txtSurname.Text;
             customer.Suburb = txtSuburb.Text;
+            customer.Country = txtCountry.Text;
 
 
         }
@@ -93,12 +70,26 @@ namespace GuestBookingSystem.Presentation
         #region Form Events
         private void btnSubmitC_Click(object sender, EventArgs e)
         {
-            PopulateObject();
-            MessageBox.Show("Customer entered!");
-            customerController.DataMaintanence(customer);
-            customerController.FinalizeChanges(customer);
-            ClearAll();
-            ShowAll(true);
+
+            if(txtCardNumber.Text.Equals("") || txtCity.Text.Equals("") || txtCountry.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhoneNum.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetA.Text.Equals("") || txtSuburb.Text.Equals("") || txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill all the fields");
+
+            }else
+                if(txtPostalCode.TextLength != 4)
+            {
+                MessageBox.Show("Please enter a valid postal code");
+            }
+            else
+            {
+                PopulateObject();
+                MessageBox.Show("Customer entered!");
+                customerController.DataMaintanence(customer);
+                customerController.FinalizeChanges(customer);
+                ClearAll();
+                ShowAll(true);
+            }
+            
 
         }
 

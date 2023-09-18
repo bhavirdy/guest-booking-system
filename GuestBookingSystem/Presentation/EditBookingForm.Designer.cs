@@ -89,6 +89,7 @@
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(271, 22);
             this.txtCustID.TabIndex = 20;
+            this.txtCustID.TextChanged += new System.EventHandler(this.txtCustID_TextChanged);
             // 
             // lblCustID
             // 
@@ -149,6 +150,7 @@
             this.btnSubmitV.TabIndex = 23;
             this.btnSubmitV.Text = "Submit";
             this.btnSubmitV.UseVisualStyleBackColor = true;
+            this.btnSubmitV.Click += new System.EventHandler(this.btnSubmitV_Click);
             // 
             // btnExitV
             // 
@@ -160,6 +162,7 @@
             this.btnExitV.TabIndex = 24;
             this.btnExitV.Text = "Cancel";
             this.btnExitV.UseVisualStyleBackColor = true;
+            this.btnExitV.Click += new System.EventHandler(this.btnExitV_Click);
             // 
             // btnClear
             // 
@@ -171,6 +174,7 @@
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // EditBookingForm
             // 
