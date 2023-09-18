@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GuestBookingSystem.Business
 {
-    internal class ConfirmationLetterGenerator
+    internal class CustomerLocationReportGenerator
     {
-        public ConfirmationLetterGenerator() { }
+        public CustomerLocationReportGenerator() { }
 
-        public void generateConfirmationLetter()
+        public void generateCustomerLocationReport()
         {
 
         }

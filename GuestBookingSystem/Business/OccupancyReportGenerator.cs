@@ -8,5 +8,11 @@ namespace GuestBookingSystem.Business
 {
     internal class OccupancyReportGenerator
     {
+        public OccupancyReportGenerator() { }
+
+        public void generateOccupancyReport()
+        {
+
+        }
     }
 }
