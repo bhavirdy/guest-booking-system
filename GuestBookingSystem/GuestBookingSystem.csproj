@@ -112,6 +112,12 @@
     <Compile Include="Presentation\EditBookingForm.Designer.cs">
       <DependentUpon>EditBookingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\EditCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\EditCustomerForm.Designer.cs">
+      <DependentUpon>EditCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\EditBookingForm.resx">
       <DependentUpon>EditBookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\EditCustomerForm.resx">
+      <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MakeBookingForm.resx">
       <DependentUpon>MakeBookingForm.cs</DependentUpon>
