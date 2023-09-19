@@ -18,6 +18,13 @@ namespace GuestBookingSystem.Data
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
 
+        public enum DBOperation
+        {
+            Add = 0,
+            Edit = 1,
+            Delete = 2,
+        }
+
         #endregion 
 
         #region Constructor
@@ -25,7 +32,7 @@ namespace GuestBookingSystem.Data
         {
             try
             {
-              
+
                 cnMain = new SqlConnection(strConn);
                 dsMain = new DataSet();
             }
@@ -36,13 +43,13 @@ namespace GuestBookingSystem.Data
             }
         }
 
-        #endregion 
-        
+        #endregion
+
         #region Update the data source
 
         public void FillDataSet(string SQLstringTemp, string tableTemp)
         {
-            
+
             try
             {
                 daMain = new SqlDataAdapter(SQLstringTemp, cnMain);
