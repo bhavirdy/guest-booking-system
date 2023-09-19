@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,45 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class DeleteBookingForm : Form
     {
+        #region Data Members
+        DataSet ds = new DataSet();
+
+        //I don't know what the sql connection is
+        SqlConnection conDB = new SqlConnection();
+        SqlDataAdapter adapter = new SqlDataAdapter();
+
+        #endregion
+
+        #region Constructor
         public DeleteBookingForm()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Form Events
+
         private void lblHeadingEdit_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void DeleteBookingForm_Load(object sender, EventArgs e)
+        {
+            SqlCommand sqlSelect = new SqlCommand("SELECT * FROM Booking", conDB);
+
+            conDB.Open();
+            adapter.SelectCommand = sqlSelect;
+            adapter.Fill(ds, "Booking");
+            conDB.Close();
+
+
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "Booking";
+
+        }
+
+        #endregion 
     }
 }

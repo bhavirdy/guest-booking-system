@@ -18,7 +18,7 @@ namespace GuestBookingSystem.Business
         private String country;
         private String postalCode;
         private String phone;
-        
+
         #endregion
 
         #region Property Members
@@ -66,6 +66,7 @@ namespace GuestBookingSystem.Business
             get { return country; }
             set { country = value; }
         }
+
 
        public String Suburb
         {

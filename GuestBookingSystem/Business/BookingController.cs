@@ -43,7 +43,7 @@ namespace GuestBookingSystem.Business
 
             bookingDB.DataSetChange(bookingTemp);
             bookings.Add(bookingTemp);
-            
+
 
             //perform a given database operation
 
@@ -69,7 +69,7 @@ namespace GuestBookingSystem.Business
                 index = index + 1;
                 found = (bookings[index].BookingID == ID);
 
-                
+
             }
 
             return bookings[index];
@@ -80,7 +80,9 @@ namespace GuestBookingSystem.Business
             int counter = 0;
             bool found = false;
             found = (bookTemp.BookingID == bookings[counter].BookingID);
+            while (found == false && counter < bookings.Count)
             while(found == false && counter < bookings.Count)
+
             {
                 found = (bookTemp.BookingID == bookings[counter].BookingID);
 
@@ -97,8 +99,6 @@ namespace GuestBookingSystem.Business
         }
 
         #endregion 
-
-
 
     }
 }

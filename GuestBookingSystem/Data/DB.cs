@@ -32,7 +32,7 @@ namespace GuestBookingSystem.Data
         {
             try
             {
-              
+
                 cnMain = new SqlConnection(strConn);
                 dsMain = new DataSet();
             }
@@ -43,13 +43,13 @@ namespace GuestBookingSystem.Data
             }
         }
 
-        #endregion 
-        
+        #endregion
+
         #region Update the data source
 
         public void FillDataSet(string SQLstringTemp, string tableTemp)
         {
-            
+
             try
             {
                 daMain = new SqlDataAdapter(SQLstringTemp, cnMain);

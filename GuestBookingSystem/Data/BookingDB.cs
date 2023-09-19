@@ -1,6 +1,11 @@
-﻿using System;
+﻿using GuestBookingSystem.Business;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
+using System.Data.SqlClient;
+using System.Data;
+
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -57,7 +62,8 @@ namespace GuestBookingSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     bookTemp = new Booking();
-                    bookTemp.CustomerID = Convert.ToInt32(myRow["CustomerID"]);
+                    bookTemp.CustomerID = Convert.ToString(myRow["CustomerID"]);
+
                     bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
                     bookTemp.RoomNumber = Convert.ToInt32(myRow["RoomID"]);
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
@@ -100,8 +106,7 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 100, "ArriveDate");
             daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 100,  "LeaveDate");
+            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 100, "LeaveDate");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 15, "RoomID");
             daMain.InsertCommand.Parameters.Add(param);

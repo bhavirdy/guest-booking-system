@@ -13,7 +13,6 @@ namespace GuestBookingSystem.Data
 {
     internal class CustomerDB : DB
     {
-
         #region Data Members
 
         private String table = "Customer";
@@ -101,7 +100,7 @@ namespace GuestBookingSystem.Data
             param = new SqlParameter("@Name", SqlDbType.NVarChar, 40, "Name");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Surname", SqlDbType. NVarChar, 40, "Surname");
+            param = new SqlParameter("@Surname", SqlDbType.NVarChar, 40, "Surname");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Email", SqlDbType.NVarChar, 40, "Email");
             daMain.InsertCommand.Parameters.Add(param);
@@ -135,5 +134,6 @@ namespace GuestBookingSystem.Data
         }
 
         #endregion
+
     }
 }

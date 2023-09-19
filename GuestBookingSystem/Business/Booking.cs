@@ -16,9 +16,14 @@ namespace GuestBookingSystem.Business
         private DateTime arriveDate;
         private DateTime leaveDate;
         private int roomNumber;
+        private int cardNumber;
+        private String paid;
+
+
         private double deposit;
         private double totalPrice;
         private double pricePerNight;
+
         private DateTime midSeasonStartDate = new DateTime(2023, 12, 8);
         private DateTime midSeasonEndDate = new DateTime(2023, 12, 15);
         private DateTime highSeasonStartDate = new DateTime(2023, 12, 16);
@@ -27,7 +32,7 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Property Members
-        public int CustomerID
+        public String CustomerID
         {
             get { return customerID; }
             set { customerID = value; }
@@ -67,7 +72,23 @@ namespace GuestBookingSystem.Business
         public String BookingID
         {
             get { return bookingID; }
+
+            set { bookingID = value; }
+        }
+        public int CardNumber
+        {
+            set { cardNumber = value; }
+            get { return cardNumber; }
+        }
+
+        public String Paid
+        {
+            set { Paid = value; }
+            get { return paid; }
+        }
+
             set {  bookingID = value; }
+
 
         public double PricePerNight
         {
@@ -83,9 +104,18 @@ namespace GuestBookingSystem.Business
         public Booking()
         {
 
+            this.setPricePerNight();
+            this.setTotalPrice();
+            this.setDeposit();
+        }
+
+        public Booking(String custTemp, DateTime aDate, DateTime lDate, int rNum)
+
+
         }
 
         public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum)
+
         {
             customerID = custTemp;
             arriveDate = aDate;
@@ -130,6 +160,42 @@ namespace GuestBookingSystem.Business
             }
 
             totalPrice = numberOfNights * pricePerNight;
+
+        }
+
+        private void setDeposit()
+        {
+            //determine deposit
+            deposit = 0.1 * totalPrice;
+        }
+
+
+        public bool updateDates(DateTime newArriveDate, DateTime newLeaveDate)
+        {
+            this.ArriveDate = newArriveDate;
+            this.LeaveDate = newLeaveDate;
+            return true;
+        }
+
+        public bool cancel()
+        { return false; }
+
+        public bool isCancelled()
+        {
+            return false;
+        }
+
+        public bool getStatus()
+        {
+            return false;
+        }
+
+        public bool confirmBooking()
+        {
+            return false;
+        }
+        #endregion
+
         }
 
         private void setDeposit()
