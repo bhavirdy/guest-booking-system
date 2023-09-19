@@ -1,6 +1,6 @@
 ﻿namespace GuestBookingSystem.Presentation
 {
-    partial class ViewCustomersForm
+    partial class EditCustomersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,14 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtCardNumber = new System.Windows.Forms.TextBox();
+            this.lblStreetAddress = new System.Windows.Forms.Label();
+            this.txtStreetA = new System.Windows.Forms.TextBox();
+            this.lblSuburb = new System.Windows.Forms.Label();
+            this.txtSuburb = new System.Windows.Forms.TextBox();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblHeadingEditC
@@ -52,11 +60,12 @@
             this.lblHeadingEditC.AutoSize = true;
             this.lblHeadingEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeadingEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblHeadingEditC.Location = new System.Drawing.Point(12, 9);
+            this.lblHeadingEditC.Location = new System.Drawing.Point(27, 21);
             this.lblHeadingEditC.Name = "lblHeadingEditC";
             this.lblHeadingEditC.Size = new System.Drawing.Size(389, 54);
             this.lblHeadingEditC.TabIndex = 0;
             this.lblHeadingEditC.Text = "Edit a Customer";
+            this.lblHeadingEditC.Click += new System.EventHandler(this.lblHeadingEditC_Click);
             // 
             // lblName
             // 
@@ -74,9 +83,10 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(21, 94);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(580, 175);
+            this.listView1.Size = new System.Drawing.Size(839, 180);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // lblSurname
             // 
@@ -116,7 +126,7 @@
             this.lblCountry.AutoSize = true;
             this.lblCountry.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountry.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCountry.Location = new System.Drawing.Point(32, 435);
+            this.lblCountry.Location = new System.Drawing.Point(32, 640);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(80, 21);
             this.lblCountry.TabIndex = 6;
@@ -127,7 +137,7 @@
             this.lblCardNum.AutoSize = true;
             this.lblCardNum.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCardNum.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCardNum.Location = new System.Drawing.Point(35, 464);
+            this.lblCardNum.Location = new System.Drawing.Point(32, 447);
             this.lblCardNum.Name = "lblCardNum";
             this.lblCardNum.Size = new System.Drawing.Size(129, 21);
             this.lblCardNum.TabIndex = 7;
@@ -137,18 +147,19 @@
             // 
             this.btnCancelEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCancelEditC.Location = new System.Drawing.Point(39, 511);
+            this.btnCancelEditC.Location = new System.Drawing.Point(36, 711);
             this.btnCancelEditC.Name = "btnCancelEditC";
             this.btnCancelEditC.Size = new System.Drawing.Size(90, 30);
             this.btnCancelEditC.TabIndex = 8;
             this.btnCancelEditC.Text = "Cancel";
             this.btnCancelEditC.UseVisualStyleBackColor = true;
+            this.btnCancelEditC.Click += new System.EventHandler(this.btnCancelEditC_Click);
             // 
             // btnClearEditC
             // 
             this.btnClearEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnClearEditC.Location = new System.Drawing.Point(304, 511);
+            this.btnClearEditC.Location = new System.Drawing.Point(429, 711);
             this.btnClearEditC.Name = "btnClearEditC";
             this.btnClearEditC.Size = new System.Drawing.Size(85, 29);
             this.btnClearEditC.TabIndex = 9;
@@ -159,12 +170,14 @@
             // 
             this.btnSubmitEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmitEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSubmitEditC.Location = new System.Drawing.Point(526, 511);
+            this.btnSubmitEditC.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnSubmitEditC.Location = new System.Drawing.Point(758, 711);
             this.btnSubmitEditC.Name = "btnSubmitEditC";
             this.btnSubmitEditC.Size = new System.Drawing.Size(102, 30);
             this.btnSubmitEditC.TabIndex = 10;
             this.btnSubmitEditC.Text = "Submit";
             this.btnSubmitEditC.UseVisualStyleBackColor = true;
+            this.btnSubmitEditC.Click += new System.EventHandler(this.btnSubmitEditC_Click);
             // 
             // txtName
             // 
@@ -196,23 +209,103 @@
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(238, 435);
+            this.txtCountry.Location = new System.Drawing.Point(238, 639);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(229, 22);
             this.txtCountry.TabIndex = 15;
             // 
             // txtCardNumber
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(238, 464);
+            this.txtCardNumber.Location = new System.Drawing.Point(238, 446);
             this.txtCardNumber.Name = "txtCardNumber";
             this.txtCardNumber.Size = new System.Drawing.Size(229, 22);
             this.txtCardNumber.TabIndex = 16;
             // 
-            // ViewCustomersForm
+            // lblStreetAddress
+            // 
+            this.lblStreetAddress.AutoSize = true;
+            this.lblStreetAddress.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStreetAddress.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblStreetAddress.Location = new System.Drawing.Point(32, 498);
+            this.lblStreetAddress.Name = "lblStreetAddress";
+            this.lblStreetAddress.Size = new System.Drawing.Size(138, 21);
+            this.lblStreetAddress.TabIndex = 17;
+            this.lblStreetAddress.Text = "StreetAddress";
+            // 
+            // txtStreetA
+            // 
+            this.txtStreetA.Location = new System.Drawing.Point(238, 497);
+            this.txtStreetA.Name = "txtStreetA";
+            this.txtStreetA.Size = new System.Drawing.Size(229, 22);
+            this.txtStreetA.TabIndex = 18;
+            // 
+            // lblSuburb
+            // 
+            this.lblSuburb.AutoSize = true;
+            this.lblSuburb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSuburb.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblSuburb.Location = new System.Drawing.Point(32, 540);
+            this.lblSuburb.Name = "lblSuburb";
+            this.lblSuburb.Size = new System.Drawing.Size(74, 21);
+            this.lblSuburb.TabIndex = 19;
+            this.lblSuburb.Text = "Suburb";
+            // 
+            // txtSuburb
+            // 
+            this.txtSuburb.Location = new System.Drawing.Point(238, 539);
+            this.txtSuburb.Name = "txtSuburb";
+            this.txtSuburb.Size = new System.Drawing.Size(229, 22);
+            this.txtSuburb.TabIndex = 20;
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCity.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblCity.Location = new System.Drawing.Point(32, 577);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(44, 21);
+            this.lblCity.TabIndex = 21;
+            this.lblCity.Text = "City";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(32, 610);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 21);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "PostalCode";
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(238, 576);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(229, 22);
+            this.txtCity.TabIndex = 23;
+            // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(238, 611);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(229, 22);
+            this.txtPostalCode.TabIndex = 24;
+            // 
+            // EditCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 553);
+            this.ClientSize = new System.Drawing.Size(904, 763);
+            this.Controls.Add(this.txtPostalCode);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCity);
+            this.Controls.Add(this.txtSuburb);
+            this.Controls.Add(this.lblSuburb);
+            this.Controls.Add(this.txtStreetA);
+            this.Controls.Add(this.lblStreetAddress);
             this.Controls.Add(this.txtCardNumber);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtEmail);
@@ -230,8 +323,9 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblHeadingEditC);
-            this.Name = "ViewCustomersForm";
+            this.Name = "EditCustomersForm";
             this.Text = "ViewCustomersForm";
+            this.Load += new System.EventHandler(this.EditCustomersForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +350,13 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.TextBox txtCardNumber;
+        private System.Windows.Forms.Label lblStreetAddress;
+        private System.Windows.Forms.TextBox txtStreetA;
+        private System.Windows.Forms.Label lblSuburb;
+        private System.Windows.Forms.TextBox txtSuburb;
+        private System.Windows.Forms.Label lblCity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtPostalCode;
     }
 }

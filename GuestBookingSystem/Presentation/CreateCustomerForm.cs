@@ -9,16 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GuestBookingSystem.Business;
 
 namespace GuestBookingSystem.Presentation
 {
     public partial class CreateCustomerForm : Form
     {
+
         #region Data Members
 
         private Customer customer;
         private CustomerController customerController;
         public bool customerFormClosed = false;
+
 
         DataSet ds = new DataSet();
         //idk where our database is located
@@ -27,11 +30,16 @@ namespace GuestBookingSystem.Presentation
 
         private bool isOpen;
 
+
         #endregion
 
         #region Constructor
 
+
         public CreateCustomerForm()
+
+        public CreateCustomerForm(CustomerController controllerTemp)
+
         {
             this.InitializeComponent();
             this.Load += CreateCustomerForm_Load1;
@@ -45,13 +53,18 @@ namespace GuestBookingSystem.Presentation
         public CreateCustomerForm(CustomerController controllerTemp)
         {
             InitializeComponent();
+
             this.Load += CreateCustomerForm_Load1;
             this.Activated += CreateCustomerForm_Activated;
             customerController = controllerTemp;
             isOpen = true;
+
+            customerController = controllerTemp;
+
         }
 
         #endregion
+
 
         private void CreateCustomerForm_Activated(object sender, EventArgs e)
         {
@@ -76,6 +89,13 @@ namespace GuestBookingSystem.Presentation
         #region Utility methods
 
 
+        private void ClearAll()
+        {
+
+
+        #region Utility methods
+
+    
         private void ClearAll()
         {
 
@@ -118,12 +138,21 @@ namespace GuestBookingSystem.Presentation
             }
             else
                 if (txtPostalCode.TextLength != 4)
+
+            if(txtCardNumber.Text.Equals("") || txtCity.Text.Equals("") || txtCountry.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhoneNum.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetA.Text.Equals("") || txtSuburb.Text.Equals("") || txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill all the fields");
+
+            }else
+                if(txtPostalCode.TextLength != 4)
+
             {
                 MessageBox.Show("Please enter a valid postal code");
             }
             else
             {
                 PopulateObject();
+
                 SqlCommand commIns = new SqlCommand("INSERT INTO Customer(CustomerID, Name, Surname, Email, StreetAddress, Town, PostalCode, Phone" +
                                                        "VALUES(@CustomerID, @Name, @Surname, @Email, @StreetAddress, @Town, @PostalCode, @Phone", conDB);
 
@@ -141,18 +170,29 @@ namespace GuestBookingSystem.Presentation
                 commIns.ExecuteNonQuery();
 
 
+
                 MessageBox.Show("Customer entered!");
                 customerController.DataMaintanence(customer);
                 customerController.FinalizeChanges(customer);
                 ClearAll();
 
+
             }
+
+
+                ShowAll(true);
+            }
+            
 
 
         }
 
         private void CreateCustomerForm_Load(object sender, EventArgs e)
         {
+
+
+
+            ShowAll(true);
 
 
 

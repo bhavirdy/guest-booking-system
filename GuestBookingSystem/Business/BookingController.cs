@@ -5,11 +5,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuestBookingSystem.Data;
 
 namespace GuestBookingSystem.Business
 {
     internal class BookingController
     {
+
         #region Data Members
         BookingDB bookingDB;
         Collection<Booking> bookings;
@@ -79,6 +81,8 @@ namespace GuestBookingSystem.Business
             bool found = false;
             found = (bookTemp.BookingID == bookings[counter].BookingID);
             while (found == false && counter < bookings.Count)
+            while(found == false && counter < bookings.Count)
+
             {
                 found = (bookTemp.BookingID == bookings[counter].BookingID);
 
@@ -95,5 +99,6 @@ namespace GuestBookingSystem.Business
         }
 
         #endregion 
+
     }
 }

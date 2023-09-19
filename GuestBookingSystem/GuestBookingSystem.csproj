@@ -63,10 +63,14 @@
   <ItemGroup>
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\BookingController.cs" />
+
     <Compile Include="Business\RoomController.cs" />
+
     <Compile Include="Business\ConfirmationLetterGenerator.cs" />
     <Compile Include="Business\Customer.cs" />
     <Compile Include="Business\CustomerController.cs" />
+    <Compile Include="Business\CustomerLocationReportGenerator.cs" />
+    <Compile Include="Business\HotelBookingSystem.cs" />
     <Compile Include="Business\OccupancyReportGenerator.cs" />
     <Compile Include="Business\PaymentProcessor.cs" />
     <Compile Include="Business\Person.cs" />
@@ -136,17 +140,11 @@
     <Compile Include="Presentation\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ReviewBookingForm.cs">
+    <Compile Include="Presentation\EditCustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\ReviewBookingForm.Designer.cs">
-      <DependentUpon>ReviewBookingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\ViewCustomersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\ViewCustomersForm.Designer.cs">
-      <DependentUpon>ViewCustomersForm.cs</DependentUpon>
+    <Compile Include="Presentation\EditCustomersForm.Designer.cs">
+      <DependentUpon>EditCustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,8 +169,8 @@
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\ViewCustomersForm.resx">
-      <DependentUpon>ViewCustomersForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\EditCustomersForm.resx">
+      <DependentUpon>EditCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

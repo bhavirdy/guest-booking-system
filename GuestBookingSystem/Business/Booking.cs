@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace GuestBookingSystem.Business
 {
@@ -22,7 +23,6 @@ namespace GuestBookingSystem.Business
         private double deposit;
         private double totalPrice;
         private double pricePerNight;
-
 
         private DateTime midSeasonStartDate = new DateTime(2023, 12, 8);
         private DateTime midSeasonEndDate = new DateTime(2023, 12, 15);
@@ -72,6 +72,7 @@ namespace GuestBookingSystem.Business
         public String BookingID
         {
             get { return bookingID; }
+
             set { bookingID = value; }
         }
         public int CardNumber
@@ -86,6 +87,9 @@ namespace GuestBookingSystem.Business
             get { return paid; }
         }
 
+            set {  bookingID = value; }
+
+
         public double PricePerNight
         {
             get { return pricePerNight; }
@@ -99,12 +103,19 @@ namespace GuestBookingSystem.Business
 
         public Booking()
         {
+
             this.setPricePerNight();
             this.setTotalPrice();
             this.setDeposit();
         }
 
         public Booking(String custTemp, DateTime aDate, DateTime lDate, int rNum)
+
+
+        }
+
+        public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum)
+
         {
             customerID = custTemp;
             arriveDate = aDate;
@@ -149,6 +160,7 @@ namespace GuestBookingSystem.Business
             }
 
             totalPrice = numberOfNights * pricePerNight;
+
         }
 
         private void setDeposit()
@@ -184,6 +196,39 @@ namespace GuestBookingSystem.Business
         }
         #endregion
 
+        }
 
+        private void setDeposit()
+        {
+            //determine deposit
+            deposit = 0.1 * totalPrice;
+        }
+
+
+        public bool updateDates(DateTime newArriveDate, DateTime newLeaveDate)
+        {
+            this.ArriveDate = newArriveDate;
+            this.LeaveDate = newLeaveDate;    
+            return true; 
+        }
+
+        public bool cancel()
+        { return false; }
+
+        public bool isCancelled() 
+        { 
+            return false; 
+        }
+
+        public bool getStatus()
+        {
+            return false;
+        }
+
+        public bool confirmBooking()
+        {
+            return false;
+        }
+        #endregion
     }
 }

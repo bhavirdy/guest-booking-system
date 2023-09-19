@@ -10,11 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GuestBookingSystem.Business;
+
 
 namespace GuestBookingSystem.Presentation
 {
     public partial class EditBookingForm : Form
     {
+
         #region Data Members
         public bool listFormClosed;
         private Collection<Booking> bookings;
@@ -37,6 +40,7 @@ namespace GuestBookingSystem.Presentation
             set { isOpen = value; }
         }
 
+
         #endregion 
 
         #region Constructor
@@ -46,6 +50,7 @@ namespace GuestBookingSystem.Presentation
             InitializeComponent();
             this.Load += EditBookingForm_Load;
             this.Activated += EditBookingForm_Activated;
+
 
         }
 
@@ -180,6 +185,44 @@ namespace GuestBookingSystem.Presentation
 
 
             foreach (Booking booking in bookings)
+
+        }
+
+        public EditBookingForm(BookingController bookingController)
+        {
+            InitializeComponent();
+            this.bookingController = bookingController;
+            this.Load += EditBookingForm_Load;
+            this.Activated += EditBookingForm_Activated;
+        }
+
+        #endregion 
+
+        private void EditBookingForm_Activated(object sender, EventArgs e)
+        {
+            bookingView.View = View.Details;
+            setUpCustomerListView();
+            ClearAll();
+        }
+
+        #region ListView Setup
+
+        public void setUpCustomerListView()
+        {
+            ListViewItem bookingDetails = null;
+
+            booking = null;
+            bookingView.Clear();
+
+            bookingView.Columns.Insert(0, "BookingID", 120, HorizontalAlignment.Left);
+            bookingView.Columns.Insert(0, "CustomerID", 120, HorizontalAlignment.Left);
+            bookingView.Columns.Insert(0, "ArriveDate", 120, HorizontalAlignment.Left);
+            bookingView.Columns.Insert(0, "LeaveDate", 120, HorizontalAlignment.Left);
+            bookingView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+            bookingView.Columns.Insert(0, "Deposit", 120, HorizontalAlignment.Left);
+
+            foreach(Booking booking in bookings)
+
             {
                 bookingDetails = new ListViewItem();
                 bookingDetails.Text = booking.BookingID.ToString();
@@ -187,12 +230,18 @@ namespace GuestBookingSystem.Presentation
                 bookingDetails.SubItems.Add(booking.CustomerID.ToString());
                 bookingDetails.SubItems.Add(booking.ArriveDate.ToString());
                 bookingDetails.SubItems.Add(booking.LeaveDate.ToString());
+
                 bookingDetails.SubItems.Add(booking.Deposit.ToString());
                 bookingDetails.SubItems.Add(booking.CardNumber.ToString());
                 bookingDetails.SubItems.Add(booking.Paid.ToString());
 
+                bookingDetails.SubItems.Add(booking.RoomNumber.ToString());
+                bookingDetails.SubItems.Add(booking.Deposit.ToString());
+
+
                 bookingView.Items.Add(bookingDetails);
             }
+
 
 
             bookingView.Refresh();
@@ -202,6 +251,43 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Form Events
+
+            bookingView.Refresh();
+            bookingView.GridLines = true;
+
+            
+        }
+
+        private void bookingView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(bookingView.SelectedItems.Count > 0)
+            {
+                booking = bookingController.Find(bookingView.SelectedItems[0].Text);
+                PopulateTextBoxes(booking);
+            }
+        }
+
+        #region Utility Methods
+
+        private void ClearAll()
+        {
+            txtCustID.Text = "";
+            dateTimePickerArrival.Text = "";
+            dateTimePickerDepartureDate.Text = "";
+            txtRoomNum.Text = "";
+
+
+        }
+
+        //not complete
+
+        private void PopulateTextBoxes(Booking bookTemp)
+        {
+            txtCustID.Text = bookTemp.CustomerID.ToString();
+            dateTimePickerArrival.Text = bookTemp.ArriveDate.ToString();
+
+        }
+
 
 
 
@@ -237,6 +323,7 @@ namespace GuestBookingSystem.Presentation
             {
                 MessageBox.Show("Arrival date cannot be after departure date");
             }
+
             else
             {
 
@@ -249,5 +336,18 @@ namespace GuestBookingSystem.Presentation
             }
         }
         #endregion
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void btnExitV_Click(object sender, EventArgs e)
+        {
+            this.listFormClosed = true;
+        }
+
     }
 }

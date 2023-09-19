@@ -7,10 +7,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuestBookingSystem.Business;
 
 namespace GuestBookingSystem.Data
 {
-    internal class CustomerDB
+    internal class CustomerDB : DB
     {
         #region Data Members
 

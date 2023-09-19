@@ -23,7 +23,9 @@ namespace GuestBookingSystem.Business
             bookingID = 0;
         }
 
+
         public Customer() : base()
+        public Customer()
         {
 
         }

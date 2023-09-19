@@ -2,15 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
 using System.Data.SqlClient;
 using System.Data;
+
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuestBookingSystem.Business;
 
 namespace GuestBookingSystem.Data
 {
-    internal class BookingDB
+    internal class BookingDB : DB
     {
 
         #region Data Members
@@ -58,6 +63,7 @@ namespace GuestBookingSystem.Data
                 {
                     bookTemp = new Booking();
                     bookTemp.CustomerID = Convert.ToString(myRow["CustomerID"]);
+
                     bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
                     bookTemp.RoomNumber = Convert.ToInt32(myRow["RoomID"]);
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
@@ -100,7 +106,6 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 100, "ArriveDate");
             daMain.InsertCommand.Parameters.Add(param);
-
             param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 100, "LeaveDate");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 15, "RoomID");
@@ -129,4 +134,5 @@ namespace GuestBookingSystem.Data
 
         #endregion
     }
+
 }

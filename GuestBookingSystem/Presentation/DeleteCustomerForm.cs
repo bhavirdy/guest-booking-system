@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class DeleteCustomerForm : Form
     {
+
         #region Data Members
         DataSet ds = new DataSet();
 
@@ -24,10 +26,12 @@ namespace GuestBookingSystem.Presentation
 
         #region Constructor
 
+
         public DeleteCustomerForm()
         {
             InitializeComponent();
         }
+
 
         #endregion
 
@@ -51,5 +55,6 @@ namespace GuestBookingSystem.Presentation
         }
 
         #endregion 
+
     }
 }

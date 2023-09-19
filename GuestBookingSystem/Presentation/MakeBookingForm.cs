@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GuestBookingSystem.Business;
+
 
 namespace GuestBookingSystem.Presentation
 {
     public partial class MakeBookingForm : Form
     {
+
 
         #region Data Members
 
@@ -40,6 +43,10 @@ namespace GuestBookingSystem.Presentation
         #endregion 
 
         #region Constructor
+        Booking booking;
+        BookingController bookingController;
+        public bool bookingFormClosed = false;
+
         public MakeBookingForm()
         {
             InitializeComponent();
@@ -54,6 +61,7 @@ namespace GuestBookingSystem.Presentation
             throw new NotImplementedException();
         }
 
+
         private void MakeBookingForm_Load1(object sender, EventArgs e)
         {
             throw new NotImplementedException();
@@ -62,6 +70,7 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Utility Methods
+
 
         private void PopulateObject()
         {
@@ -82,9 +91,11 @@ namespace GuestBookingSystem.Presentation
             dateTimePickerDepartureDate.Value = DateTime.Today;
         }
 
+
         #endregion
 
         #region Form Events
+
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -101,6 +112,7 @@ namespace GuestBookingSystem.Presentation
             if (txtCustID.Text.Equals("") || txtCustID.TextLength != 13)
             {
                 MessageBox.Show("Please enter a valid CustomerID");
+
             }
             else
                 if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
@@ -136,16 +148,36 @@ namespace GuestBookingSystem.Presentation
                 commIns.Parameters.Add("@CardNumber", SqlDbType.NVarChar, 50, "CardNumber").Value = txtCardNum.Text;
 
                 commIns.ExecuteNonQuery();
+=======
+            }else
+                if(this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
+            {
+                MessageBox.Show("Cannot choose a departure date that is before the arrival date");
+
+            }else if(){
+                //need to check whether a room is available
+            }
+            else
+            {
+
                 PopulateObject();
                 MessageBox.Show("Succesfully added to database");
                 bookingController.DataMaintanence(booking);
                 bookingController.FinalizeChanges(booking);
 
 
+
                 ClearAll();
 
             }
 
+
+
+                ClearAll();
+                
+            }
+
+      
 
         }
 
@@ -154,12 +186,14 @@ namespace GuestBookingSystem.Presentation
 
         }
 
+
         private void button3_Click(object sender, EventArgs e)
         {
             ClearAll();
         }
 
         #endregion
+
 
     }
 }

@@ -67,7 +67,8 @@ namespace GuestBookingSystem.Business
             set { country = value; }
         }
 
-        public String Suburb
+
+       public String Suburb
         {
             get { return suburb; }
             set { suburb = value; }
