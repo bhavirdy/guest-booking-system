@@ -20,12 +20,21 @@ namespace GuestBookingSystem.Presentation
         SqlConnection conDB = new SqlConnection();
         SqlDataAdapter adapter = new SqlDataAdapter();
 
+        private bool isOpen = false;
+
+        public bool IsOpen
+        {
+            get { return isOpen; }
+            set { isOpen = value; }
+        }
+
         #endregion
 
         #region Constructor
         public DeleteBookingForm()
         {
             InitializeComponent();
+            isOpen = true;
         }
 
         #endregion
@@ -39,19 +48,26 @@ namespace GuestBookingSystem.Presentation
 
         private void DeleteBookingForm_Load(object sender, EventArgs e)
         {
-            SqlCommand sqlSelect = new SqlCommand("SELECT * FROM Booking", conDB);
+            this.WindowState = FormWindowState.Maximized;
 
-            conDB.Open();
-            adapter.SelectCommand = sqlSelect;
-            adapter.Fill(ds, "Booking");
-            conDB.Close();
+            //SqlCommand sqlSelect = new SqlCommand("SELECT * FROM Booking", conDB);
+
+            //conDB.Open();
+            //adapter.SelectCommand = sqlSelect;
+            //adapter.Fill(ds, "Booking");
+            //conDB.Close();
 
 
-            dataGridView1.DataSource = ds;
-            dataGridView1.DataMember = "Booking";
+            //dataGridView1.DataSource = ds;
+            //dataGridView1.DataMember = "Booking";
 
         }
 
-        #endregion 
+        #endregion
+
+        private void DeleteBookingForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            isOpen = false;
+        }
     }
 }

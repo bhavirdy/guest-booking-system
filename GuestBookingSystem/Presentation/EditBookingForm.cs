@@ -48,28 +48,28 @@ namespace GuestBookingSystem.Presentation
         public EditBookingForm()
         {
             InitializeComponent();
-            this.Load += EditBookingForm_Load;
-            this.Activated += EditBookingForm_Activated;
+            //this.Load += EditBookingForm_Load;
+            //this.Activated += EditBookingForm_Activated;
 
-
+            isOpen = true;
         }
 
-        public EditBookingForm(BookingController bookingController)
-        {
-            InitializeComponent();
-            this.bookingController = bookingController;
-            this.Load += EditBookingForm_Load;
-            this.Activated += EditBookingForm_Activated;
-        }
+        //public EditBookingForm(BookingController bookingController)
+        //{
+        //    InitializeComponent();
+        //    this.bookingController = bookingController;
+        //    this.Load += EditBookingForm_Load;
+        //    this.Activated += EditBookingForm_Activated;
+        //}
 
         #endregion 
 
-        private void EditBookingForm_Activated(object sender, EventArgs e)
-        {
-            bookingView.Visible = true;
-            setUpCustomerListView();
-            ClearAll();
-        }
+        //private void EditBookingForm_Activated(object sender, EventArgs e)
+        //{
+        //    bookingView.Visible = true;
+        //    setUpCustomerListView();
+        //    ClearAll();
+        //}
 
         #region ListView Setup
 
@@ -184,170 +184,180 @@ namespace GuestBookingSystem.Presentation
             bookingView.Columns.Insert(0, "Paid", 120, HorizontalAlignment.Left);
 
 
-            foreach (Booking booking in bookings)
+            //foreach (Booking booking in bookings)
 
         }
 
-        public EditBookingForm(BookingController bookingController)
+        private void EditBookingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            InitializeComponent();
-            this.bookingController = bookingController;
-            this.Load += EditBookingForm_Load;
-            this.Activated += EditBookingForm_Activated;
+            isOpen = false;
         }
 
-        #endregion 
-
-        private void EditBookingForm_Activated(object sender, EventArgs e)
+        private void EditBookingForm_Load(object sender, EventArgs e)
         {
-            bookingView.View = View.Details;
-            setUpCustomerListView();
-            ClearAll();
+            this.WindowState = FormWindowState.Maximized;
         }
+
+        //public EditBookingForm(BookingController bookingController)
+        //{
+        //    InitializeComponent();
+        //    this.bookingController = bookingController;
+        //    this.Load += EditBookingForm_Load;
+        //    this.Activated += EditBookingForm_Activated;
+        //}
+
+        #endregion
+
+        //private void EditBookingForm_Activated(object sender, EventArgs e)
+        //{
+        //    bookingView.View = View.Details;
+        //    setUpCustomerListView();
+        //    ClearAll();
+        //}
 
         #region ListView Setup
 
-        public void setUpCustomerListView()
-        {
-            ListViewItem bookingDetails = null;
+        //public void setUpCustomerListView()
+        //{
+        //    ListViewItem bookingDetails = null;
 
-            booking = null;
-            bookingView.Clear();
+        //    booking = null;
+        //    bookingView.Clear();
 
-            bookingView.Columns.Insert(0, "BookingID", 120, HorizontalAlignment.Left);
-            bookingView.Columns.Insert(0, "CustomerID", 120, HorizontalAlignment.Left);
-            bookingView.Columns.Insert(0, "ArriveDate", 120, HorizontalAlignment.Left);
-            bookingView.Columns.Insert(0, "LeaveDate", 120, HorizontalAlignment.Left);
-            bookingView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-            bookingView.Columns.Insert(0, "Deposit", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "BookingID", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "CustomerID", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "ArriveDate", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "LeaveDate", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+        //    bookingView.Columns.Insert(0, "Deposit", 120, HorizontalAlignment.Left);
 
-            foreach(Booking booking in bookings)
+        //    foreach(Booking booking in bookings)
 
-            {
-                bookingDetails = new ListViewItem();
-                bookingDetails.Text = booking.BookingID.ToString();
-                bookingDetails.SubItems.Add(booking.BookingID.ToString());
-                bookingDetails.SubItems.Add(booking.CustomerID.ToString());
-                bookingDetails.SubItems.Add(booking.ArriveDate.ToString());
-                bookingDetails.SubItems.Add(booking.LeaveDate.ToString());
+        //    {
+        //        bookingDetails = new ListViewItem();
+        //        bookingDetails.Text = booking.BookingID.ToString();
+        //        bookingDetails.SubItems.Add(booking.BookingID.ToString());
+        //        bookingDetails.SubItems.Add(booking.CustomerID.ToString());
+        //        bookingDetails.SubItems.Add(booking.ArriveDate.ToString());
+        //        bookingDetails.SubItems.Add(booking.LeaveDate.ToString());
 
-                bookingDetails.SubItems.Add(booking.Deposit.ToString());
-                bookingDetails.SubItems.Add(booking.CardNumber.ToString());
-                bookingDetails.SubItems.Add(booking.Paid.ToString());
+        //        bookingDetails.SubItems.Add(booking.Deposit.ToString());
+        //        bookingDetails.SubItems.Add(booking.CardNumber.ToString());
+        //        bookingDetails.SubItems.Add(booking.Paid.ToString());
 
-                bookingDetails.SubItems.Add(booking.RoomNumber.ToString());
-                bookingDetails.SubItems.Add(booking.Deposit.ToString());
-
-
-                bookingView.Items.Add(bookingDetails);
-            }
+        //        bookingDetails.SubItems.Add(booking.RoomNumber.ToString());
+        //        bookingDetails.SubItems.Add(booking.Deposit.ToString());
 
 
+        //        bookingView.Items.Add(bookingDetails);
+        //    }
 
-            bookingView.Refresh();
-            bookingView.GridLines = true;
-        }
+
+
+        //    bookingView.Refresh();
+        //    bookingView.GridLines = true;
+        //}
 
         #endregion
 
         #region Form Events
 
-            bookingView.Refresh();
-            bookingView.GridLines = true;
+        //    bookingView.Refresh();
+        //    bookingView.GridLines = true;
 
-            
-        }
 
-        private void bookingView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(bookingView.SelectedItems.Count > 0)
-            {
-                booking = bookingController.Find(bookingView.SelectedItems[0].Text);
-                PopulateTextBoxes(booking);
-            }
-        }
+        //}
+
+        //private void bookingView_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if(bookingView.SelectedItems.Count > 0)
+        //    {
+        //        booking = bookingController.Find(bookingView.SelectedItems[0].Text);
+        //        PopulateTextBoxes(booking);
+        //    }
+        //}
+
+        #endregion
 
         #region Utility Methods
 
-        private void ClearAll()
-        {
-            txtCustID.Text = "";
-            dateTimePickerArrival.Text = "";
-            dateTimePickerDepartureDate.Text = "";
-            txtRoomNum.Text = "";
+        //private void ClearAll()
+        //{
+        //    txtCustID.Text = "";
+        //    dateTimePickerArrival.Text = "";
+        //    dateTimePickerDepartureDate.Text = "";
+        //    txtRoomNum.Text = "";
 
 
-        }
+        //}
 
-        //not complete
+        ////not complete
 
-        private void PopulateTextBoxes(Booking bookTemp)
-        {
-            txtCustID.Text = bookTemp.CustomerID.ToString();
-            dateTimePickerArrival.Text = bookTemp.ArriveDate.ToString();
+        //private void PopulateTextBoxes(Booking bookTemp)
+        //{
+        //    txtCustID.Text = bookTemp.CustomerID.ToString();
+        //    dateTimePickerArrival.Text = bookTemp.ArriveDate.ToString();
 
-        }
-
-
+        //}
 
 
-        private void lblHeadingEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtRoomNum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditBookingForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCustID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSubmitV_Click(object sender, EventArgs e)
-        {
-            //needs to check if inputted room is available
-            if (txtCustID.Text.Equals("") || txtRoomNum.Text.Equals(""))
-            {
-                MessageBox.Show("Please fill out all the fields");
-            }
-            else
-                if (dateTimePickerArrival.Value > dateTimePickerDepartureDate.Value)
-            {
-                MessageBox.Show("Arrival date cannot be after departure date");
-            }
-
-            else
-            {
 
 
-                PopulateObject();
-                bookingController.DataMaintanence(booking);
-                bookingController.FinalizeChanges(booking);
-                ClearAll();
-                setUpBookingListView();
-            }
-        }
+        //private void lblHeadingEdit_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void txtRoomNum_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void EditBookingForm_Load(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void txtCustID_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void btnSubmitV_Click(object sender, EventArgs e)
+        //{
+        //    //needs to check if inputted room is available
+        //    if (txtCustID.Text.Equals("") || txtRoomNum.Text.Equals(""))
+        //    {
+        //        MessageBox.Show("Please fill out all the fields");
+        //    }
+        //    else
+        //        if (dateTimePickerArrival.Value > dateTimePickerDepartureDate.Value)
+        //    {
+        //        MessageBox.Show("Arrival date cannot be after departure date");
+        //    }
+
+        //    else
+        //    {
+
+
+        //        PopulateObject();
+        //        bookingController.DataMaintanence(booking);
+        //        bookingController.FinalizeChanges(booking);
+        //        ClearAll();
+        //        setUpBookingListView();
+        //    }
+        //}
         #endregion
 
-        }
+        //private void btnClear_Click(object sender, EventArgs e)
+        //{
+        //    ClearAll();
+        //}
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearAll();
-        }
-
-        private void btnExitV_Click(object sender, EventArgs e)
-        {
-            this.listFormClosed = true;
-        }
+        //private void btnExitV_Click(object sender, EventArgs e)
+        //{
+        //    this.listFormClosed = true;
+        //}
 
     }
 }

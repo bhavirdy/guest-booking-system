@@ -20,7 +20,7 @@ namespace GuestBookingSystem.Presentation
         private CustomerController custController;
         public bool listFormClosed;
         private Collection<Customer> customers;
-        private bool isOpen;
+        private bool isOpen = false;
 
         DataSet ds = new DataSet();
         //idk where our database is located
@@ -41,11 +41,11 @@ namespace GuestBookingSystem.Presentation
         #endregion 
 
         #region Constructor
-        public EditCustomersForm()
+        public EditCustomerForm()
         {
             InitializeComponent();
-            this.Load += EditCustomersForm_Load;
-            this.Activated += EditCustomersForm_Activated;
+            //this.Load += EditCustomersForm_Load;
+            //this.Activated += EditCustomersForm_Activated;
             isOpen = true;
         }
 
@@ -54,16 +54,16 @@ namespace GuestBookingSystem.Presentation
             throw new NotImplementedException();
         }
 
-        public EditCustomersForm(CustomerController custController)
-        {
-            InitializeComponent();
-            this.custController = custController;
-            this.Load += EditCustomersForm_Load;
-            this.Activated += EditCustomersForm_Activated;
-            this.FormClosed += EditCustomersForm_FormClosed1;
-            isOpen = true;
+        //public EditCustomersForm(CustomerController custController)
+        //{
+        //    InitializeComponent();
+        //    this.custController = custController;
+        //    this.Load += EditCustomersForm_Load;
+        //    this.Activated += EditCustomersForm_Activated;
+        //    this.FormClosed += EditCustomersForm_FormClosed1;
+        //    isOpen = true;
 
-        }
+        //}
 
         private void EditCustomersForm_FormClosed1(object sender, FormClosedEventArgs e)
         {
@@ -74,14 +74,16 @@ namespace GuestBookingSystem.Presentation
 
         #region Events
 
-        public void EditCustomersForm_FormClosed(object sender, FormClosedEventArgs e)
+        public void EditCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             listFormClosed = true;
+            isOpen = false;
         }
 
-        private void EditCustomersForm_Load(object sender, EventArgs e)
+        private void EditCustomerForm_Load(object sender, EventArgs e)
         {
             listView1.View = View.Details;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void EditCustomerForm_Activated(object sender, EventArgs e)
@@ -122,7 +124,7 @@ namespace GuestBookingSystem.Presentation
                 customerDetails.SubItems.Add(customer.Surname.ToString());
                 customerDetails.SubItems.Add(customer.Email.ToString());
                 customerDetails.SubItems.Add(customer.TownOrCity.ToString());
-                customerDetails.SubItems.Add(customer.Suburb.ToString());
+                //customerDetails.SubItems.Add(customer.Suburb.ToString());
                 customerDetails.SubItems.Add(customer.PostalCode.ToString());
                 customerDetails.SubItems.Add(customer.Phone.ToString());
                 customerDetails.SubItems.Add(customer.CardNumber.ToString());
@@ -167,7 +169,7 @@ namespace GuestBookingSystem.Presentation
         private void PopulateTextBoxes(Customer custTemp)
         {
             txtSurname.Text = custTemp.Surname;
-            txtSuburb.Text = custTemp.Suburb;
+            //txtSuburb.Text = custTemp.Suburb;
             txtStreetA.Text = custTemp.StreetAddress;
             txtPostalCode.Text = custTemp.PostalCode;
             txtPhoneNumber.Text = custTemp.Phone;
@@ -180,8 +182,8 @@ namespace GuestBookingSystem.Presentation
 
         private Customer PopulateObject()
         {
-            customer = new Customer();
-            customer.Suburb = txtSuburb.Text;
+            //customer = new Customer();
+            //customer.Suburb = txtSuburb.Text;
             customer.CardNumber = txtCardNumber.Text;
             customer.Surname = txtSurname.Text;
             customer.StreetAddress = txtStreetA.Text;
@@ -217,7 +219,8 @@ namespace GuestBookingSystem.Presentation
 
         private void btnCancelEditC_Click(object sender, EventArgs e)
         {
-            EditCustomersForm.ActiveForm.Close();
+            EditCustomerForm.ActiveForm.Close();
         }
+
     }
 }

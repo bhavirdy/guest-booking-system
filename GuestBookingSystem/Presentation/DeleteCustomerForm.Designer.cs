@@ -28,175 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            this.lblHeadingEditC = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.lblHeadingEditC = new System.Windows.Forms.Label();
-            this.btnSubmitEditC = new System.Windows.Forms.Button();
-            this.btnClearEditC = new System.Windows.Forms.Button();
-            this.btnCancelEditC = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 84);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(839, 313);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-
-            // lblHeadingEditC
-            // 
-            this.lblHeadingEditC.AutoSize = true;
-            this.lblHeadingEditC.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblHeadingEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeadingEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-
-            this.lblHeadingEditC.Location = new System.Drawing.Point(12, 9);
-            this.lblHeadingEditC.Name = "lblHeadingEditC";
-            this.lblHeadingEditC.Size = new System.Drawing.Size(448, 54);
-            this.lblHeadingEditC.TabIndex = 4;
-            this.lblHeadingEditC.Text = "Delete a Customer";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 323);
-            this.dataGridView1.TabIndex = 15;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(32, 427);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(81, 31);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnClear.Location = new System.Drawing.Point(293, 427);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 29);
-            this.btnClear.TabIndex = 17;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnSubmit.Location = new System.Drawing.Point(649, 424);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(93, 32);
-            this.btnSubmit.TabIndex = 18;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-
-            this.lblHeadingEditC.Location = new System.Drawing.Point(18, 11);
-            this.lblHeadingEditC.Name = "lblHeadingEditC";
-            this.lblHeadingEditC.Size = new System.Drawing.Size(448, 54);
-            this.lblHeadingEditC.TabIndex = 3;
-            this.lblHeadingEditC.Text = "Delete a Customer";
-            // 
-            // btnSubmitEditC
-            // 
-            this.btnSubmitEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSubmitEditC.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnSubmitEditC.Location = new System.Drawing.Point(762, 451);
-            this.btnSubmitEditC.Name = "btnSubmitEditC";
-            this.btnSubmitEditC.Size = new System.Drawing.Size(102, 30);
-            this.btnSubmitEditC.TabIndex = 13;
-            this.btnSubmitEditC.Text = "Submit";
-            this.btnSubmitEditC.UseVisualStyleBackColor = true;
-            // 
-            // btnClearEditC
-            // 
-            this.btnClearEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnClearEditC.Location = new System.Drawing.Point(433, 451);
-            this.btnClearEditC.Name = "btnClearEditC";
-            this.btnClearEditC.Size = new System.Drawing.Size(85, 29);
-            this.btnClearEditC.TabIndex = 12;
-            this.btnClearEditC.Text = "Clear";
-            this.btnClearEditC.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelEditC
-            // 
-            this.btnCancelEditC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelEditC.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCancelEditC.Location = new System.Drawing.Point(40, 451);
-            this.btnCancelEditC.Name = "btnCancelEditC";
-            this.btnCancelEditC.Size = new System.Drawing.Size(90, 30);
-            this.btnCancelEditC.TabIndex = 11;
-            this.btnCancelEditC.Text = "Cancel";
-            this.btnCancelEditC.UseVisualStyleBackColor = true;
-
             // 
             // DeleteCustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(800, 480);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lblHeadingEditC);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "DeleteCustomerForm";
             this.Text = "DeleteCustomerForm";
-            this.Load += new System.EventHandler(this.DeleteCustomerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-
-            this.ClientSize = new System.Drawing.Size(932, 553);
-            this.Controls.Add(this.btnSubmitEditC);
-            this.Controls.Add(this.btnClearEditC);
-            this.Controls.Add(this.btnCancelEditC);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.lblHeadingEditC);
-            this.Name = "DeleteCustomerForm";
-            this.Text = "DeleteCustomerForm";
-
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeleteCustomerForm_FormClosed);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-
-        private System.Windows.Forms.Label lblHeadingEditC;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnSubmit;
-
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Label lblHeadingEditC;
-        private System.Windows.Forms.Button btnSubmitEditC;
-        private System.Windows.Forms.Button btnClearEditC;
-        private System.Windows.Forms.Button btnCancelEditC;
-
     }
 }

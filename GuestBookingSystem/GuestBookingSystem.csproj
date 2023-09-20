@@ -63,9 +63,7 @@
   <ItemGroup>
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\BookingController.cs" />
-
     <Compile Include="Business\RoomController.cs" />
-
     <Compile Include="Business\ConfirmationLetterGenerator.cs" />
     <Compile Include="Business\Customer.cs" />
     <Compile Include="Business\CustomerController.cs" />
@@ -140,12 +138,6 @@
     <Compile Include="Presentation\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\EditCustomersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\EditCustomersForm.Designer.cs">
-      <DependentUpon>EditCustomersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentation\CreateCustomerForm.resx">
@@ -168,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\EditCustomersForm.resx">
-      <DependentUpon>EditCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

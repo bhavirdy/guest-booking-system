@@ -17,23 +17,16 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
-        public Customer(String cardTemp) : base()
+        public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String countryTemp, String custIDTemp, String cardNumberTemp, int bookingIDTemp) 
+            : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, countryTemp)
         {
-            cardNumber = cardTemp;
-            bookingID = 0;
-        }
-
-
-        public Customer() : base()
-        public Customer()
-        {
-
+            cardNumber = cardNumberTemp;
+            bookingID = bookingIDTemp;
         }
 
         #endregion
 
         #region Property Members
-
 
         public String CustID
         {

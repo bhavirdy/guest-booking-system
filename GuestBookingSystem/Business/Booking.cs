@@ -19,7 +19,6 @@ namespace GuestBookingSystem.Business
         private int cardNumber;
         private String paid;
 
-
         private double deposit;
         private double totalPrice;
         private double pricePerNight;
@@ -87,9 +86,6 @@ namespace GuestBookingSystem.Business
             get { return paid; }
         }
 
-            set {  bookingID = value; }
-
-
         public double PricePerNight
         {
             get { return pricePerNight; }
@@ -104,17 +100,9 @@ namespace GuestBookingSystem.Business
         public Booking()
         {
 
-            this.setPricePerNight();
-            this.setTotalPrice();
-            this.setDeposit();
         }
 
         public Booking(String custTemp, DateTime aDate, DateTime lDate, int rNum)
-
-
-        }
-
-        public Booking(int custTemp, DateTime aDate, DateTime lDate, int rNum)
 
         {
             customerID = custTemp;
@@ -196,39 +184,6 @@ namespace GuestBookingSystem.Business
         }
         #endregion
 
-        }
-
-        private void setDeposit()
-        {
-            //determine deposit
-            deposit = 0.1 * totalPrice;
-        }
-
-
-        public bool updateDates(DateTime newArriveDate, DateTime newLeaveDate)
-        {
-            this.ArriveDate = newArriveDate;
-            this.LeaveDate = newLeaveDate;    
-            return true; 
-        }
-
-        public bool cancel()
-        { return false; }
-
-        public bool isCancelled() 
-        { 
-            return false; 
-        }
-
-        public bool getStatus()
-        {
-            return false;
-        }
-
-        public bool confirmBooking()
-        {
-            return false;
-        }
-        #endregion
     }
+
 }

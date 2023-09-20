@@ -56,7 +56,7 @@ namespace GuestBookingSystem.Data
                 myRow = myRow_loopVariable;
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
-                    custTemp = new Customer();
+                    //custTemp = new Customer();
 
 
                 }

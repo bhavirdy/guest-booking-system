@@ -25,7 +25,8 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
-        public Receptionist(int rNum, int salTemp) : base()
+        public Receptionist(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String countryTemp, int rNum) 
+            : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, countryTemp)
         {
             this.recpNum = rNum;
         }
