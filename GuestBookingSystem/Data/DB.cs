@@ -45,7 +45,7 @@ namespace GuestBookingSystem.Data
 
         #endregion
 
-        #region Update the data source
+        #region Fill data set
 
         public void FillDataSet(string SQLstringTemp, string tableTemp)
         {
