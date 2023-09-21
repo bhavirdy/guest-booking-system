@@ -12,7 +12,6 @@ namespace GuestBookingSystem.Business
 
         private String custID;
         private String cardNumber;
-        private int bookingID;
 
         #endregion
 
@@ -20,8 +19,8 @@ namespace GuestBookingSystem.Business
         public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String countryTemp, String custIDTemp, String cardNumberTemp, int bookingIDTemp) 
             : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, countryTemp)
         {
+            custID = custIDTemp;
             cardNumber = cardNumberTemp;
-            bookingID = bookingIDTemp;
         }
 
         #endregion
@@ -39,12 +38,6 @@ namespace GuestBookingSystem.Business
         {
             get { return cardNumber; }
             set { cardNumber = value; }
-        }
-
-        public int BookingID
-        {
-            get { return bookingID; }
-            set { bookingID = value; }
         }
 
         #endregion 
