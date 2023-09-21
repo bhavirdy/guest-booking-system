@@ -71,7 +71,7 @@ namespace GuestBookingSystem.Data
             rowTemp["Email"] = custTemp.Email;
             rowTemp["StreetAdress"] = custTemp.StreetAddress;
             rowTemp["townOrCity"] = custTemp.TownOrCity;
-            rowTemp["Country"] = custTemp.Country;
+            rowTemp["Country"] = custTemp.Province;
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
             rowTemp["CardNumber"] = custTemp.CardNumber;
