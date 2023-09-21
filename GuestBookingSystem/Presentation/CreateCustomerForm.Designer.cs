@@ -33,21 +33,19 @@
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblProvince = new System.Windows.Forms.Label();
             this.btnCancelC = new System.Windows.Forms.Button();
             this.btnClearC = new System.Windows.Forms.Button();
             this.btnSubmitC = new System.Windows.Forms.Button();
             this.txtCustID = new System.Windows.Forms.TextBox();
             this.lblCustID = new System.Windows.Forms.Label();
-            this.txtSuburb = new System.Windows.Forms.TextBox();
-            this.lblSuburb = new System.Windows.Forms.Label();
+            this.txtTownOrCity = new System.Windows.Forms.TextBox();
+            this.lblTownOrCity = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.lblPostalCode = new System.Windows.Forms.Label();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.lblCity = new System.Windows.Forms.Label();
             this.txtStreetA = new System.Windows.Forms.TextBox();
             this.lblStreetAdress = new System.Windows.Forms.Label();
-            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
@@ -114,17 +112,17 @@
             this.lblEmail.TabIndex = 29;
             this.lblEmail.Text = "Email";
             // 
-            // lblCountry
+            // lblProvince
             // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCountry.Location = new System.Drawing.Point(35, 344);
-            this.lblCountry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(60, 18);
-            this.lblCountry.TabIndex = 30;
-            this.lblCountry.Text = "Country";
+            this.lblProvince.AutoSize = true;
+            this.lblProvince.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProvince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblProvince.Location = new System.Drawing.Point(35, 316);
+            this.lblProvince.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(66, 18);
+            this.lblProvince.TabIndex = 30;
+            this.lblProvince.Text = "Province";
             // 
             // btnCancelC
             // 
@@ -183,29 +181,29 @@
             this.lblCustID.TabIndex = 24;
             this.lblCustID.Text = "CustomerID";
             // 
-            // txtSuburb
+            // txtTownOrCity
             // 
-            this.txtSuburb.Location = new System.Drawing.Point(218, 271);
-            this.txtSuburb.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSuburb.Name = "txtSuburb";
-            this.txtSuburb.Size = new System.Drawing.Size(251, 20);
-            this.txtSuburb.TabIndex = 23;
+            this.txtTownOrCity.Location = new System.Drawing.Point(218, 271);
+            this.txtTownOrCity.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTownOrCity.Name = "txtTownOrCity";
+            this.txtTownOrCity.Size = new System.Drawing.Size(251, 20);
+            this.txtTownOrCity.TabIndex = 23;
             // 
-            // lblSuburb
+            // lblTownOrCity
             // 
-            this.lblSuburb.AutoSize = true;
-            this.lblSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuburb.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblSuburb.Location = new System.Drawing.Point(34, 271);
-            this.lblSuburb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSuburb.Name = "lblSuburb";
-            this.lblSuburb.Size = new System.Drawing.Size(55, 18);
-            this.lblSuburb.TabIndex = 22;
-            this.lblSuburb.Text = "Suburb";
+            this.lblTownOrCity.AutoSize = true;
+            this.lblTownOrCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTownOrCity.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblTownOrCity.Location = new System.Drawing.Point(34, 271);
+            this.lblTownOrCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTownOrCity.Name = "lblTownOrCity";
+            this.lblTownOrCity.Size = new System.Drawing.Size(74, 18);
+            this.lblTownOrCity.TabIndex = 22;
+            this.lblTownOrCity.Text = "Town/City";
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(218, 371);
+            this.txtPostalCode.Location = new System.Drawing.Point(218, 359);
             this.txtPostalCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(251, 20);
@@ -216,32 +214,12 @@
             this.lblPostalCode.AutoSize = true;
             this.lblPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPostalCode.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblPostalCode.Location = new System.Drawing.Point(34, 372);
+            this.lblPostalCode.Location = new System.Drawing.Point(34, 359);
             this.lblPostalCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPostalCode.Name = "lblPostalCode";
             this.lblPostalCode.Size = new System.Drawing.Size(86, 18);
             this.lblPostalCode.TabIndex = 20;
             this.lblPostalCode.Text = "PostalCode";
-            // 
-            // txtCity
-            // 
-            this.txtCity.Location = new System.Drawing.Point(218, 306);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(251, 20);
-            this.txtCity.TabIndex = 19;
-            // 
-            // lblCity
-            // 
-            this.lblCity.AutoSize = true;
-            this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCity.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCity.Location = new System.Drawing.Point(34, 306);
-            this.lblCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(33, 18);
-            this.lblCity.TabIndex = 18;
-            this.lblCity.Text = "City";
             // 
             // txtStreetA
             // 
@@ -263,13 +241,13 @@
             this.lblStreetAdress.TabIndex = 16;
             this.lblStreetAdress.Text = "Street Address";
             // 
-            // txtCountry
+            // txtProvince
             // 
-            this.txtCountry.Location = new System.Drawing.Point(218, 340);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(251, 20);
-            this.txtCountry.TabIndex = 14;
+            this.txtProvince.Location = new System.Drawing.Point(218, 316);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(251, 20);
+            this.txtProvince.TabIndex = 14;
             // 
             // txtEmail
             // 
@@ -310,20 +288,18 @@
             this.ClientSize = new System.Drawing.Size(536, 453);
             this.Controls.Add(this.txtCustID);
             this.Controls.Add(this.lblCustID);
-            this.Controls.Add(this.txtSuburb);
-            this.Controls.Add(this.lblSuburb);
+            this.Controls.Add(this.txtTownOrCity);
+            this.Controls.Add(this.lblTownOrCity);
             this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.lblPostalCode);
-            this.Controls.Add(this.txtCity);
-            this.Controls.Add(this.lblCity);
             this.Controls.Add(this.txtStreetA);
             this.Controls.Add(this.lblStreetAdress);
-            this.Controls.Add(this.txtCountry);
+            this.Controls.Add(this.txtProvince);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhoneNum);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblCountry);
+            this.Controls.Add(this.lblProvince);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.lblSurname);
@@ -349,22 +325,20 @@
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.Label lblProvince;
 
         private System.Windows.Forms.Button btnCancelC;
         private System.Windows.Forms.Button btnClearC;
         private System.Windows.Forms.Button btnSubmitC;
         private System.Windows.Forms.TextBox txtCustID;
         private System.Windows.Forms.Label lblCustID;
-        private System.Windows.Forms.TextBox txtSuburb;
-        private System.Windows.Forms.Label lblSuburb;
+        private System.Windows.Forms.TextBox txtTownOrCity;
+        private System.Windows.Forms.Label lblTownOrCity;
         private System.Windows.Forms.TextBox txtPostalCode;
         private System.Windows.Forms.Label lblPostalCode;
-        private System.Windows.Forms.TextBox txtCity;
-        private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.TextBox txtStreetA;
         private System.Windows.Forms.Label lblStreetAdress;
-        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtProvince;
 
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhoneNum;
