@@ -76,6 +76,9 @@ namespace GuestBookingSystem.Business
 
         #region Constructor
 
+        public Person()
+        { }
+
         public Person(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp)
         {
             name = nameTemp;

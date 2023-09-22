@@ -138,6 +138,12 @@
     <Compile Include="Presentation\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\testForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\testForm.Designer.cs">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentation\CreateCustomerForm.resx">
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\testForm.resx">
+      <DependentUpon>testForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

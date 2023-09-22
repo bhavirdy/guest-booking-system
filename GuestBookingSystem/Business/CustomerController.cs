@@ -13,43 +13,23 @@ namespace GuestBookingSystem.Business
         #region Data Members
         CustomerDB customerDB;
         Collection<Customer> customerCollection;
-
         #endregion
 
         #region Property Methods
-        //public Collection<Customer> CustomerCollection
-        //{
-        //    get { return customerCollection; }
-
-        //}
+        public Collection<Customer> CustomerCollection
+        {
+            get { return customerCollection; }
+        }
 
         #endregion
 
         #region Constructor
 
-        //public CustomerController()
-        //{
-        //    customerDB = new CustomerDB();
-        //    customerCollection = customerDB.AllCustomers;
-
-        //}
-
-        #endregion
-
-        #region DataBase Communication
-
-        //public void DataMaintanence(Customer custTemp)
-        //{
-        //    customerDB.DataSetChange(custTemp);
-        //    customerCollection.Add(custTemp);
-        //}
-
-        
-
-        //public bool FinalizeChanges(Customer custTemp)
-        //{
-        //    return customerDB.UpdateDataSource(custTemp);
-        //}
+        public CustomerController()
+        {
+            customerDB = new CustomerDB();
+            customerCollection = customerDB.AllCustomers;
+        }
 
         #endregion
 
@@ -68,8 +48,6 @@ namespace GuestBookingSystem.Business
             }
 
             return customerCollection[index];
-
-
         }
 
         public int FindIndex(Customer custTemp)
@@ -94,26 +72,6 @@ namespace GuestBookingSystem.Business
         }
 
         #endregion 
-
-        #region Property Methods
-        public Collection<Customer> CustomerCollection
-        {
-            get { return customerCollection; }
-
-        }
-
-        #endregion
-
-        #region Constructor
-
-        public CustomerController()
-        {
-            customerDB = new CustomerDB();
-            customerCollection = customerDB.AllCustomers;
-
-        }
-
-        #endregion
 
         #region DataBase Communication
 

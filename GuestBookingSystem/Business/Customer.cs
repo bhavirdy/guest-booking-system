@@ -16,6 +16,10 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
+
+        public Customer()
+        { }
+
         public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp, String custIDTemp, String cardNumberTemp, int bookingIDTemp) 
             : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, provinceTemp)
         {

@@ -56,7 +56,7 @@ namespace GuestBookingSystem.Data
                 myRow = myRow_loopVariable;
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
-                    //custTemp = new Customer();
+                    custTemp = new Customer();
                 }
 
                 customers.Add(custTemp);
@@ -70,7 +70,7 @@ namespace GuestBookingSystem.Data
             rowTemp["Surname"] = custTemp.Surname;
             rowTemp["Email"] = custTemp.Email;
             rowTemp["StreetAdress"] = custTemp.StreetAddress;
-            rowTemp["townOrCity"] = custTemp.TownOrCity;
+            rowTemp["Town/City"] = custTemp.TownOrCity;
             rowTemp["Country"] = custTemp.Province;
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
@@ -102,7 +102,7 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 50, "StreetAddress");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@TownOrCity", SqlDbType.NVarChar, 50, "Town");
+            param = new SqlParameter("@Town/City", SqlDbType.NVarChar, 50, "Town");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 50, "PostalCode");
             daMain.InsertCommand.Parameters.Add(param);
@@ -112,8 +112,6 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@CardNumber", SqlDbType.NVarChar, 16, "CardNumber");
             daMain.InsertCommand.Parameters.Add(param);
-
-
         }
 
         private void CREATE_INSERT_Command(Customer custTemp)
@@ -131,6 +129,5 @@ namespace GuestBookingSystem.Data
         }
 
         #endregion
-
     }
 }

@@ -32,7 +32,6 @@ namespace GuestBookingSystem.Data
         {
             try
             {
-
                 cnMain = new SqlConnection(strConn);
                 dsMain = new DataSet();
             }
@@ -49,11 +48,11 @@ namespace GuestBookingSystem.Data
 
         public void FillDataSet(string SQLstringTemp, string tableTemp)
         {
-
             try
             {
                 daMain = new SqlDataAdapter(SQLstringTemp, cnMain);
                 cnMain.Open();
+                dsMain.Clear();
                 daMain.Fill(dsMain, tableTemp);
                 cnMain.Close();
             }

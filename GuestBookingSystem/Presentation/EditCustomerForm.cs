@@ -175,7 +175,7 @@ namespace GuestBookingSystem.Presentation
             txtPhoneNumber.Text = custTemp.Phone;
             txtName.Text = custTemp.Name;
             txtEmail.Text = custTemp.Email;
-            txtCountry.Text = custTemp.Country;
+            txtCountry.Text = custTemp.Province;
             txtCity.Text = custTemp.TownOrCity;
             txtCardNumber.Text = custTemp.CardNumber;
         }
@@ -183,12 +183,11 @@ namespace GuestBookingSystem.Presentation
         private Customer PopulateObject()
         {
             //customer = new Customer();
-            //customer.Suburb = txtSuburb.Text;
             customer.CardNumber = txtCardNumber.Text;
             customer.Surname = txtSurname.Text;
             customer.StreetAddress = txtStreetA.Text;
             customer.Email = txtEmail.Text;
-            customer.Country = txtCountry.Text;
+            customer.Province = txtCountry.Text;
             customer.Name = txtName.Text;
             customer.TownOrCity = txtCity.Text;
             customer.PostalCode = txtPostalCode.Text;
