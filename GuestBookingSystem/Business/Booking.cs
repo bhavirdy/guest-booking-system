@@ -8,7 +8,7 @@ using static System.Windows.Forms.AxHost;
 
 namespace GuestBookingSystem.Business
 {
-    internal class Booking
+    public class Booking
     {
         #region Data Members
         private String bookingID;

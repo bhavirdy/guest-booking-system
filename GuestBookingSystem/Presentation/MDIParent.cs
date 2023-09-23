@@ -16,12 +16,13 @@ namespace GuestBookingSystem.Presentation
 
         #region Data Members
         private int childFormNumber = 0;
-        private CreateCustomerForm createCustForm;
+        private CheckAvailability checkAvailability;
         private EditCustomerForm editCustomersForm;
         private MakeBookingForm makeBookingForm;
         private EditBookingForm editBookingForm;
         private DeleteCustomerForm deleteCustomerForm;
         private DeleteBookingForm deleteBookingForm;
+        private ViewTables viewTables;
         private CustomerController customerController = new CustomerController();
 
         #endregion
@@ -43,28 +44,6 @@ namespace GuestBookingSystem.Presentation
         private void MDIParent_Load(object sender, EventArgs e)
         {
 
-        }
-
-        // CREATE CUSTOMER FORM EVENTS
-        private void createACustomerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            if (createCustForm == null)
-            {
-                CreateCustomerForm();
-            }
-            else if (!createCustForm.IsOpen)
-            {
-                CreateCustomerForm();
-            }
-
-        }
-
-        public void CreateCustomerForm()
-        {
-            createCustForm = new CreateCustomerForm(customerController);
-            createCustForm.MdiParent = this;
-            createCustForm.Show();
         }
 
         private void editCustomersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,6 +147,44 @@ namespace GuestBookingSystem.Presentation
             deleteBookingForm = new DeleteBookingForm();
             deleteBookingForm.MdiParent = this;
             deleteBookingForm.Show();
+        }
+
+        private void ViewTables()
+        {
+            viewTables = new ViewTables();
+            viewTables.MdiParent = this;
+            viewTables.Show();
+        }
+
+        private void viewTablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (viewTables == null)
+            {
+                ViewTables();
+            }
+            else if (!viewTables.IsOpen)
+            {
+                ViewTables();
+            }
+        }
+
+        private void checkAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (checkAvailability == null)
+            {
+                CheckAvailability();
+            }
+            else if (!checkAvailability.IsOpen)
+            {
+                CheckAvailability();
+            }
+        }
+
+        public void CheckAvailability()
+        {
+            checkAvailability = new CheckAvailability();
+            checkAvailability.MdiParent = this;
+            checkAvailability.Show();
         }
     }
 }

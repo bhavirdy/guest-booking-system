@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createACustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteACustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createABookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkAvailabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewBookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteABookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteACustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -46,8 +46,9 @@
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customersToolStripMenuItem,
-            this.bookingsToolStripMenuItem});
+            this.viewTablesToolStripMenuItem,
+            this.bookingsToolStripMenuItem,
+            this.customersToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -55,53 +56,29 @@
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
-            // customersToolStripMenuItem
+            // viewTablesToolStripMenuItem
             // 
-            this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createACustomerToolStripMenuItem,
-            this.editCustomersToolStripMenuItem,
-            this.deleteACustomerToolStripMenuItem});
-            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.customersToolStripMenuItem.Text = "Customers";
-            // 
-            // createACustomerToolStripMenuItem
-            // 
-            this.createACustomerToolStripMenuItem.Name = "createACustomerToolStripMenuItem";
-            this.createACustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.createACustomerToolStripMenuItem.Text = "Create a Customer";
-            this.createACustomerToolStripMenuItem.Click += new System.EventHandler(this.createACustomerToolStripMenuItem_Click);
-            // 
-            // editCustomersToolStripMenuItem
-            // 
-            this.editCustomersToolStripMenuItem.Name = "editCustomersToolStripMenuItem";
-            this.editCustomersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editCustomersToolStripMenuItem.Text = "Edit a Customer";
-            this.editCustomersToolStripMenuItem.Click += new System.EventHandler(this.editCustomersToolStripMenuItem_Click);
-            // 
-            // deleteACustomerToolStripMenuItem
-            // 
-            this.deleteACustomerToolStripMenuItem.Name = "deleteACustomerToolStripMenuItem";
-            this.deleteACustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteACustomerToolStripMenuItem.Text = "Delete a Customer";
-            this.deleteACustomerToolStripMenuItem.Click += new System.EventHandler(this.deleteACustomerToolStripMenuItem_Click);
+            this.viewTablesToolStripMenuItem.Name = "viewTablesToolStripMenuItem";
+            this.viewTablesToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.viewTablesToolStripMenuItem.Text = "View Tables";
+            this.viewTablesToolStripMenuItem.Click += new System.EventHandler(this.viewTablesToolStripMenuItem_Click);
             // 
             // bookingsToolStripMenuItem
             // 
             this.bookingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createABookingToolStripMenuItem,
+            this.checkAvailabilityToolStripMenuItem,
             this.viewBookingsToolStripMenuItem,
             this.deleteABookingToolStripMenuItem});
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
             this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.bookingsToolStripMenuItem.Text = "Bookings";
             // 
-            // createABookingToolStripMenuItem
+            // checkAvailabilityToolStripMenuItem
             // 
-            this.createABookingToolStripMenuItem.Name = "createABookingToolStripMenuItem";
-            this.createABookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.createABookingToolStripMenuItem.Text = "Create a booking";
-            this.createABookingToolStripMenuItem.Click += new System.EventHandler(this.createABookingToolStripMenuItem_Click);
+            this.checkAvailabilityToolStripMenuItem.Name = "checkAvailabilityToolStripMenuItem";
+            this.checkAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkAvailabilityToolStripMenuItem.Text = "Check Availability";
+            this.checkAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.checkAvailabilityToolStripMenuItem_Click);
             // 
             // viewBookingsToolStripMenuItem
             // 
@@ -116,6 +93,29 @@
             this.deleteABookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteABookingToolStripMenuItem.Text = "Delete a Booking";
             this.deleteABookingToolStripMenuItem.Click += new System.EventHandler(this.deleteABookingToolStripMenuItem_Click);
+            // 
+            // customersToolStripMenuItem
+            // 
+            this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editCustomersToolStripMenuItem,
+            this.deleteACustomerToolStripMenuItem});
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.customersToolStripMenuItem.Text = "Customers";
+            // 
+            // editCustomersToolStripMenuItem
+            // 
+            this.editCustomersToolStripMenuItem.Name = "editCustomersToolStripMenuItem";
+            this.editCustomersToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.editCustomersToolStripMenuItem.Text = "Edit a Customer";
+            this.editCustomersToolStripMenuItem.Click += new System.EventHandler(this.editCustomersToolStripMenuItem_Click);
+            // 
+            // deleteACustomerToolStripMenuItem
+            // 
+            this.deleteACustomerToolStripMenuItem.Name = "deleteACustomerToolStripMenuItem";
+            this.deleteACustomerToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.deleteACustomerToolStripMenuItem.Text = "Delete a Customer";
+            this.deleteACustomerToolStripMenuItem.Click += new System.EventHandler(this.deleteACustomerToolStripMenuItem_Click);
             // 
             // MDIParent
             // 
@@ -141,12 +141,12 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createACustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editCustomersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createABookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewBookingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteABookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteACustomerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkAvailabilityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewTablesToolStripMenuItem;
     }
 }
 

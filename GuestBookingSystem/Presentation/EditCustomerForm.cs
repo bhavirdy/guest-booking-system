@@ -125,7 +125,7 @@ namespace GuestBookingSystem.Presentation
                 //customerDetails.SubItems.Add(customer.Suburb.ToString());
                 customerDetails.SubItems.Add(customer.PostalCode.ToString());
                 customerDetails.SubItems.Add(customer.Phone.ToString());
-                customerDetails.SubItems.Add(customer.CardNumber.ToString());
+                //customerDetails.SubItems.Add(customer.CardNumber.ToString());
 
                 listView1.Items.Add(customerDetails);
             }
@@ -175,13 +175,13 @@ namespace GuestBookingSystem.Presentation
             txtEmail.Text = custTemp.Email;
             txtCountry.Text = custTemp.Province;
             txtCity.Text = custTemp.TownOrCity;
-            txtCardNumber.Text = custTemp.CardNumber;
+            //txtCardNumber.Text = custTemp.CardNumber;
         }
 
         private Customer PopulateObject()
         {
             //customer = new Customer();
-            customer.CardNumber = txtCardNumber.Text;
+            //customer.CardNumber = txtCardNumber.Text;
             customer.Surname = txtSurname.Text;
             customer.StreetAddress = txtStreetA.Text;
             customer.Email = txtEmail.Text;
@@ -191,8 +191,6 @@ namespace GuestBookingSystem.Presentation
             customer.PostalCode = txtPostalCode.Text;
 
             return customer;
-
-
         }
 
 

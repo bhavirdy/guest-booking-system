@@ -74,7 +74,7 @@ namespace GuestBookingSystem.Data
             rowTemp["Province"] = custTemp.Province;
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
-            rowTemp["CardNumber"] = custTemp.CardNumber;
+            //rowTemp["CardNumber"] = custTemp.CardNumber;
         }
         #endregion
 
@@ -119,14 +119,14 @@ namespace GuestBookingSystem.Data
             param = new SqlParameter("@Phone", SqlDbType.NChar, 10);
             param.Value = custTemp.Phone;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10);
-            param.Value = custTemp.CardNumber;
-            daMain.InsertCommand.Parameters.Add(param);
+            //param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10);
+            //param.Value = custTemp.CardNumber;
+            //daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void CREATE_INSERT_Command(Customer custTemp)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Customer (CustomerID, Name, Surname, Email, StreetAddress, TownOrCity, Province, PostalCode, Phone, CardNumber) VALUES (@CustomerID, @Name, @Surname, @Email, @StreetAddress, @TownOrCity, @Province, @PostalCode, @Phone, @CardNumber)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Customer (CustomerID, Name, Surname, Email, StreetAddress, TownOrCity, Province, PostalCode, Phone) VALUES (@CustomerID, @Name, @Surname, @Email, @StreetAddress, @TownOrCity, @Province, @PostalCode, @Phone)", cnMain);
             BUILD_INSERT_Parameters(custTemp);
         }
 

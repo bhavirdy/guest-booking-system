@@ -90,6 +90,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HotelBookingDatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\CheckAvailability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\CheckAvailability.Designer.cs">
+      <DependentUpon>CheckAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\CreateCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,14 +144,17 @@
     <Compile Include="Presentation\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\testForm.cs">
+    <Compile Include="Presentation\ViewTables.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\testForm.Designer.cs">
-      <DependentUpon>testForm.cs</DependentUpon>
+    <Compile Include="Presentation\ViewTables.Designer.cs">
+      <DependentUpon>ViewTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\CheckAvailability.resx">
+      <DependentUpon>CheckAvailability.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CreateCustomerForm.resx">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,8 +176,8 @@
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\testForm.resx">
-      <DependentUpon>testForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\ViewTables.resx">
+      <DependentUpon>ViewTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

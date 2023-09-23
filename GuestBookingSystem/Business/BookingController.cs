@@ -9,7 +9,7 @@ using GuestBookingSystem.Data;
 
 namespace GuestBookingSystem.Business
 {
-    internal class BookingController
+    public class BookingController
     {
 
         #region Data Members

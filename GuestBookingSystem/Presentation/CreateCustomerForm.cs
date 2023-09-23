@@ -82,7 +82,7 @@ namespace GuestBookingSystem.Presentation
             customer.TownOrCity = txtTownOrCity.Text;
             customer.Province = txtProvince.Text;
             customer.CustID = int.Parse(txtCustID.Text);
-            customer.CardNumber = "1234567891234567";
+            //customer.CardNumber = "1234567891234567";
         }
 
         #endregion
@@ -108,6 +108,7 @@ namespace GuestBookingSystem.Presentation
                 customerController.FinalizeChanges(customer);
                 ClearAll();
             }
+            this.Close();
         }
 
         private void CreateCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
