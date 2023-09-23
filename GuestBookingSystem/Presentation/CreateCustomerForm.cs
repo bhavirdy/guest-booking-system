@@ -82,16 +82,15 @@ namespace GuestBookingSystem.Presentation
         private void ClearAll()
         {
 
-            //txtCity.Text = "";
-            //txtCountry.Text = "";
-            //txtEmail.Text = "";
-            //txtName.Text = "";
-            //txtPhoneNum.Text = "";
-            //txtPostalCode.Text = "";
-            //txtStreetA.Text = "";
-            //txtSurname.Text = "";
-            //txtSuburb.Text = "";
-
+            txtTownOrCity.Text = "";
+            txtProvince.Text = "";
+            txtEmail.Text = "";
+            txtName.Text = "";
+            txtPhoneNum.Text = "";
+            txtPostalCode.Text = "";
+            txtStreetA.Text = "";
+            txtSurname.Text = "";
+            txtCustID.Text = "";
         }
 
         private void PopulateObject()
@@ -169,6 +168,11 @@ namespace GuestBookingSystem.Presentation
         private void CreateCustomerForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnClearC_Click(object sender, EventArgs e)
+        {
+            this.ClearAll();
         }
     }
 

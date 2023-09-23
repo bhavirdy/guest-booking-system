@@ -147,6 +147,7 @@
             this.btnClearC.TabIndex = 8;
             this.btnClearC.Text = "Clear";
             this.btnClearC.UseVisualStyleBackColor = true;
+            this.btnClearC.Click += new System.EventHandler(this.btnClearC_Click);
             // 
             // btnSubmitC
             // 
