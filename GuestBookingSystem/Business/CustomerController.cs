@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace GuestBookingSystem.Business
 {
-    internal class CustomerController
+    public class CustomerController
     {
         #region Data Members
-        CustomerDB customerDB;
-        Collection<Customer> customerCollection;
+        private CustomerDB customerDB;
+        private Collection<Customer> customerCollection;
         #endregion
 
         #region Property Methods

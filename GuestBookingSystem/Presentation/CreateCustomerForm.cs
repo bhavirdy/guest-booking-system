@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GuestBookingSystem.Business;
+using GuestBookingSystem.Properties;
 
 namespace GuestBookingSystem.Presentation
 {
@@ -23,31 +24,18 @@ namespace GuestBookingSystem.Presentation
         public bool customerFormClosed = false;
 
 
-        DataSet ds = new DataSet();
-        //idk where our database is located
-        SqlConnection conDB = new SqlConnection();
-        SqlDataAdapter adapter = new SqlDataAdapter();
-
         private bool isOpen = false;
 
         #endregion
 
         #region Constructor
 
-        public CreateCustomerForm()
+        public CreateCustomerForm(CustomerController controllerTemp)
         {
             InitializeComponent();
+            customerController = controllerTemp;
             isOpen = true;
         }
-
-
-        //public CreateCustomerForm(CustomerController controllerTemp)
-        //{
-        //    InitializeComponent();
-
-        //    customerController = controllerTemp;
-        //    isOpen = true;
-        //}
 
         #endregion
 
@@ -138,9 +126,6 @@ namespace GuestBookingSystem.Presentation
         //    customerController.DataMaintanence(customer);
         //    customerController.FinalizeChanges(customer);
         //    ClearAll();
-
-
-        //ShowAll(true);
         }
 
         private void CreateCustomerForm_FormClosed(object sender, FormClosedEventArgs e)

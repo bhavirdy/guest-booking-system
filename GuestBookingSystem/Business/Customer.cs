@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuestBookingSystem.Business
 {
-    internal class Customer : Person
+    public class Customer : Person
     {
         #region Data Members
 
