@@ -314,6 +314,7 @@
             this.btnClearEditC.TabIndex = 49;
             this.btnClearEditC.Text = "Clear";
             this.btnClearEditC.UseVisualStyleBackColor = true;
+            this.btnClearEditC.Click += new System.EventHandler(this.btnClearEditC_Click);
             // 
             // btnCancelEditC
             // 
@@ -326,6 +327,7 @@
             this.btnCancelEditC.TabIndex = 48;
             this.btnCancelEditC.Text = "Cancel";
             this.btnCancelEditC.UseVisualStyleBackColor = true;
+            this.btnCancelEditC.Click += new System.EventHandler(this.btnCancelEditC_Click_1);
             // 
             // EditCustomerForm
             // 

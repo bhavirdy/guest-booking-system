@@ -18,7 +18,6 @@ namespace GuestBookingSystem.Presentation
         #region Data Members
         private Customer customer;
         private CustomerController custController;
-        public bool listFormClosed;
         private Collection<Customer> customers;
         private bool isOpen = false;
 
@@ -76,7 +75,6 @@ namespace GuestBookingSystem.Presentation
 
         public void EditCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            listFormClosed = true;
             isOpen = false;
         }
 
@@ -221,5 +219,14 @@ namespace GuestBookingSystem.Presentation
             EditCustomerForm.ActiveForm.Close();
         }
 
+        private void btnClearEditC_Click(object sender, EventArgs e)
+        {
+            this.ClearAll();
+        }
+
+        private void btnCancelEditC_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
