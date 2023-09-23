@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuestBookingSystem.Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace GuestBookingSystem.Presentation
     public partial class CheckAvailability : Form
     {
         private bool isOpen = false;
+        private CustomerController customerController;
 
         public bool IsOpen
         {
@@ -22,11 +24,15 @@ namespace GuestBookingSystem.Presentation
         public CheckAvailability()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnProceed_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
+            createCustomerForm.MdiParent = this.MdiParent;
+            createCustomerForm.Show();
         }
 
         private void CheckAvailability_Load(object sender, EventArgs e)
@@ -36,6 +42,12 @@ namespace GuestBookingSystem.Presentation
 
         private void CheckAvailability_FormClosed(object sender, FormClosedEventArgs e)
         {
+            isOpen = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
             isOpen = false;
         }
     }

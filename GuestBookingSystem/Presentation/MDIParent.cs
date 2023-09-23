@@ -23,6 +23,7 @@ namespace GuestBookingSystem.Presentation
         private DeleteCustomerForm deleteCustomerForm;
         private DeleteBookingForm deleteBookingForm;
         private ViewTables viewTables;
+        private CreateCustomerForm createCustomerForm;
         private CustomerController customerController = new CustomerController();
 
         #endregion
