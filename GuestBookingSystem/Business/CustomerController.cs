@@ -35,7 +35,7 @@ namespace GuestBookingSystem.Business
 
         #region Search Methods
 
-        public Customer Find(String ID)
+        public Customer Find(int ID)
         {
             int index = 0;
             bool found = (customerCollection[index].CustID == ID);
@@ -80,8 +80,6 @@ namespace GuestBookingSystem.Business
             customerDB.DataSetChange(custTemp);
             customerCollection.Add(custTemp);
         }
-
-
 
         public bool FinalizeChanges(Customer custTemp)
         {

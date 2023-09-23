@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuestBookingSystem.Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,7 @@ namespace GuestBookingSystem.Presentation
         private EditBookingForm editBookingForm;
         private DeleteCustomerForm deleteCustomerForm;
         private DeleteBookingForm deleteBookingForm;
+        private CustomerController customerController = new CustomerController();
 
         #endregion
 
@@ -60,7 +62,7 @@ namespace GuestBookingSystem.Presentation
 
         public void CreateCustomerForm()
         {
-            createCustForm = new CreateCustomerForm();
+            createCustForm = new CreateCustomerForm(customerController);
             createCustForm.MdiParent = this;
             createCustForm.Show();
         }

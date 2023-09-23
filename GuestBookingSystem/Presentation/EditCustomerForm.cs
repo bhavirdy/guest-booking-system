@@ -143,7 +143,7 @@ namespace GuestBookingSystem.Presentation
 
             if (listView1.SelectedItems.Count > 0)
             {
-                customer = custController.Find(listView1.SelectedItems[0].Text);
+                customer = custController.Find(int.Parse(listView1.SelectedItems[0].Text));
                 PopulateTextBoxes(customer);
             }
         }

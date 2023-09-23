@@ -19,7 +19,7 @@ namespace GuestBookingSystem.Presentation
 
         #region Data Members
 
-        private Customer customer;
+        private Customer customer = new Customer();
         private CustomerController customerController;
         public bool customerFormClosed = false;
 
@@ -81,6 +81,8 @@ namespace GuestBookingSystem.Presentation
             customer.Surname = txtSurname.Text;
             customer.TownOrCity = txtTownOrCity.Text;
             customer.Province = txtProvince.Text;
+            customer.CustID = int.Parse(txtCustID.Text);
+            customer.CardNumber = "1234567891234567";
         }
 
         #endregion
@@ -94,38 +96,18 @@ namespace GuestBookingSystem.Presentation
                 MessageBox.Show("Please fill all the fields");
 
             }
-            else if (txtPostalCode.TextLength != 4) 
-            { 
-                MessageBox.Show("Please enter a valid postal code"); 
+            else if (txtPostalCode.TextLength != 4)
+            {
+                MessageBox.Show("Please enter a valid postal code");
             }
-        
-    
-        //else
-        //{
-        //    PopulateObject();
-
-        //    SqlCommand commIns = new SqlCommand("INSERT INTO Customer(CustomerID, Name, Surname, Email, StreetAddress, Town, PostalCode, Phone" +
-        //                                           "VALUES(@CustomerID, @Name, @Surname, @Email, @StreetAddress, @Town, @PostalCode, @Phone", conDB);
-
-        //    commIns.Parameters.Add("@CustomerID", SqlDbType.NVarChar, 50, "CustomerID").Value = txtCustID.Text;
-        //    commIns.Parameters.Add("@Name", SqlDbType.NVarChar, 50, "Name").Value = txtName.Text;
-        //    commIns.Parameters.Add("@Surname", SqlDbType.NVarChar, 50, "Surname").Value = txtSurname.Text;
-        //    commIns.Parameters.Add("@Email", SqlDbType.NVarChar, 50, "Email").Value = txtEmail.Text;
-        //    commIns.Parameters.Add("@StreetAddress", SqlDbType.NVarChar, 50, "StreetAddress").Value = txtStreetA.Text;
-        //    //commIns.Parameters.Add("@Suburb", SqlDbType.NVarChar, 50, "Suburb").Value = txtSuburb.Text;
-        //    commIns.Parameters.Add("@Town", SqlDbType.NVarChar, 50, "Town").Value = txtCity.Text;
-        //    commIns.Parameters.Add("@Country", SqlDbType.NVarChar, 50, "Country").Value = txtCountry.Text;
-        //    commIns.Parameters.Add("@PostalCode", SqlDbType.NVarChar, 50, "PostalCode").Value = txtPostalCode.Text;
-        //    commIns.Parameters.Add("@Phone", SqlDbType.NVarChar, 50, "Phone").Value = txtPhoneNum.Text;
-
-        //    commIns.ExecuteNonQuery();
-
-
-
-        //    MessageBox.Show("Customer entered!");
-        //    customerController.DataMaintanence(customer);
-        //    customerController.FinalizeChanges(customer);
-        //    ClearAll();
+            else
+            {
+                PopulateObject();
+                MessageBox.Show("Customer entered!");
+                customerController.DataMaintanence(customer);
+                customerController.FinalizeChanges(customer);
+                ClearAll();
+            }
         }
 
         private void CreateCustomerForm_FormClosed(object sender, FormClosedEventArgs e)

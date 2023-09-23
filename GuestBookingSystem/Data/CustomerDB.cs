@@ -69,9 +69,9 @@ namespace GuestBookingSystem.Data
             rowTemp["Name"] = custTemp.Name;
             rowTemp["Surname"] = custTemp.Surname;
             rowTemp["Email"] = custTemp.Email;
-            rowTemp["StreetAdress"] = custTemp.StreetAddress;
-            rowTemp["Town/City"] = custTemp.TownOrCity;
-            rowTemp["Country"] = custTemp.Province;
+            rowTemp["StreetAddress"] = custTemp.StreetAddress;
+            rowTemp["TownOrCity"] = custTemp.TownOrCity;
+            rowTemp["Province"] = custTemp.Province;
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
             rowTemp["CardNumber"] = custTemp.CardNumber;
@@ -92,31 +92,41 @@ namespace GuestBookingSystem.Data
         private void BUILD_INSERT_Parameters(Customer custTemp)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@CustomerID", SqlDbType.Int, 50, "CustomerID");
+            param = new SqlParameter("@CustomerID", SqlDbType.Int);
+            param.Value = custTemp.CustID;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 50, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.Name;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Surname", SqlDbType.NVarChar, 50, "Surname");
+            param = new SqlParameter("@Surname", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.Surname;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Email", SqlDbType.NVarChar, 50, "Email");
+            param = new SqlParameter("@Email", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.Email;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 50, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.StreetAddress;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Town/City", SqlDbType.NVarChar, 50, "Town");
+            param = new SqlParameter("@TownOrCity", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.TownOrCity;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 50, "PostalCode");
+            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.PostalCode;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Province", SqlDbType.NVarChar, 50, "Province");
+            param = new SqlParameter("@Province", SqlDbType.NVarChar, 50);
+            param.Value = custTemp.Province;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Phone", SqlDbType.NVarChar, 10, "Phone");
+            param = new SqlParameter("@Phone", SqlDbType.NChar, 10);
+            param.Value = custTemp.Phone;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@CardNumber", SqlDbType.NVarChar, 16, "CardNumber");
+            param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10);
+            param.Value = custTemp.CardNumber;
             daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void CREATE_INSERT_Command(Customer custTemp)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Customer (CustomerID, Name, Surname, Email, StreetAdress, TownOrCity, Province, PostalCode, Phone, CardNumber) VALUES (@CustomerID, @Name, @Surname, @Email, @StreetAddress, @TownOrCity, @Province, @PostalCode, @Phone, @CardNumber", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Customer (CustomerID, Name, Surname, Email, StreetAddress, TownOrCity, Province, PostalCode, Phone, CardNumber) VALUES (@CustomerID, @Name, @Surname, @Email, @StreetAddress, @TownOrCity, @Province, @PostalCode, @Phone, @CardNumber)", cnMain);
             BUILD_INSERT_Parameters(custTemp);
         }
 
