@@ -51,7 +51,7 @@
             // txtPaid
             // 
             this.txtPaid.Location = new System.Drawing.Point(200, 310);
-            this.txtPaid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPaid.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaid.Name = "txtPaid";
             this.txtPaid.Size = new System.Drawing.Size(204, 20);
             this.txtPaid.TabIndex = 39;
@@ -73,17 +73,18 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button3.Location = new System.Drawing.Point(219, 343);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 32);
             this.button3.TabIndex = 37;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtCardNum
             // 
             this.txtCardNum.Location = new System.Drawing.Point(200, 272);
-            this.txtCardNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCardNum.Margin = new System.Windows.Forms.Padding(2);
             this.txtCardNum.Name = "txtCardNum";
             this.txtCardNum.Size = new System.Drawing.Size(204, 20);
             this.txtCardNum.TabIndex = 36;
@@ -103,7 +104,7 @@
             // txtBookingID
             // 
             this.txtBookingID.Location = new System.Drawing.Point(188, 76);
-            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
             this.txtBookingID.Name = "txtBookingID";
             this.txtBookingID.Size = new System.Drawing.Size(204, 20);
             this.txtBookingID.TabIndex = 14;
@@ -135,7 +136,7 @@
             // txtRoomNum
             // 
             this.txtRoomNum.Location = new System.Drawing.Point(188, 240);
-            this.txtRoomNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRoomNum.Margin = new System.Windows.Forms.Padding(2);
             this.txtRoomNum.Name = "txtRoomNum";
             this.txtRoomNum.Size = new System.Drawing.Size(204, 20);
             this.txtRoomNum.TabIndex = 9;
@@ -155,7 +156,7 @@
             // txtCustID
             // 
             this.txtCustID.Location = new System.Drawing.Point(200, 124);
-            this.txtCustID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCustID.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(204, 20);
             this.txtCustID.TabIndex = 29;
@@ -178,19 +179,20 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnCancel.Location = new System.Drawing.Point(47, 343);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(72, 32);
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnSubmit.Location = new System.Drawing.Point(392, 343);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(67, 32);
             this.btnSubmit.TabIndex = 26;
@@ -201,7 +203,7 @@
             // dateTimePickerDepartureDate
             // 
             this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(200, 202);
-            this.dateTimePickerDepartureDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerDepartureDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDepartureDate.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerDepartureDate.Name = "dateTimePickerDepartureDate";
             this.dateTimePickerDepartureDate.Size = new System.Drawing.Size(204, 20);
@@ -235,7 +237,7 @@
             // dateTimePickerArrival
             // 
             this.dateTimePickerArrival.Location = new System.Drawing.Point(200, 163);
-            this.dateTimePickerArrival.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerArrival.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerArrival.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerArrival.Name = "dateTimePickerArrival";
             this.dateTimePickerArrival.Size = new System.Drawing.Size(204, 20);
@@ -264,7 +266,7 @@
             this.Controls.Add(this.lblLeaveDate);
             this.Controls.Add(this.lblADate);
             this.Controls.Add(this.dateTimePickerArrival);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MakeBookingForm";
             this.Text = "MakeBookingForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MakeBookingForm_FormClosed);

@@ -74,10 +74,13 @@ namespace GuestBookingSystem.Presentation
 
         private void ClearAll()
         {
-            //txtBookingID.Text = "";
-            //txtCustID.Text = string.Empty;
-            //dateTimePickerArrival.Value = DateTime.Today;
-            //dateTimePickerDepartureDate.Value = DateTime.Today;
+            txtBookingID.Text = "";
+            txtCustID.Text = "";
+            txtRoomNum.Text = "";
+            txtPaid.Text = "";
+            txtCardNum.Text = "";
+            dateTimePickerArrival.Value = DateTime.Today;
+            dateTimePickerDepartureDate.Value = DateTime.Today;
         }
 
 
@@ -182,6 +185,11 @@ namespace GuestBookingSystem.Presentation
         private void MakeBookingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             isOpen = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
