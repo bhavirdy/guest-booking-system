@@ -174,6 +174,12 @@ namespace GuestBookingSystem.Presentation
         {
             this.ClearAll();
         }
+
+        private void btnCancelC_Click(object sender, EventArgs e)
+        {
+            this.isOpen = false;
+            this.Close();
+        }
     }
 
         //private void CreateCustomerForm_Load(object sender, EventArgs e)
@@ -206,17 +212,6 @@ namespace GuestBookingSystem.Presentation
         //{
 
         //}
-
-        //private void btnClearC_Click(object sender, EventArgs e)
-        //{
-        //    ClearAll();
-        //}
-
-        //private void btnCancelC_Click(object sender, EventArgs e)
-        //{
-        //    customerFormClosed = true;
-        //}
-
         #endregion 
     
 }
