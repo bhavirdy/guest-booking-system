@@ -135,7 +135,7 @@ namespace GuestBookingSystem.Presentation
             txtRoomNum.Text = "";
             txtCardNumber.Text = "";
             txtPaid.Text = "";
-
+            txtDeposit.Text = "";
 
         }
 
@@ -200,7 +200,7 @@ namespace GuestBookingSystem.Presentation
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            this.ClearAll();
         }
 
         private void btnSubmitV_Click(object sender, EventArgs e)
@@ -218,12 +218,12 @@ namespace GuestBookingSystem.Presentation
 
         #endregion
 
-        //private void EditBookingForm_Activated(object sender, EventArgs e)
-        //{
-        //    bookingView.View = View.Details;
-        //    setUpCustomerListView();
-        //    ClearAll();
-        //}
+        private void EditBookingForm_Activated(object sender, EventArgs e)
+        {
+            bookingView.View = View.Details;
+            setUpCustomerListView();
+            ClearAll();
+        }
 
         #region ListView Setup
 
@@ -289,85 +289,10 @@ namespace GuestBookingSystem.Presentation
 
         #endregion
 
-        #region Utility Methods
-
-        //private void ClearAll()
-        //{
-        //    txtCustID.Text = "";
-        //    dateTimePickerArrival.Text = "";
-        //    dateTimePickerDepartureDate.Text = "";
-        //    txtRoomNum.Text = "";
-
-
-        //}
-
-        ////not complete
-
-        //private void PopulateTextBoxes(Booking bookTemp)
-        //{
-        //    txtCustID.Text = bookTemp.CustomerID.ToString();
-        //    dateTimePickerArrival.Text = bookTemp.ArriveDate.ToString();
-
-        //}
-
-
-
-
-        //private void lblHeadingEdit_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void txtRoomNum_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void EditBookingForm_Load(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void txtCustID_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void btnSubmitV_Click(object sender, EventArgs e)
-        //{
-        //    //needs to check if inputted room is available
-        //    if (txtCustID.Text.Equals("") || txtRoomNum.Text.Equals(""))
-        //    {
-        //        MessageBox.Show("Please fill out all the fields");
-        //    }
-        //    else
-        //        if (dateTimePickerArrival.Value > dateTimePickerDepartureDate.Value)
-        //    {
-        //        MessageBox.Show("Arrival date cannot be after departure date");
-        //    }
-
-        //    else
-        //    {
-
-
-        //        PopulateObject();
-        //        bookingController.DataMaintanence(booking);
-        //        bookingController.FinalizeChanges(booking);
-        //        ClearAll();
-        //        setUpBookingListView();
-        //    }
-        //}
-        #endregion
-
-        //private void btnClear_Click(object sender, EventArgs e)
-        //{
-        //    ClearAll();
-        //}
-
-        //private void btnExitV_Click(object sender, EventArgs e)
-        //{
-        //    this.listFormClosed = true;
-        //}
-
+        private void btnExitV_Click(object sender, EventArgs e)
+        {
+            this.isOpen = false;
+            this.Close();
+        }
     }
 }

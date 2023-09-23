@@ -95,6 +95,7 @@
             this.btnExitV.TabIndex = 24;
             this.btnExitV.Text = "Cancel";
             this.btnExitV.UseVisualStyleBackColor = true;
+            this.btnExitV.Click += new System.EventHandler(this.btnExitV_Click);
             // 
             // btnClear
             // 
