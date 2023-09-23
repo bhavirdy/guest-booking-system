@@ -75,19 +75,20 @@
             // 
             this.btnSubmitV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmitV.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSubmitV.Location = new System.Drawing.Point(483, 439);
+            this.btnSubmitV.Location = new System.Drawing.Point(485, 508);
             this.btnSubmitV.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmitV.Name = "btnSubmitV";
             this.btnSubmitV.Size = new System.Drawing.Size(67, 25);
             this.btnSubmitV.TabIndex = 23;
             this.btnSubmitV.Text = "Submit";
             this.btnSubmitV.UseVisualStyleBackColor = true;
+            this.btnSubmitV.Click += new System.EventHandler(this.btnSubmitV_Click);
             // 
             // btnExitV
             // 
             this.btnExitV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExitV.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnExitV.Location = new System.Drawing.Point(22, 439);
+            this.btnExitV.Location = new System.Drawing.Point(24, 508);
             this.btnExitV.Margin = new System.Windows.Forms.Padding(2);
             this.btnExitV.Name = "btnExitV";
             this.btnExitV.Size = new System.Drawing.Size(71, 25);
@@ -99,13 +100,14 @@
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnClear.Location = new System.Drawing.Point(240, 439);
+            this.btnClear.Location = new System.Drawing.Point(242, 508);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(76, 24);
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtDeposit
             // 
@@ -253,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 496);
+            this.ClientSize = new System.Drawing.Size(582, 559);
             this.Controls.Add(this.txtDeposit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPaid);

@@ -198,6 +198,16 @@ namespace GuestBookingSystem.Presentation
             this.WindowState = FormWindowState.Maximized;
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubmitV_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //public EditBookingForm(BookingController bookingController)
         //{
         //    InitializeComponent();
