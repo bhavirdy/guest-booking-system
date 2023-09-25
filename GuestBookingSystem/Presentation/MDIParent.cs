@@ -187,5 +187,24 @@ namespace GuestBookingSystem.Presentation
             checkAvailability.MdiParent = this;
             checkAvailability.Show();
         }
+
+        private void createACustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (createCustomerForm == null)
+            //{
+            //    CreateCustomer();
+            //}
+            //else if (!createCustomerForm.IsOpen)
+            //{
+            //    CreateCustomer();
+            //}
+        }
+
+        public void CreateCustomer()
+        {
+            createCustomerForm = new CreateCustomerForm(customerController);
+            createCustomerForm.MdiParent = this;
+            createCustomerForm.Show();
+        }
     }
 }

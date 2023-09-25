@@ -48,7 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -101,6 +103,12 @@
     </Compile>
     <Compile Include="Presentation\CreateCustomerForm.Designer.cs">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\CustomerListingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\CustomerListingForm.Designer.cs">
+      <DependentUpon>CustomerListingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DeleteBookingForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CreateCustomerForm.resx">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\CustomerListingForm.resx">
+      <DependentUpon>CustomerListingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\DeleteBookingForm.resx">
       <DependentUpon>DeleteBookingForm.cs</DependentUpon>

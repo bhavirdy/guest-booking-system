@@ -57,6 +57,16 @@ namespace GuestBookingSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     custTemp = new Customer();
+                    custTemp.CustID = Convert.ToString(myRow["CustomerID"]).TrimEnd();
+                    custTemp.Name = Convert.ToString(myRow["Name"]).TrimEnd();
+                    custTemp.Surname = Convert.ToString(myRow["Surname"]).TrimEnd();
+                    custTemp.Email = Convert.ToString(myRow["Email"]).TrimEnd();
+                    custTemp.StreetAddress = Convert.ToString(myRow["StreetAddress"]).TrimEnd();
+                    custTemp.TownOrCity = Convert.ToString(myRow["TownOrCity"]).TrimEnd();
+                    custTemp.Province = Convert.ToString(myRow["Province"]).TrimEnd();
+                    custTemp.Surname = Convert.ToString(myRow["Surname"]).TrimEnd();
+                    custTemp.PostalCode = Convert.ToString(myRow["PostalCode"]).TrimEnd();
+                    custTemp.Phone = Convert.ToString(myRow["Phone"]).TrimEnd();
                 }
 
                 customers.Add(custTemp);
@@ -92,32 +102,33 @@ namespace GuestBookingSystem.Data
         private void BUILD_INSERT_Parameters(Customer custTemp)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@CustomerID", SqlDbType.Int);
-            param.Value = custTemp.CustID;
+
+            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            //param.Value = custTemp.CustID;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.Name;
+            param = new SqlParameter("@Name", SqlDbType.VarChar, 50, "Name");
+            //param.Value = custTemp.Name;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Surname", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.Surname;
+            param = new SqlParameter("@Surname", SqlDbType.VarChar, 50, "Surname");
+            //param.Value = custTemp.Surname;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Email", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.Email;
+            param = new SqlParameter("@Email", SqlDbType.VarChar, 50, "Email");
+            //param.Value = custTemp.Email;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.StreetAddress;
+            param = new SqlParameter("@StreetAddress", SqlDbType.VarChar, 50, "StreetAddress");
+            //param.Value = custTemp.StreetAddress;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@TownOrCity", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.TownOrCity;
+            param = new SqlParameter("@TownOrCity", SqlDbType.VarChar, 50, "TownOrCity");
+            //param.Value = custTemp.TownOrCity;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.PostalCode;
+            param = new SqlParameter("@PostalCode", SqlDbType.VarChar, 50, "PostalCode");
+            //param.Value = custTemp.PostalCode;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Province", SqlDbType.NVarChar, 50);
-            param.Value = custTemp.Province;
+            param = new SqlParameter("@Province", SqlDbType.VarChar, 50, "Province");
+            //param.Value = custTemp.Province;
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Phone", SqlDbType.NChar, 10);
-            param.Value = custTemp.Phone;
+            param = new SqlParameter("@Phone", SqlDbType.VarChar, 50, "Phone");
+            //param.Value = custTemp.Phone;
             daMain.InsertCommand.Parameters.Add(param);
             //param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10);
             //param.Value = custTemp.CardNumber;
@@ -128,6 +139,28 @@ namespace GuestBookingSystem.Data
         {
             daMain.InsertCommand = new SqlCommand("INSERT into Customer (CustomerID, Name, Surname, Email, StreetAddress, TownOrCity, Province, PostalCode, Phone) VALUES (@CustomerID, @Name, @Surname, @Email, @StreetAddress, @TownOrCity, @Province, @PostalCode, @Phone)", cnMain);
             BUILD_INSERT_Parameters(custTemp);
+        }
+
+        private void BUILD_UPDATE_Parameters(Customer custTemp)
+        {
+
+        }
+
+        private void CREATE_UPDATE_Command(Customer custTemp)
+        {
+            daMain.InsertCommand = new SqlCommand("", cnMain);
+            BUILD_UPDATE_Parameters(custTemp);
+        }
+
+        private void BUILD_DELETE_Parameters(Customer custTemp)
+        {
+
+        }
+
+        private void CREATE_DELETE_Command(Customer custTemp)
+        {
+            daMain.InsertCommand = new SqlCommand("", cnMain);
+            BUILD_UPDATE_Parameters(custTemp);
         }
 
         public bool UpdateDataSource(Customer custTemp)

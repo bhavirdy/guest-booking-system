@@ -10,7 +10,7 @@ namespace GuestBookingSystem.Business
     {
         #region Data Members
 
-        private int custID;
+        private String custID;
         //private String cardNumber;
 
         #endregion
@@ -20,7 +20,7 @@ namespace GuestBookingSystem.Business
         public Customer()
         { }
 
-        public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp, int custIDTemp, int bookingIDTemp) 
+        public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp, String custIDTemp, int bookingIDTemp) 
             : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, provinceTemp)
         {
             custID = custIDTemp;
@@ -31,7 +31,7 @@ namespace GuestBookingSystem.Business
 
         #region Property Members
 
-        public int CustID
+        public String CustID
         {
             get { return custID; }
             set { custID = value; }

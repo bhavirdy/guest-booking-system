@@ -81,7 +81,7 @@ namespace GuestBookingSystem.Presentation
             customer.Surname = txtSurname.Text;
             customer.TownOrCity = txtTownOrCity.Text;
             customer.Province = txtProvince.Text;
-            customer.CustID = int.Parse(txtCustID.Text);
+            customer.CustID = txtCustID.Text;
             //customer.CardNumber = "1234567891234567";
         }
 
