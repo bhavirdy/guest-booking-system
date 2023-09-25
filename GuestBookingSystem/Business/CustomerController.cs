@@ -75,10 +75,26 @@ namespace GuestBookingSystem.Business
 
         #region DataBase Communication
 
-        public void DataMaintanence(Customer custTemp)
+        public void DataMaintanence(Customer custTemp, DB.DBOperation operation)
         {
-            customerDB.DataSetChange(custTemp);
-            customerCollection.Add(custTemp);
+            int index = 0;
+            customerDB.DataSetChange(custTemp, operation);
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    customerCollection.Add(custTemp);
+                    break;
+
+                case DB.DBOperation.Edit:
+                    index = FindIndex(custTemp);
+                    customerCollection.RemoveAt(index);
+                    customerCollection[index] = custTemp;
+                    break;
+
+                case DB.DBOperation.Delete:
+                    break;
+            }
         }
 
         public bool FinalizeChanges(Customer custTemp)

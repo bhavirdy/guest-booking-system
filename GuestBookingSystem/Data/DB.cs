@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace GuestBookingSystem.Data
 {
-    internal class DB
+    public class DB
     {
         #region Data Members
         private string strConn = Settings.Default.HotelBookingDatabaseConnectionString;

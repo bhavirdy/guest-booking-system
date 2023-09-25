@@ -157,21 +157,20 @@ namespace GuestBookingSystem.Presentation
             ////4.2.1
             //PopulateObject();
 
-            //if (state == FormStates.Edit)
-            //{
-            //    //4.2.3
-            //    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Add);
-            //}
-            //else
-            //{
-            //    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Delete);
-            //}
+            if (state == FormStates.Edit)
+            {
+                customerController.DataMaintanence(customer, Data.DB.DBOperation.Add);
+            }
+            else
+            {
+                customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
+            }
 
-            ////4.2.4-4.2.8
-            //employeeController.FinalizeChanges(employee);
+            //4.2.4-4.2.8
+            customerController.FinalizeChanges(customer);
             //ClearAll();
-            //state = FormStates.View;
-            //setUpEmployeeListView();
+            state = FormStates.View;
+            setUpCustomerListView();
 
         }
 
@@ -185,5 +184,10 @@ namespace GuestBookingSystem.Presentation
 
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            btnDelete.BackColor = Color.Red;
+            state = FormStates.Delete;
+        }
     }
 }

@@ -73,9 +73,14 @@ namespace GuestBookingSystem.Data
             }
         }
 
-        private void FillRow(DataRow rowTemp, Customer custTemp)
+        private void FillRow(DataRow rowTemp, Customer custTemp, DB.DBOperation operation)
         {
-            rowTemp["CustomerID"] = custTemp.CustID;
+
+            if (operation == DB.DBOperation.Add)
+            {
+                rowTemp["CustomerID"] = custTemp.CustID;
+            }
+
             rowTemp["Name"] = custTemp.Name;
             rowTemp["Surname"] = custTemp.Surname;
             rowTemp["Email"] = custTemp.Email;
@@ -85,18 +90,62 @@ namespace GuestBookingSystem.Data
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
             //rowTemp["CardNumber"] = custTemp.CardNumber;
+
         }
+
+        private int FindRow(Customer custTemp, string table)
+        {
+            int rowIndex = 0;
+            DataRow myRow;
+            int returnValue = -1;
+
+            foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
+            {
+                myRow = myRow_loopVariable;
+
+                // ignore deleted rows
+                if (myRow.RowState == DataRowState.Deleted)
+                {
+                    if (custTemp.CustID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["CustomerID"]))
+                    {
+                        returnValue = rowIndex;
+                        break;
+                    }
+                }
+
+                rowIndex++;
+            }
+
+            return returnValue;
+        }
+
+
         #endregion
 
         #region Database CRUD
 
-        public void DataSetChange(Customer custTemp)
+        public void DataSetChange(Customer custTemp, DB.DBOperation operation)
         {
             DataRow rowTemp = null;
             String dataTable = table;
-            rowTemp = dsMain.Tables[dataTable].NewRow();
-            FillRow(rowTemp, custTemp);
-            dsMain.Tables[dataTable].Rows.Add(rowTemp);
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    rowTemp = dsMain.Tables[dataTable].NewRow();
+                    FillRow(rowTemp, custTemp, operation);
+                    dsMain.Tables[dataTable].Rows.Add(rowTemp);
+                    break;
+
+                // For the Edit section you have to find a row instead of creating a new row.
+                case DB.DBOperation.Edit:
+                    rowTemp = dsMain.Tables[dataTable].Rows[FindRow(custTemp, dataTable)];
+                    FillRow(rowTemp, custTemp, operation);
+                    break;
+
+                case DB.DBOperation.Delete:
+                    break;
+            }
         }
 
         private void BUILD_INSERT_Parameters(Customer custTemp)
@@ -104,34 +153,24 @@ namespace GuestBookingSystem.Data
             SqlParameter param = default(SqlParameter);
 
             param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
-            //param.Value = custTemp.CustID;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Name", SqlDbType.VarChar, 50, "Name");
-            //param.Value = custTemp.Name;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Surname", SqlDbType.VarChar, 50, "Surname");
-            //param.Value = custTemp.Surname;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Email", SqlDbType.VarChar, 50, "Email");
-            //param.Value = custTemp.Email;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@StreetAddress", SqlDbType.VarChar, 50, "StreetAddress");
-            //param.Value = custTemp.StreetAddress;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@TownOrCity", SqlDbType.VarChar, 50, "TownOrCity");
-            //param.Value = custTemp.TownOrCity;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@PostalCode", SqlDbType.VarChar, 50, "PostalCode");
-            //param.Value = custTemp.PostalCode;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Province", SqlDbType.VarChar, 50, "Province");
-            //param.Value = custTemp.Province;
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Phone", SqlDbType.VarChar, 50, "Phone");
-            //param.Value = custTemp.Phone;
             daMain.InsertCommand.Parameters.Add(param);
-            //param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10);
-            //param.Value = custTemp.CardNumber;
+            //param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10, "CardNumber");
             //daMain.InsertCommand.Parameters.Add(param);
         }
 
@@ -160,7 +199,7 @@ namespace GuestBookingSystem.Data
         private void CREATE_DELETE_Command(Customer custTemp)
         {
             daMain.InsertCommand = new SqlCommand("", cnMain);
-            BUILD_UPDATE_Parameters(custTemp);
+            BUILD_DELETE_Parameters(custTemp);
         }
 
         public bool UpdateDataSource(Customer custTemp)
