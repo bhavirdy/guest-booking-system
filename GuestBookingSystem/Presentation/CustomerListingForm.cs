@@ -58,6 +58,7 @@ namespace GuestBookingSystem.Presentation
         {
             customerListView.View = View.Details;
             setUpCustomerListView();
+            ShowAll(false);
         }
 
         private void CustomerListingForm_Load(object sender, EventArgs e)
@@ -104,6 +105,7 @@ namespace GuestBookingSystem.Presentation
 
         private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ShowAll(true);
             state = FormStates.View;
             EnableEntries(false);
             if (customerListView.SelectedItems.Count > 0)
