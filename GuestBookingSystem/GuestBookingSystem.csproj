@@ -110,18 +110,6 @@
     <Compile Include="Presentation\CustomerListingForm.Designer.cs">
       <DependentUpon>CustomerListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\DeleteBookingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\DeleteBookingForm.Designer.cs">
-      <DependentUpon>DeleteBookingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\EditBookingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\EditBookingForm.Designer.cs">
-      <DependentUpon>EditBookingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,12 +144,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CustomerListingForm.resx">
       <DependentUpon>CustomerListingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\DeleteBookingForm.resx">
-      <DependentUpon>DeleteBookingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\EditBookingForm.resx">
-      <DependentUpon>EditBookingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MakeBookingForm.resx">
       <DependentUpon>MakeBookingForm.cs</DependentUpon>
