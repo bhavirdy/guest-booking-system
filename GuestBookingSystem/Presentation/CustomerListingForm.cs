@@ -120,31 +120,18 @@ namespace GuestBookingSystem.Presentation
             if ((state == FormStates.Edit) && value)
             {
                 txtCustomerID.Enabled = !value;
-            }
-            else
-            {
-                txtCustomerID.Enabled = value;
+                txtEmail.Enabled = value;
+                txtName.Enabled = value;
+                txtPhone.Enabled = value;
+                txtPostalCode.Enabled = value;
+                txtProvince.Enabled = value;
+                txtStreetAddress.Enabled = value;
+                txtSurname.Enabled = value;
+                txtTownOrCity.Enabled = value;
             }
 
-            txtEmail.Enabled = value;
-            txtName.Enabled = value;
-            txtPhone.Enabled = value;
-            txtPostalCode.Enabled = value;
-            txtProvince.Enabled = value;
-            txtStreetAddress.Enabled = value;
-            txtSurname.Enabled = value;
-            txtTownOrCity.Enabled = value;
-
-            if (state == FormStates.Delete)
-            {
-                btnCancel.Visible = !value;
-                btnSubmit.Visible = !value;
-            }
-            else
-            {
-                btnCancel.Visible = value;
-                btnSubmit.Visible = value;
-            }
+            btnCancel.Visible = value;
+            btnSubmit.Visible = value;
         }
 
         private void ShowAll(bool value)
