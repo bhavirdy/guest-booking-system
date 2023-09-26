@@ -201,12 +201,12 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmitEditC_Click(object sender, EventArgs e)
         {
-            PopulateObject();
+            //PopulateObject();
 
-            custController.DataMaintanence(customer);
-            custController.FinalizeChanges(customer);
-            ClearAll();
-            setUpCustomerListView();
+            //custController.DataMaintanence(customer, Data.DB.DBOperation.Add);
+            //custController.FinalizeChanges(customer);
+            //ClearAll();
+            //setUpCustomerListView();
 
         }
 
