@@ -50,6 +50,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -236,11 +237,21 @@
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 21;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(798, 637);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 22;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // CustomerListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 697);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtEmail);
@@ -297,5 +308,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

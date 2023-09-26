@@ -67,7 +67,6 @@ namespace GuestBookingSystem.Presentation
         private void setUpCustomerListView()
         {
             ListViewItem customerDetails;
-            //Customer customer;
             customerListView.Clear();
             customerListView.Columns.Insert(0, "CustomerID", 120, HorizontalAlignment.Left);
             customerListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
@@ -114,48 +113,66 @@ namespace GuestBookingSystem.Presentation
 
         private void EnableEntries(bool value)
         {
-            //if ((state == FormStates.Edit) && value)
-            //{
-            //    idTextBox.Enabled = !value;
-            //    empIDTextBox.Enabled = !value;
-            //}
-            //else
-            //{
-            //    idTextBox.Enabled = value;
-            //    empIDTextBox.Enabled = value;
-            //}
-            //nameTextBox.Enabled = value;
-            //phoneTextBox.Enabled = value;
-            //paymentTextBox.Enabled = value;
-            //shiftsTextBox.Enabled = value;
-            //if (state == FormStates.Delete)
-            //{
-            //    cancelButton.Visible = !value;
-            //    submitButton.Visible = !value;
-            //}
-            //else
-            //{
-            //    cancelButton.Visible = value;
-            //    submitButton.Visible = value;
-            //}
+            if ((state == FormStates.Edit) && value)
+            {
+                txtCustomerID.Enabled = !value;
+            }
+            else
+            {
+                txtCustomerID.Enabled = value;
+            }
+
+            txtName.Enabled = value;
+            txtSurname.Enabled = value;
+            txtPhone.Enabled = value;
+            txtStreetAddress.Enabled = value;
+            txtTownOrCity.Enabled = value;
+            txtProvince.Enabled = value;
+            txtPostalCode.Enabled = value;
+            txtEmail.Enabled = value;
+
+            if (state == FormStates.Delete)
+            {
+                btnCancel.Visible = !value;
+                btnSubmit.Visible = !value;
+            }
+            else
+            {
+                btnCancel.Visible = value;
+                btnSubmit.Visible = value;
+            }
 
         }
 
-
+        private void ClearAll()
+        {
+            txtCustomerID.Text = "";
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtEmail.Text = "";
+            txtStreetAddress.Text = "";
+            txtTownOrCity.Text = "";
+            txtProvince.Text = "";
+            txtPhone.Text = "";
+            txtPostalCode.Text = "";
+        }
 
         private void PopulateTextBoxes(Customer customerTemp)
         {
-
-            //idTextBox.Text = employee.ID;
-            //empIDTextBox.Text = employee.EmployeeID;
-            //nameTextBox.Text = employee.Name;
-            //phoneTextBox.Text = employee.Telephone;
-
+            txtCustomerID.Text = customerTemp.CustID;
+            txtName.Text = customerTemp.Name;
+            txtSurname.Text = customerTemp.Surname;
+            txtEmail.Text = customerTemp.Email;
+            txtStreetAddress.Text = customerTemp.StreetAddress;
+            txtTownOrCity.Text = customerTemp.TownOrCity;
+            txtProvince.Text = customerTemp.Province;
+            txtPhone.Text = customerTemp.Phone;
+            txtPostalCode.Text = customerTemp.PostalCode;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //PopulateObject();
+            PopulateObject();
 
             if (state == FormStates.Edit)
             {
@@ -167,7 +184,7 @@ namespace GuestBookingSystem.Presentation
             }
 
             customerController.FinalizeChanges(customer);
-            //ClearAll();
+            ClearAll();
             state = FormStates.View;
             setUpCustomerListView();
 
