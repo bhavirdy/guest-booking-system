@@ -175,17 +175,20 @@ namespace GuestBookingSystem.Presentation
 
         private void PopulateObject()
         {
-            //employee = new Employee(roleType);
-            //employee.ID = idTextBox.Text;
-            //employee.EmployeeID = empIDTextBox.Text;
-            //employee.Name = nameTextBox.Text;
-            //employee.Telephone = phoneTextBox.Text;
-
+            customer = new Customer();
+            customer.CustID = txtCustomerID.Text;
+            customer.Name = txtName.Text;
+            customer.Surname = txtSurname.Text;
+            customer.Email = txtEmail.Text;
+            customer.StreetAddress = txtStreetAddress.Text;
+            customer.TownOrCity = txtTownOrCity.Text;
+            customer.Province = txtProvince.Text;
+            customer.PostalCode = txtPostalCode.Text;
+            customer.Phone = txtPhone.Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            btnDelete.BackColor = Color.Red;
             state = FormStates.Delete;
         }
     }
