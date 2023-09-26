@@ -191,5 +191,10 @@ namespace GuestBookingSystem.Presentation
         {
             state = FormStates.Delete;
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            state = FormStates.Edit;
+        }
     }
 }
