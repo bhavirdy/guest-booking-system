@@ -120,24 +120,26 @@ namespace GuestBookingSystem.Presentation
             if ((state == FormStates.Edit) && value)
             {
                 txtCustomerID.Enabled = !value;
-                txtName.Enabled = value;
-                txtSurname.Enabled = value;
-                txtPhone.Enabled = value;
-                txtStreetAddress.Enabled = value;
-                txtTownOrCity.Enabled = value;
-                txtProvince.Enabled = value;
-                txtPostalCode.Enabled = value;
-                txtEmail.Enabled = value;
-                btnCancel.Visible = value;
-                btnSubmit.Visible = value;
             }
-
-            else if (state == FormStates.Delete && true)
+            else
             {
-                btnCancel.Visible = value;
-                btnSubmit.Visible = value;
+                txtCustomerID.Enabled = value;
             }
 
+            txtEmail.Enabled = value;
+            txtName.Enabled = value;
+            txtPhone.Enabled = value;
+            txtPostalCode.Enabled = value;
+            txtProvince.Enabled = value;
+            txtStreetAddress.Enabled = value;
+            txtSurname.Enabled = value;
+            txtTownOrCity.Enabled = value;
+
+            if (state == FormStates.Delete)
+            {
+                btnCancel.Visible = !value;
+                btnSubmit.Visible = !value;
+            }
             else
             {
                 btnCancel.Visible = value;
@@ -233,6 +235,12 @@ namespace GuestBookingSystem.Presentation
         {
             state = FormStates.Edit;
             EnableEntries(true);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            EnableEntries(false);
+            ClearAll();
         }
     }
 }
