@@ -31,11 +31,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.customerListView = new System.Windows.Forms.ListView();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(251, 301);
+            this.btnDelete.Location = new System.Drawing.Point(644, 337);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 0;
@@ -45,7 +46,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(456, 301);
+            this.btnSubmit.Location = new System.Drawing.Point(825, 581);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 1;
@@ -63,11 +64,21 @@
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.SelectedIndexChanged += new System.EventHandler(this.customerListView_SelectedIndexChanged);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(853, 337);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
             // CustomerListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 450);
+            this.ClientSize = new System.Drawing.Size(1141, 671);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.customerListView);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnDelete);
@@ -85,5 +96,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.ListView customerListView;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
