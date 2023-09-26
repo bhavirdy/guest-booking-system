@@ -116,23 +116,11 @@
     <Compile Include="Presentation\DeleteBookingForm.Designer.cs">
       <DependentUpon>DeleteBookingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\DeleteCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\DeleteCustomerForm.Designer.cs">
-      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\EditBookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\EditBookingForm.Designer.cs">
       <DependentUpon>EditBookingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\EditCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\EditCustomerForm.Designer.cs">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
@@ -172,14 +160,8 @@
     <EmbeddedResource Include="Presentation\DeleteBookingForm.resx">
       <DependentUpon>DeleteBookingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\DeleteCustomerForm.resx">
-      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\EditBookingForm.resx">
       <DependentUpon>EditBookingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\EditCustomerForm.resx">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MakeBookingForm.resx">
       <DependentUpon>MakeBookingForm.cs</DependentUpon>
