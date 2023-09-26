@@ -154,7 +154,6 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ////4.2.1
             //PopulateObject();
 
             if (state == FormStates.Edit)
@@ -166,7 +165,6 @@ namespace GuestBookingSystem.Presentation
                 customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
             }
 
-            //4.2.4-4.2.8
             customerController.FinalizeChanges(customer);
             //ClearAll();
             state = FormStates.View;

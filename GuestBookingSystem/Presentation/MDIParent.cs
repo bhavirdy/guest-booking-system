@@ -24,6 +24,7 @@ namespace GuestBookingSystem.Presentation
         private DeleteBookingForm deleteBookingForm;
         private ViewTables viewTables;
         private CreateCustomerForm createCustomerForm;
+        private CustomerListingForm customerListingForm;
         private CustomerController customerController = new CustomerController();
 
         #endregion
@@ -205,6 +206,25 @@ namespace GuestBookingSystem.Presentation
             createCustomerForm = new CreateCustomerForm(customerController);
             createCustomerForm.MdiParent = this;
             createCustomerForm.Show();
+        }
+
+        private void customerListingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (customerListingForm == null)
+            {
+                CustomerListing();
+            }
+            else if (!customerListingForm.IsOpen)
+            {
+                CustomerListing();
+            }
+        }
+
+        public void CustomerListing()
+        {
+            customerListingForm = new CustomerListingForm(customerController);
+            customerListingForm.MdiParent = this;
+            customerListingForm.Show();
         }
     }
 }
