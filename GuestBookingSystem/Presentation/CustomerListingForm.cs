@@ -128,13 +128,16 @@ namespace GuestBookingSystem.Presentation
                 txtProvince.Enabled = value;
                 txtPostalCode.Enabled = value;
                 txtEmail.Enabled = value;
+                btnCancel.Visible = value;
+                btnSubmit.Visible = value;
             }
 
-            if (state == FormStates.Delete)
+            else if (state == FormStates.Delete && true)
             {
-                btnCancel.Visible = !value;
-                btnSubmit.Visible = !value;
+                btnCancel.Visible = value;
+                btnSubmit.Visible = value;
             }
+
             else
             {
                 btnCancel.Visible = value;
@@ -223,6 +226,7 @@ namespace GuestBookingSystem.Presentation
         private void btnDelete_Click(object sender, EventArgs e)
         {
             state = FormStates.Delete;
+            EnableEntries(true);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
