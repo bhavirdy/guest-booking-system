@@ -104,7 +104,7 @@ namespace GuestBookingSystem.Presentation
             {
                 PopulateObject();
                 MessageBox.Show("Customer entered!");
-                customerController.DataMaintanence(customer);
+                customerController.DataMaintanence(customer, Data.DB.DBOperation.Add);
                 customerController.FinalizeChanges(customer);
                 ClearAll();
             }
