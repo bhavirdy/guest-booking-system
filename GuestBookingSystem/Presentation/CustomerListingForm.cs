@@ -61,6 +61,7 @@ namespace GuestBookingSystem.Presentation
         private void CustomerListingForm_Load(object sender, EventArgs e)
         {
             customerListView.View = View.Details;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void setUpCustomerListView()
@@ -78,7 +79,7 @@ namespace GuestBookingSystem.Presentation
             customerListView.Columns.Insert(7, "PostalCode", 100, HorizontalAlignment.Left);
             customerListView.Columns.Insert(8, "Phone", 100, HorizontalAlignment.Left);
 
-            customers = null;
+            customers = customerController.CustomerCollection;
 
             foreach (Customer customer in customers)
             {
