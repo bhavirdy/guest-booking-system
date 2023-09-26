@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 using GuestBookingSystem.Business;
 using GuestBookingSystem.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Reflection.Emit;
+using System.Xml;
 
 namespace GuestBookingSystem.Presentation
 {
@@ -141,6 +143,24 @@ namespace GuestBookingSystem.Presentation
                 btnCancel.Visible = value;
                 btnSubmit.Visible = value;
             }
+
+        }
+
+        private void ShowAll(bool value)
+        {
+
+            if (state == FormStates.Delete)
+            {
+                btnCancel.Visible = !value;
+                btnSubmit.Visible = !value;
+            }
+            else
+            {
+                btnCancel.Visible = value;
+                btnSubmit.Visible = value;
+            }
+            btnDelete.Visible = value;
+            btnEdit.Visible = value;
 
         }
 
