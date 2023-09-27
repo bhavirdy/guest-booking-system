@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GuestBookingSystem.Business;
+using System.Xml.Linq;
 
 namespace GuestBookingSystem.Data
 {
@@ -104,7 +105,7 @@ namespace GuestBookingSystem.Data
                 myRow = myRow_loopVariable;
 
                 // ignore deleted rows
-                if (myRow.RowState == DataRowState.Deleted)
+                if (myRow.RowState != DataRowState.Deleted)
                 {
                     if (custTemp.CustID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["CustomerID"]))
                     {
@@ -115,7 +116,7 @@ namespace GuestBookingSystem.Data
 
                 rowIndex++;
             }
-
+            //Console.WriteLine(rowIndex);
             return returnValue;
         }
 
@@ -182,12 +183,48 @@ namespace GuestBookingSystem.Data
 
         private void BUILD_UPDATE_Parameters(Customer custTemp)
         {
+            SqlParameter param = default(SqlParameter);
 
+            param = new SqlParameter("@Original_ID", SqlDbType.VarChar, 50, "CustomerID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Name", SqlDbType.VarChar, 50, "Name");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Surname", SqlDbType.VarChar, 50, "Surname");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Email", SqlDbType.VarChar, 50, "Email");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@StreetAddress", SqlDbType.VarChar, 50, "StreetAddress");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@TownOrCity", SqlDbType.VarChar, 50, "TownOrCity");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@PostalCode", SqlDbType.VarChar, 50, "PostalCode");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Province", SqlDbType.VarChar, 50, "Province");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Phone", SqlDbType.VarChar, 50, "Phone");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
         }
 
         private void CREATE_UPDATE_Command(Customer custTemp)
         {
-            daMain.InsertCommand = new SqlCommand("", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Customer SET Name = @Name, Surname = @Surname, Email = @Email, StreetAddress = @StreetAddress " + "WHERE CustomerID = @Original_ID", cnMain);
             BUILD_UPDATE_Parameters(custTemp);
         }
 
@@ -206,6 +243,7 @@ namespace GuestBookingSystem.Data
         {
             bool success = true;
             CREATE_INSERT_Command(custTemp);
+            CREATE_UPDATE_Command(custTemp);
             success = UpdateDataSource(sqlSt, table);
             return success;
         }

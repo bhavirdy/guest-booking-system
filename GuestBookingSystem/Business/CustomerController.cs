@@ -54,11 +54,13 @@ namespace GuestBookingSystem.Business
         {
             int count = 0;
             bool found = false;
+
             found = (custTemp.CustID == customerCollection[count].CustID);
+
             while(found == false && count < customerCollection.Count)
             {
                 found = (custTemp.CustID == customerCollection[count].CustID);
-
+                count++;
             }
 
             if (found)
@@ -88,6 +90,7 @@ namespace GuestBookingSystem.Business
 
                 case DB.DBOperation.Edit:
                     index = FindIndex(custTemp);
+                    Console.WriteLine("Bye");
                     customerCollection.RemoveAt(index);
                     customerCollection[index] = custTemp;
                     break;

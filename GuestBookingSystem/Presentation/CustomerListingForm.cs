@@ -184,13 +184,14 @@ namespace GuestBookingSystem.Presentation
 
             if (state == FormStates.Edit)
             {
-                customerController.DataMaintanence(customer, Data.DB.DBOperation.Add);
+                customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
             }
             else
             {
                 customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
             }
 
+            Console.WriteLine("Helo");
             customerController.FinalizeChanges(customer);
             ClearAll();
             state = FormStates.View;
