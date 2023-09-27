@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,11 +56,14 @@ namespace GuestBookingSystem.Business
             int count = 0;
             bool found = false;
 
-            found = (custTemp.CustID == customerCollection[count].CustID);
-
-            while(found == false && count < customerCollection.Count)
+            while (count < customerCollection.Count)
             {
-                found = (custTemp.CustID == customerCollection[count].CustID);
+                if (custTemp.CustID == customerCollection[count].CustID)
+                {
+                    found = true;
+                    break; // Exit the loop if a match is found
+                }
+
                 count++;
             }
 
@@ -90,12 +94,13 @@ namespace GuestBookingSystem.Business
 
                 case DB.DBOperation.Edit:
                     index = FindIndex(custTemp);
-                    Console.WriteLine("Bye");
                     customerCollection.RemoveAt(index);
                     customerCollection[index] = custTemp;
                     break;
 
                 case DB.DBOperation.Delete:
+                    index = FindIndex(custTemp);
+                    customerCollection.RemoveAt(index);
                     break;
             }
         }

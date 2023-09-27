@@ -145,6 +145,8 @@ namespace GuestBookingSystem.Data
                     break;
 
                 case DB.DBOperation.Delete:
+                    rowTemp = dsMain.Tables[dataTable].Rows[FindRow(custTemp, dataTable)];
+                    dsMain.Tables[dataTable].Rows.Remove(rowTemp);
                     break;
             }
         }
@@ -230,12 +232,14 @@ namespace GuestBookingSystem.Data
 
         private void BUILD_DELETE_Parameters(Customer custTemp)
         {
-
+            SqlParameter param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            param.SourceVersion = DataRowVersion.Original; // Use Original version for DELETE
+            daMain.DeleteCommand.Parameters.Add(param);
         }
 
         private void CREATE_DELETE_Command(Customer custTemp)
         {
-            daMain.InsertCommand = new SqlCommand("", cnMain);
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Customer WHERE CustomerID = @CustomerID", cnMain);
             BUILD_DELETE_Parameters(custTemp);
         }
 
@@ -244,6 +248,7 @@ namespace GuestBookingSystem.Data
             bool success = true;
             CREATE_INSERT_Command(custTemp);
             CREATE_UPDATE_Command(custTemp);
+            CREATE_DELETE_Command(custTemp);
             success = UpdateDataSource(sqlSt, table);
             return success;
         }

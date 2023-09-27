@@ -191,7 +191,6 @@ namespace GuestBookingSystem.Presentation
                 customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
             }
 
-            Console.WriteLine("Helo");
             customerController.FinalizeChanges(customer);
             ClearAll();
             state = FormStates.View;
