@@ -126,6 +126,7 @@ namespace GuestBookingSystem.Data
 
         public bool IsRoomAvailable(int roomID, DateTime arriveDate, DateTime leaveDate)
         {
+            cnMain.Open();
             using (var command = new SqlCommand("SELECT COUNT(*) FROM Booking WHERE RoomID = @RoomID " +
                                                 "AND ((ArriveDate <= @LeaveDate AND LeaveDate >= @ArriveDate) " +
                                                 "OR (ArriveDate <= @ArriveDate AND LeaveDate >= @LeaveDate))",
@@ -137,10 +138,12 @@ namespace GuestBookingSystem.Data
 
                 // Execute the query to count overlapping bookings.
                 int overlappingBookingsCount = (int)command.ExecuteScalar();
+                cnMain.Close();
 
                 // If there are overlapping bookings, the room is not available.
                 return overlappingBookingsCount == 0;
             }
+            
         }
 
         public bool UpdateDataSource(Booking bTemp)

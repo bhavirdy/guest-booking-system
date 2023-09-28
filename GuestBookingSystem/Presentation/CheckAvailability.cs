@@ -1,6 +1,8 @@
 ﻿using GuestBookingSystem.Business;
+using GuestBookingSystem.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -53,7 +55,28 @@ namespace GuestBookingSystem.Presentation
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            
+            richTextBox1.Clear();
+            RoomDB roomDB = new RoomDB();
+            BookingDB bookingDB = new BookingDB();
+
+            Collection<Room> rooms = roomDB.Rooms;
+
+            DateTime arriveDate = dateTimePicker1.Value;
+            DateTime leaveDate = dateTimePicker2.Value;
+
+            Collection<Room> availableRooms = new Collection<Room>();
+
+            foreach (Room room in rooms)
+            {
+                bool isAvailable = bookingDB.IsRoomAvailable(room.RoomID, arriveDate, leaveDate);
+
+                if (isAvailable)
+                {
+                    availableRooms.Add(room);
+                    richTextBox1.AppendText($"Room ID: {room.RoomID}, Num Beds: {room.NumBeds}\n");
+                }
+            }
+
         }
     }
 }
