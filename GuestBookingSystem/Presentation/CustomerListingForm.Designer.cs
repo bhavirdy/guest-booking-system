@@ -95,8 +95,10 @@
             // 
             // txtCustomerID
             // 
+            this.txtCustomerID.Enabled = false;
             this.txtCustomerID.Location = new System.Drawing.Point(171, 291);
             this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.ReadOnly = true;
             this.txtCustomerID.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerID.TabIndex = 4;
             // 

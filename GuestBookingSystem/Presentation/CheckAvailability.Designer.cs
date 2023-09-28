@@ -75,6 +75,7 @@
             this.btnCheck.TabIndex = 4;
             this.btnCheck.Text = "Check Dates";
             this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // dateTimePicker1
             // 
@@ -118,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 463);
             this.Controls.Add(this.lblLeaveDate);
             this.Controls.Add(this.lblADate);
             this.Controls.Add(this.dateTimePicker2);

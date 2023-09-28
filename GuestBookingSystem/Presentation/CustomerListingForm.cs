@@ -119,7 +119,6 @@ namespace GuestBookingSystem.Presentation
         {
             if ((state == FormStates.Edit) && value)
             {
-                txtCustomerID.Enabled = !value;
                 txtEmail.Enabled = value;
                 txtName.Enabled = value;
                 txtPhone.Enabled = value;

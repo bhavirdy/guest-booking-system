@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GuestBookingSystem.Data;
+using System.Data.SqlClient;
 
 namespace GuestBookingSystem.Business
 {

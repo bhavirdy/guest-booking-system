@@ -50,5 +50,10 @@ namespace GuestBookingSystem.Presentation
             this.Close();
             isOpen = false;
         }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
