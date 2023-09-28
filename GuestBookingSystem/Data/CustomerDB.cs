@@ -90,8 +90,6 @@ namespace GuestBookingSystem.Data
             rowTemp["Province"] = custTemp.Province;
             rowTemp["PostalCode"] = custTemp.PostalCode;
             rowTemp["Phone"] = custTemp.Phone;
-            //rowTemp["CardNumber"] = custTemp.CardNumber;
-
         }
 
         private int FindRow(Customer custTemp, string table)
@@ -116,7 +114,6 @@ namespace GuestBookingSystem.Data
 
                 rowIndex++;
             }
-            //Console.WriteLine(rowIndex);
             return returnValue;
         }
 
@@ -173,8 +170,6 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Phone", SqlDbType.VarChar, 50, "Phone");
             daMain.InsertCommand.Parameters.Add(param);
-            //param = new SqlParameter("@CardNumber", SqlDbType.NChar, 10, "CardNumber");
-            //daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void CREATE_INSERT_Command(Customer custTemp)

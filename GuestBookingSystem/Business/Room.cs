@@ -12,7 +12,6 @@ namespace GuestBookingSystem.Business
         #region DataMembers
         private int roomID;
         private int numBeds;
-        private bool available;
         #endregion
 
         #region Property Members
@@ -31,10 +30,12 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructor
+        
+        public Room()
+        { }
 
         public Room(int roomIDTemp, int numBedsTemp) { 
             roomID = roomIDTemp;
-     
             numBeds = numBedsTemp;
         }
 

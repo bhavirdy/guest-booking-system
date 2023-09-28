@@ -11,7 +11,6 @@ namespace GuestBookingSystem.Business
         #region Data Members
 
         private String custID;
-        //private String cardNumber;
 
         #endregion
 
@@ -24,7 +23,6 @@ namespace GuestBookingSystem.Business
             : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, provinceTemp)
         {
             custID = custIDTemp;
-            //cardNumber = cardNumberTemp;
         }
 
         #endregion
@@ -36,14 +34,6 @@ namespace GuestBookingSystem.Business
             get { return custID; }
             set { custID = value; }
         }
-
-
-        //public String CardNumber
-        //{
-        //    get { return cardNumber; }
-        //    set { cardNumber = value; }
-        //}
-
         #endregion 
     }
 }

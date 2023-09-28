@@ -6,10 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuestBookingSystem.Business;
 
 namespace GuestBookingSystem.Data
 {
-    internal class RoomDB
+    internal class RoomDB : DB
     {
 
         #region Data Members
@@ -29,7 +30,7 @@ namespace GuestBookingSystem.Data
         public RoomDB() : base()
         {
             rooms = new Collection<Room>();
-            //FillDataSet(st, table);
+            FillDataSet(st, table);
             Add2Collection(table);
         }
 
@@ -37,8 +38,7 @@ namespace GuestBookingSystem.Data
 
         public DataSet GetDataSet()
         {
-            //return dsMain;
-            return null; 
+            return dsMain; 
         }
 
         #region Utility Methods
@@ -47,22 +47,18 @@ namespace GuestBookingSystem.Data
             DataRow myRow = null;
             Room roomTemp = null;
 
-            //foreach (DataRow myRow_loopVariable in dsMain.Tables[tableTemp].Rows)
-            //{
-            //    myRow = myRow_loopVariable;
-            //    if (!(myRow.RowState == DataRowState.Deleted))
-            //    {
-            //        roomTemp = new Room();
-            //        roomTemp.RoomID = Convert.ToInt32(myRow["RoomID"]);
-            //        roomTemp.NumBeds = Convert.ToInt32(myRow["NumBeds"]);
-            //        roomTemp.Available = Convert.ToInt32(myRow["Available"]);
+            foreach (DataRow myRow_loopVariable in dsMain.Tables[tableTemp].Rows)
+            {
+                myRow = myRow_loopVariable;
+                if (!(myRow.RowState == DataRowState.Deleted))
+                {
+                    roomTemp = new Room();
+                    roomTemp.RoomID = Convert.ToInt32(myRow["RoomID"]);
+                    roomTemp.NumBeds = Convert.ToInt32(myRow["NumBeds"]);
+                }
 
-
-
-            //    }
-
-            //    rooms.Add(roomTemp);
-            //}
+                rooms.Add(roomTemp);
+            }
         }
 
         #endregion

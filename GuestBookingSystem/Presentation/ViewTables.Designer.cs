@@ -81,6 +81,7 @@
             this.btnRoom.TabIndex = 4;
             this.btnRoom.Text = "View Room Table";
             this.btnRoom.UseVisualStyleBackColor = true;
+            this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
             // 
             // ViewTables
             // 
