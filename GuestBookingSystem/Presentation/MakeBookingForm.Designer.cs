@@ -42,8 +42,6 @@
             this.lblLeaveDate = new System.Windows.Forms.Label();
             this.lblADate = new System.Windows.Forms.Label();
             this.dateTimePickerArrival = new System.Windows.Forms.DateTimePicker();
-            this.lblBookingID = new System.Windows.Forms.Label();
-            this.txtBookingID = new System.Windows.Forms.TextBox();
             this.rBtnExistingCustomer = new System.Windows.Forms.RadioButton();
             this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
@@ -207,47 +205,29 @@
             this.dateTimePickerArrival.Size = new System.Drawing.Size(204, 20);
             this.dateTimePickerArrival.TabIndex = 22;
             // 
-            // lblBookingID
-            // 
-            this.lblBookingID.AutoSize = true;
-            this.lblBookingID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookingID.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblBookingID.Location = new System.Drawing.Point(57, 131);
-            this.lblBookingID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBookingID.Name = "lblBookingID";
-            this.lblBookingID.Size = new System.Drawing.Size(81, 18);
-            this.lblBookingID.TabIndex = 40;
-            this.lblBookingID.Text = "Booking ID";
-            // 
-            // txtBookingID
-            // 
-            this.txtBookingID.Location = new System.Drawing.Point(201, 131);
-            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBookingID.Name = "txtBookingID";
-            this.txtBookingID.Size = new System.Drawing.Size(204, 20);
-            this.txtBookingID.TabIndex = 41;
-            // 
             // rBtnExistingCustomer
             // 
             this.rBtnExistingCustomer.AutoSize = true;
-            this.rBtnExistingCustomer.Location = new System.Drawing.Point(109, 75);
+            this.rBtnExistingCustomer.Location = new System.Drawing.Point(267, 72);
             this.rBtnExistingCustomer.Name = "rBtnExistingCustomer";
             this.rBtnExistingCustomer.Size = new System.Drawing.Size(108, 17);
             this.rBtnExistingCustomer.TabIndex = 42;
             this.rBtnExistingCustomer.TabStop = true;
             this.rBtnExistingCustomer.Text = "Existing Customer";
             this.rBtnExistingCustomer.UseVisualStyleBackColor = true;
+            this.rBtnExistingCustomer.CheckedChanged += new System.EventHandler(this.rBtnExistingCustomer_CheckedChanged);
             // 
             // rBtnNewCustomer
             // 
             this.rBtnNewCustomer.AutoSize = true;
-            this.rBtnNewCustomer.Location = new System.Drawing.Point(255, 75);
+            this.rBtnNewCustomer.Location = new System.Drawing.Point(106, 72);
             this.rBtnNewCustomer.Name = "rBtnNewCustomer";
             this.rBtnNewCustomer.Size = new System.Drawing.Size(94, 17);
             this.rBtnNewCustomer.TabIndex = 43;
             this.rBtnNewCustomer.TabStop = true;
             this.rBtnNewCustomer.Text = "New Customer";
             this.rBtnNewCustomer.UseVisualStyleBackColor = true;
+            this.rBtnNewCustomer.CheckedChanged += new System.EventHandler(this.rBtnNewCustomer_CheckedChanged);
             // 
             // MakeBookingForm
             // 
@@ -256,8 +236,6 @@
             this.ClientSize = new System.Drawing.Size(549, 470);
             this.Controls.Add(this.rBtnNewCustomer);
             this.Controls.Add(this.rBtnExistingCustomer);
-            this.Controls.Add(this.txtBookingID);
-            this.Controls.Add(this.lblBookingID);
             this.Controls.Add(this.txtPaid);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
@@ -299,8 +277,6 @@
         private System.Windows.Forms.Label lblLeaveDate;
         private System.Windows.Forms.Label lblADate;
         private System.Windows.Forms.DateTimePicker dateTimePickerArrival;
-        private System.Windows.Forms.Label lblBookingID;
-        private System.Windows.Forms.TextBox txtBookingID;
         private System.Windows.Forms.RadioButton rBtnExistingCustomer;
         private System.Windows.Forms.RadioButton rBtnNewCustomer;
     }

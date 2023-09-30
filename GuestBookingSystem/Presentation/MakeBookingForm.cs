@@ -30,6 +30,7 @@ namespace GuestBookingSystem.Presentation
         SqlDataAdapter adapter = new SqlDataAdapter();
 
         private bool isOpen = false;
+        private string currentState = "New Customer";
 
         #endregion
 
@@ -55,7 +56,8 @@ namespace GuestBookingSystem.Presentation
 
         private void MakeBookingForm_Activated(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            currentState = "New Customer";
+            UpdateControlVisibility();
         }
 
         #endregion
@@ -74,7 +76,7 @@ namespace GuestBookingSystem.Presentation
 
         private void ClearAll()
         {
-            txtBookingID.Text = "";
+            //txtBookingID.Text = "";
             txtCustID.Text = "";
             //txtRoomNum.Text = "";
             txtPaid.Text = "";
@@ -83,6 +85,21 @@ namespace GuestBookingSystem.Presentation
             dateTimePickerDepartureDate.Value = DateTime.Today;
         }
 
+        private void UpdateControlVisibility()
+        {
+            // Update control visibility based on the current state.
+            if (currentState == "New Customer")
+            {
+                lblCustID.Visible = false;
+                txtCustID.Visible = false;
+                rBtnNewCustomer.Checked = true;
+            }
+            else if (currentState == "Existing Customer")
+            {
+                lblCustID.Visible = true;
+                txtCustID.Visible = true;
+            }
+        }
 
         #endregion
 
@@ -170,7 +187,8 @@ namespace GuestBookingSystem.Presentation
         private void MakeBookingForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            //throw new NotImplementedException();
+            currentState = "New Customer";
+            UpdateControlVisibility();
         }
 
 
@@ -210,6 +228,24 @@ namespace GuestBookingSystem.Presentation
         private void txtPaid_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rBtnNewCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnNewCustomer.Checked)
+            {
+                currentState = "New Customer";
+                UpdateControlVisibility();
+            }
+        }
+
+        private void rBtnExistingCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnExistingCustomer.Checked)
+            {
+                currentState = "Existing Customer";
+                UpdateControlVisibility();
+            }
         }
     }
 }

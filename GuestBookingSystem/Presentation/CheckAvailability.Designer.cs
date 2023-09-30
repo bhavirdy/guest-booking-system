@@ -43,7 +43,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(389, 35);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(339, 262);
+            this.richTextBox1.Size = new System.Drawing.Size(532, 262);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -59,7 +59,7 @@
             // 
             // btnProceed
             // 
-            this.btnProceed.Location = new System.Drawing.Point(572, 382);
+            this.btnProceed.Location = new System.Drawing.Point(765, 382);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.Size = new System.Drawing.Size(156, 29);
             this.btnProceed.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 463);
+            this.ClientSize = new System.Drawing.Size(1059, 463);
             this.Controls.Add(this.lblLeaveDate);
             this.Controls.Add(this.lblADate);
             this.Controls.Add(this.dateTimePicker2);
