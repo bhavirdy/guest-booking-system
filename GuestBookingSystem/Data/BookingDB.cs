@@ -67,9 +67,9 @@ namespace GuestBookingSystem.Data
                     bookTemp.RoomNumber = Convert.ToString(myRow["RoomID"]).TrimEnd();
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
                     bookTemp.LeaveDate = Convert.ToDateTime(myRow["LeaveDate"]);
-                    bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
-                    bookTemp.TotalPrice = Convert.ToDouble(myRow["TotalPrice"]);
-                    bookTemp.PricePerNight = Convert.ToDouble(myRow["PricePerNight"]);
+                    //bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
+                    //bookTemp.TotalPrice = Convert.ToDouble(myRow["TotalPrice"]);
+                    //bookTemp.PricePerNight = Convert.ToDouble(myRow["PricePerNight"]);
                 }
                 bookings.Add(bookTemp);
             }
@@ -144,7 +144,7 @@ namespace GuestBookingSystem.Data
 
         private void CREATE_INSERT_Command(Booking bTemp)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Booking (CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice) VALUES (@CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Booking (BookingID, CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice) VALUES (@BookingID, @CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice)", cnMain);
             BUILD_INSERT_Parameters(bTemp);
         }
 
