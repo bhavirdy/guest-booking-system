@@ -61,5 +61,10 @@ namespace GuestBookingSystem.Presentation
             dataGridView1.DataSource = roomDB.GetDataSet();
             dataGridView1.DataMember = "Room";
         }
+
+        private void btnReceptionist_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not working yet");
+        }
     }
 }

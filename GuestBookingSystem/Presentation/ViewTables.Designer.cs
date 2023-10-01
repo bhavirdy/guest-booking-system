@@ -41,6 +41,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 186);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(801, 265);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -72,6 +73,7 @@
             this.btnReceptionist.TabIndex = 3;
             this.btnReceptionist.Text = "View Receptionist Table";
             this.btnReceptionist.UseVisualStyleBackColor = true;
+            this.btnReceptionist.Click += new System.EventHandler(this.btnReceptionist_Click);
             // 
             // btnRoom
             // 

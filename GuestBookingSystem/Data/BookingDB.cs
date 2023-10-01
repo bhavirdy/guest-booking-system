@@ -62,65 +62,89 @@ namespace GuestBookingSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     bookTemp = new Booking();
-                    bookTemp.CustomerID = Convert.ToString(myRow["CustomerID"]);
-
-                    bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
-                    bookTemp.RoomNumber = Convert.ToInt32(myRow["RoomID"]);
+                    bookTemp.BookingID = Convert.ToString(myRow["BookingID"]).TrimEnd();
+                    bookTemp.CustomerID = Convert.ToString(myRow["CustomerID"]).TrimEnd();
+                    bookTemp.RoomNumber = Convert.ToString(myRow["RoomID"]).TrimEnd();
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
                     bookTemp.LeaveDate = Convert.ToDateTime(myRow["LeaveDate"]);
-                    bookTemp.TotalPrice = Convert.ToInt32(myRow["TotalPrice"]);
-
-
+                    bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
+                    bookTemp.TotalPrice = Convert.ToDouble(myRow["TotalPrice"]);
+                    bookTemp.PricePerNight = Convert.ToDouble(myRow["PricePerNight"]);
                 }
-
                 bookings.Add(bookTemp);
             }
         }
 
-        private void FillRow(DataRow rowTemp, Booking bookTemp)
+        private void FillRow(DataRow rowTemp, Booking bookTemp, DB.DBOperation operation)
         {
+            if (operation == DB.DBOperation.Add)
+            {
+                rowTemp["BookingID"] = bookTemp.BookingID;
+            }
+
             rowTemp["CustomerID"] = bookTemp.CustomerID;
             rowTemp["ArriveDate"] = bookTemp.ArriveDate;
             rowTemp["LeaveDate"] = bookTemp.LeaveDate;
-            rowTemp["Deposit"] = bookTemp.Deposit;
-            rowTemp["TotalPrice"] = bookTemp.Deposit;
             rowTemp["RoomID"] = bookTemp.RoomNumber;
+            rowTemp["Deposit"] = bookTemp.Deposit;
+            rowTemp["TotalPrice"] = bookTemp.TotalPrice;
+            rowTemp["PricePerNight"] = bookTemp.PricePerNight;
+
         }
         #endregion
 
         #region Database CRUD
 
-        public void DataSetChange(Booking bookTemp)
+        public void DataSetChange(Booking bookingTemp, DB.DBOperation operation)
         {
             DataRow rowTemp = null;
             String dataTable = table;
-            rowTemp = dsMain.Tables[dataTable].NewRow();
-            FillRow(rowTemp, bookTemp);
-            dsMain.Tables[dataTable].Rows.Add(rowTemp);
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    rowTemp = dsMain.Tables[dataTable].NewRow();
+                    FillRow(rowTemp, bookingTemp, operation);
+                    dsMain.Tables[dataTable].Rows.Add(rowTemp);
+                    break;
+
+                // For the Edit section you have to find a row instead of creating a new row.
+                case DB.DBOperation.Edit:
+                    //rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
+                    //FillRow(rowTemp, bookingTemp, operation);
+                    break;
+
+                case DB.DBOperation.Delete:
+                    //rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
+                    //dsMain.Tables[dataTable].Rows.Remove(rowTemp);
+                    break;
+            }
         }
 
         private void BUILD_INSERT_Parameters(Booking bTemp)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@CustomerID", SqlDbType.NVarChar, 15, "CustomerID");
+            param = new SqlParameter("@BookingID", SqlDbType.VarChar, 50, "BookingID");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 100, "ArriveDate");
+            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 100, "LeaveDate");
+            param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 8, "ArriveDate");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 15, "RoomID");
+            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 8, "LeaveDate");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@Deposit", SqlDbType.NVarChar, 15, "Deposit");
+            param = new SqlParameter("@RoomID", SqlDbType.VarChar, 50, "RoomID");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@TotalPrice", SqlDbType.NVarChar, 15, "@TotalPrice");
+            param = new SqlParameter("@Deposit", SqlDbType.Money, 8, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
-
-
+            param = new SqlParameter("@PricePerNight", SqlDbType.Money, 8, "PricePerNight");
+            daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 8, "TotalPrice");
+            daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void CREATE_INSERT_Command(Booking bTemp)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Booking (CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, TotalPrice) VALUES (@CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @TotalPrice", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Booking (CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice) VALUES (@CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice)", cnMain);
             BUILD_INSERT_Parameters(bTemp);
         }
 
@@ -143,7 +167,41 @@ namespace GuestBookingSystem.Data
                 // If there are overlapping bookings, the room is not available.
                 return overlappingBookingsCount == 0;
             }
-            
+        }
+
+        public string GenerateUniqueBookingID(int length = 10)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder bookingID = new StringBuilder();
+
+            Random random = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(chars.Length);
+                bookingID.Append(chars[index]);
+            }
+
+            return bookingID.ToString();
+        }
+
+        public String FindFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
+        {
+            cnMain.Open();
+            using (var command = new SqlCommand("SELECT TOP 1 RoomID FROM Room WHERE RoomID NOT IN " +
+                                                "(SELECT DISTINCT RoomID FROM Booking " +
+                                                "WHERE (ArriveDate <= @LeaveDate AND LeaveDate >= @ArriveDate) " +
+                                                "OR (ArriveDate <= @ArriveDate AND LeaveDate >= @LeaveDate))",
+                                                cnMain))
+            {
+                command.Parameters.AddWithValue("@ArriveDate", arriveDate);
+                command.Parameters.AddWithValue("@LeaveDate", leaveDate);
+
+                // Execute the query to find the first available room.
+                String availableRoomID = Convert.ToString(command.ExecuteScalar());
+                cnMain.Close();
+
+                return availableRoomID;
+            }
         }
 
         public bool UpdateDataSource(Booking bTemp)

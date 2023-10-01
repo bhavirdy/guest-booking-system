@@ -55,6 +55,8 @@ namespace GuestBookingSystem.Presentation
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+            
+            
             richTextBox1.Clear();
             RoomDB roomDB = new RoomDB();
             BookingDB bookingDB = new BookingDB();
@@ -63,27 +65,33 @@ namespace GuestBookingSystem.Presentation
 
             DateTime arriveDate = dateTimePicker1.Value;
             DateTime leaveDate = dateTimePicker2.Value;
-
-            Collection<Room> availableRooms = new Collection<Room>();
-
-            foreach (Room room in rooms)
+            if (arriveDate > leaveDate)
             {
-                bool isAvailable = bookingDB.IsRoomAvailable(room.RoomID, arriveDate, leaveDate);
-
-                if (isAvailable)
-                {
-                    var (pricePerNight, totalPrice, deposit) = CalculateRoomPricing(arriveDate, leaveDate);
-
-                    availableRooms.Add(room);
-                    richTextBox1.AppendText($"Room ID: {room.RoomID}, Num Beds: {room.NumBeds}\n");
-                    richTextBox1.AppendText($"Price Per Night: {pricePerNight:C}, Total Price: {totalPrice:C}, Deposit: {deposit:C}\n");
-                    richTextBox1.AppendText("\n");
-                }
+                MessageBox.Show("Cannot choose a departure date that is before the arrival date");
             }
-
-            if (availableRooms.Count == 0)
+            else
             {
-                richTextBox1.AppendText("No rooms available for the specified dates.");
+                Collection<Room> availableRooms = new Collection<Room>();
+
+                foreach (Room room in rooms)
+                {
+                    bool isAvailable = bookingDB.IsRoomAvailable(room.RoomID, arriveDate, leaveDate);
+
+                    if (isAvailable)
+                    {
+                        var (pricePerNight, totalPrice, deposit) = CalculateRoomPricing(arriveDate, leaveDate);
+
+                        availableRooms.Add(room);
+                        richTextBox1.AppendText($"Room ID: {room.RoomID}, Num Beds: {room.NumBeds}\n");
+                        richTextBox1.AppendText($"Price Per Night: {pricePerNight:C}, Total Price: {totalPrice:C}, Deposit: {deposit:C}\n");
+                        richTextBox1.AppendText("\n");
+                    }
+                }
+
+                if (availableRooms.Count == 0)
+                {
+                    richTextBox1.AppendText("No rooms available for the specified dates.");
+                }
             }
 
         }

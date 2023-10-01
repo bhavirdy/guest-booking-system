@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GuestBookingSystem.Data;
 using System.Data.SqlClient;
+using System.Collections.Concurrent;
 
 namespace GuestBookingSystem.Business
 {
@@ -38,16 +39,28 @@ namespace GuestBookingSystem.Business
         #endregion
         #region Databse Communication
 
-        public void DataMaintanence(Booking bookingTemp)
+        public void DataMaintanence(Booking bookingTemp, DB.DBOperation operation)
         {
-            //need to assign the room and deposit 
+            int index = 0;
+            bookingDB.DataSetChange(bookingTemp, operation);
 
-            bookingDB.DataSetChange(bookingTemp);
-            bookings.Add(bookingTemp);
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    bookings.Add(bookingTemp);
+                    break;
 
+                case DB.DBOperation.Edit:
+                    index = FindIndex(bookingTemp);
+                    bookings.RemoveAt(index);
+                    bookings[index] = bookingTemp;
+                    break;
 
-            //perform a given database operation
-
+                case DB.DBOperation.Delete:
+                    index = FindIndex(bookingTemp);
+                    bookings.RemoveAt(index);
+                    break;
+            }
         }
 
         public bool FinalizeChanges(Booking bookingTemp)
@@ -100,6 +113,16 @@ namespace GuestBookingSystem.Business
         }
 
         #endregion 
+
+        public String getUniqueBookingID ()
+        {
+            return bookingDB.GenerateUniqueBookingID();
+        }
+
+        public String getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
+        {
+            return bookingDB.FindFirstAvailableRoom(arriveDate, leaveDate);
+        }
 
     }
 }

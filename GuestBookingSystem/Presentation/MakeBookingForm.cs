@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GuestBookingSystem.Business;
+using GuestBookingSystem.Data;
 
 
 namespace GuestBookingSystem.Presentation
@@ -19,15 +20,8 @@ namespace GuestBookingSystem.Presentation
 
 
         #region Data Members
-
-        Booking booking;
-        BookingController bookingController;
-        public bool bookingFormClosed = false;
-
-        DataSet ds = new DataSet();
-        //idk where it is
-        SqlConnection conDB = new SqlConnection();
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        private Booking booking = new Booking();
+        private BookingController bookingController = new BookingController();
 
         private bool isOpen = false;
         private string currentState = "New Customer";
@@ -49,9 +43,6 @@ namespace GuestBookingSystem.Presentation
         {
             InitializeComponent();
             this.isOpen = true;
-            //this.Load += MakeBookingForm_Load;
-            //this.Activated += MakeBookingForm_Activated;
-
         }
 
         private void MakeBookingForm_Activated(object sender, EventArgs e)
@@ -67,19 +58,18 @@ namespace GuestBookingSystem.Presentation
 
         private void PopulateObject()
         {
-            //booking = new Booking();
-            //booking.BookingID = txtBookingID.Text;
-            //booking.CustomerID = txtCustID.Text;
-            //booking.ArriveDate = dateTimePickerArrival.Value;
-            //booking.LeaveDate = dateTimePickerDepartureDate.Value;
+            booking.BookingID = bookingController.getUniqueBookingID();
+            booking.CustomerID = txtCustID.Text;
+            booking.ArriveDate = dateTimePickerArrival.Value;
+            booking.LeaveDate = dateTimePickerDepartureDate.Value;
+            booking.RoomNumber = bookingController.getFirstAvailableRoom(dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
+            booking.CardNumber = txtCardNum.Text;
+
         }
 
         private void ClearAll()
         {
-            //txtBookingID.Text = "";
             txtCustID.Text = "";
-            //txtRoomNum.Text = "";
-            txtPaid.Text = "";
             txtCardNum.Text = "";
             dateTimePickerArrival.Value = DateTime.Today;
             dateTimePickerDepartureDate.Value = DateTime.Today;
@@ -118,70 +108,41 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //if (txtCustID.Text.Equals("") || txtCustID.TextLength != 13)
-            //{
-            //    MessageBox.Show("Please enter a valid CustomerID");
 
-            //}
-            //else
-            //    if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
-            //{
-            //    MessageBox.Show("Cannot choose a departure date that is before the arrival date");
-            //}
-            //else
-            //    if (!this.txtPaid.Text.Equals("T") || !this.txtPaid.Text.Equals("F"))
-            //{
-            //    MessageBox.Show("Please enter a (T) or (F) to indicate whther the customer has paid");
-            //}
+            if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
+            {
+                MessageBox.Show("Cannot choose a departure date that is before the arrival date");
+            }
+            else
+            {
+                if (currentState == "New Customer")
+                {
+                    //open create customer form
+                    this.Close();
+                    CustomerController customerController = new CustomerController();
+                    CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
+                    createCustomerForm.MdiParent = this.MdiParent;
+                    createCustomerForm.Show();
 
-            ////}else if(){
-            ////need to check whether a room is available
-            ////}
-            //else
-            //{
-            //    //Added paid as a boolean value to be added to the database
-            //    SqlCommand commIns = new SqlCommand("INSERT INTO Booking(BookingID, CustomerID, ArriveDate, LeaveDate, Deposit, RoomID, CardNumber, Paid" +
-            //                                           "VALUES(@CustomerID, @ArriveDate, @LeaveDate, @Deposit, @RoomID, @Paid", conDB);
+                }
+                else if (currentState == "Existing Customer")
+                {
+                    if (txtCustID.Text.Equals("") || txtCustID.TextLength != 3)
+                    {
+                        MessageBox.Show("Please enter a valid CustomerID");
+                    }
+                    else
+                    {
+                        //add booking to DB
+                        PopulateObject();
+                        bookingController.DataMaintanence(booking, Data.DB.DBOperation.Add);
+                        bookingController.FinalizeChanges(booking);
+                        MessageBox.Show("Booking entered!");
+                        ClearAll();
 
-            //    commIns.Parameters.Add("@CustomerID", SqlDbType.NVarChar, 50, "CustomerID").Value = txtCustID.Text;
-            //    commIns.Parameters.Add("@BookingID", SqlDbType.NVarChar, 50, "BookingID").Value = txtBookingID.Text;
-
-            //    //i don't know whther to use text or value for the date time pickers
-            //    commIns.Parameters.Add("@ArriveDate", SqlDbType.NVarChar, 50, "ArriveDate").Value = dateTimePickerArrival.Text;
-            //    commIns.Parameters.Add("@LeaveDate", SqlDbType.NVarChar, 50, "LeaveDate").Value = dateTimePickerDepartureDate;
-            //    commIns.Parameters.Add("@RoomID", SqlDbType.NVarChar, 50, "RoomID").Value = txtRoomNum.Text;
-            //    //need to have a calculated value here
-            //    commIns.Parameters.Add("Deposit", SqlDbType.NVarChar, 50, "Deposit").Value = 0;
-
-            //    commIns.Parameters.Add("@Paid", SqlDbType.NVarChar, 50, "Paid").Value = txtPaid.Text;
-            //    commIns.Parameters.Add("@CardNumber", SqlDbType.NVarChar, 50, "CardNumber").Value = txtCardNum.Text;
-
-            //    commIns.ExecuteNonQuery();
-
-            //}else
-            //    if(this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
-            //{
-            //    MessageBox.Show("Cannot choose a departure date that is before the arrival date");
-
-            //}else if(){
-            //    //need to check whether a room is available
-            //}
-            //else
-            //{
-
-            //    PopulateObject();
-            //    MessageBox.Show("Succesfully added to database");
-            //    bookingController.DataMaintanence(booking);
-            //    bookingController.FinalizeChanges(booking);
-
-
-
-            //    ClearAll();
-
-            //}
-
-      
-
+                    }
+                }
+            }
         }
 
         private void MakeBookingForm_Load(object sender, EventArgs e)
