@@ -24,7 +24,7 @@ namespace GuestBookingSystem.Presentation
         private BookingController bookingController = new BookingController();
 
         private bool isOpen = false;
-        private string currentState = "New Customer";
+        private string currentState = "Existing Customer";
 
         #endregion
 
@@ -45,9 +45,18 @@ namespace GuestBookingSystem.Presentation
             this.isOpen = true;
         }
 
+        public MakeBookingForm(String CustomerID)
+        {
+            InitializeComponent();
+            this.isOpen = true;
+            txtCustID.Text = CustomerID;
+            currentState = "Existing Customer";
+            UpdateControlVisibility();
+        }
+
         private void MakeBookingForm_Activated(object sender, EventArgs e)
         {
-            currentState = "New Customer";
+            currentState = "Existing Customer";
             UpdateControlVisibility();
         }
 
@@ -64,6 +73,9 @@ namespace GuestBookingSystem.Presentation
             booking.LeaveDate = dateTimePickerDepartureDate.Value;
             booking.RoomNumber = bookingController.getFirstAvailableRoom(dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
             booking.CardNumber = txtCardNum.Text;
+            booking.setDeposit();
+            booking.setPricePerNight();
+            booking.setTotalPrice();
 
         }
 
@@ -82,12 +94,25 @@ namespace GuestBookingSystem.Presentation
             {
                 lblCustID.Visible = false;
                 txtCustID.Visible = false;
+                txtCardNum.Visible = false;
+                lblADate.Visible = false;
+                lblLeaveDate.Visible = false;
+                dateTimePickerArrival.Visible = false;
+                dateTimePickerDepartureDate.Visible = false;
+                label2.Visible = false;
                 rBtnNewCustomer.Checked = true;
             }
             else if (currentState == "Existing Customer")
             {
                 lblCustID.Visible = true;
                 txtCustID.Visible = true;
+                rBtnExistingCustomer.Checked = true;
+                txtCardNum.Visible = true;
+                lblADate.Visible = true;
+                lblLeaveDate.Visible = true;
+                dateTimePickerArrival.Visible = true;
+                dateTimePickerDepartureDate.Visible = true;
+                label2.Visible = true;
             }
         }
 
@@ -108,39 +133,35 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
-            if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
+            if (currentState == "New Customer")
             {
-                MessageBox.Show("Cannot choose a departure date that is before the arrival date");
+                //open create customer form
+                this.Close();
+                CustomerController customerController = new CustomerController();
+                CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
+                createCustomerForm.MdiParent = this.MdiParent;
+                createCustomerForm.Show();
+
             }
-            else
+            else if (currentState == "Existing Customer")
             {
-                if (currentState == "New Customer")
+                if (txtCustID.Text.Equals("") || txtCustID.TextLength != 3)
                 {
-                    //open create customer form
-                    this.Close();
-                    CustomerController customerController = new CustomerController();
-                    CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
-                    createCustomerForm.MdiParent = this.MdiParent;
-                    createCustomerForm.Show();
-
+                    MessageBox.Show("Please enter a valid CustomerID");
                 }
-                else if (currentState == "Existing Customer")
+                else if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
                 {
-                    if (txtCustID.Text.Equals("") || txtCustID.TextLength != 3)
-                    {
-                        MessageBox.Show("Please enter a valid CustomerID");
-                    }
-                    else
-                    {
-                        //add booking to DB
-                        PopulateObject();
-                        bookingController.DataMaintanence(booking, Data.DB.DBOperation.Add);
-                        bookingController.FinalizeChanges(booking);
-                        MessageBox.Show("Booking entered!");
-                        ClearAll();
+                    MessageBox.Show("Cannot choose a departure date that is before the arrival date");
+                }
+                else
+                {
+                    //add booking to DB
+                    PopulateObject();
+                    bookingController.DataMaintanence(booking, Data.DB.DBOperation.Add);
+                    bookingController.FinalizeChanges(booking);
+                    MessageBox.Show("Booking entered!");
+                    ClearAll();
 
-                    }
                 }
             }
         }
@@ -148,7 +169,7 @@ namespace GuestBookingSystem.Presentation
         private void MakeBookingForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            currentState = "New Customer";
+            currentState = "Existing Customer";
             UpdateControlVisibility();
         }
 

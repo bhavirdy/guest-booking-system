@@ -106,9 +106,14 @@ namespace GuestBookingSystem.Presentation
                 MessageBox.Show("Customer entered!");
                 customerController.DataMaintanence(customer, Data.DB.DBOperation.Add);
                 customerController.FinalizeChanges(customer);
-                ClearAll();
+                
             }
+            
+            MakeBookingForm makeBookingForm = new MakeBookingForm(txtCustID.Text);
+            makeBookingForm.MdiParent = this.MdiParent;
             this.Close();
+            makeBookingForm.Show();
+            ClearAll();
         }
 
         private void CreateCustomerForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -118,7 +118,7 @@ namespace GuestBookingSystem.Business
 
         #region methods
 
-        private void setPricePerNight()
+        public void setPricePerNight()
         {
             //determine pricePerNight -- does not take into account if a booking is partially in multiple different seasons eg: in both low and mid season
             if (arriveDate >= highSeasonStartDate && arriveDate <= highSeasonEndDate)
@@ -135,7 +135,7 @@ namespace GuestBookingSystem.Business
             }
         }
 
-        private void setTotalPrice()
+        public void setTotalPrice()
         {
             //determine totalPrice -- does not take into account if a booking is partially in multiple different seasons eg: in both low and mid season
             TimeSpan stayDuration = leaveDate - arriveDate;
@@ -151,7 +151,7 @@ namespace GuestBookingSystem.Business
 
         }
 
-        private void setDeposit()
+        public void setDeposit()
         {
             //determine deposit
             deposit = 0.1 * totalPrice;

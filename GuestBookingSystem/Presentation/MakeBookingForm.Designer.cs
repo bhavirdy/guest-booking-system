@@ -184,7 +184,7 @@
             // rBtnExistingCustomer
             // 
             this.rBtnExistingCustomer.AutoSize = true;
-            this.rBtnExistingCustomer.Location = new System.Drawing.Point(267, 72);
+            this.rBtnExistingCustomer.Location = new System.Drawing.Point(134, 95);
             this.rBtnExistingCustomer.Name = "rBtnExistingCustomer";
             this.rBtnExistingCustomer.Size = new System.Drawing.Size(108, 17);
             this.rBtnExistingCustomer.TabIndex = 42;
@@ -196,7 +196,7 @@
             // rBtnNewCustomer
             // 
             this.rBtnNewCustomer.AutoSize = true;
-            this.rBtnNewCustomer.Location = new System.Drawing.Point(106, 72);
+            this.rBtnNewCustomer.Location = new System.Drawing.Point(281, 95);
             this.rBtnNewCustomer.Name = "rBtnNewCustomer";
             this.rBtnNewCustomer.Size = new System.Drawing.Size(94, 17);
             this.rBtnNewCustomer.TabIndex = 43;
