@@ -40,67 +40,76 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTotalOut
             // 
             this.lblTotalOut.AutoSize = true;
-            this.lblTotalOut.Location = new System.Drawing.Point(196, 277);
+            this.lblTotalOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalOut.Location = new System.Drawing.Point(209, 277);
             this.lblTotalOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalOut.Name = "lblTotalOut";
-            this.lblTotalOut.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalOut.Size = new System.Drawing.Size(0, 16);
             this.lblTotalOut.TabIndex = 50;
             // 
             // lblDepartureDateOut
             // 
             this.lblDepartureDateOut.AutoSize = true;
-            this.lblDepartureDateOut.Location = new System.Drawing.Point(193, 231);
+            this.lblDepartureDateOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartureDateOut.Location = new System.Drawing.Point(206, 231);
             this.lblDepartureDateOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDepartureDateOut.Name = "lblDepartureDateOut";
-            this.lblDepartureDateOut.Size = new System.Drawing.Size(35, 13);
+            this.lblDepartureDateOut.Size = new System.Drawing.Size(50, 16);
             this.lblDepartureDateOut.TabIndex = 49;
             this.lblDepartureDateOut.Text = "label7";
             // 
             // lblArrivalDateOut
             // 
             this.lblArrivalDateOut.AutoSize = true;
-            this.lblArrivalDateOut.Location = new System.Drawing.Point(193, 190);
+            this.lblArrivalDateOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArrivalDateOut.Location = new System.Drawing.Point(206, 190);
             this.lblArrivalDateOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblArrivalDateOut.Name = "lblArrivalDateOut";
-            this.lblArrivalDateOut.Size = new System.Drawing.Size(35, 13);
+            this.lblArrivalDateOut.Size = new System.Drawing.Size(50, 16);
             this.lblArrivalDateOut.TabIndex = 48;
             this.lblArrivalDateOut.Text = "label7";
             // 
             // lblCustNameOut
             // 
             this.lblCustNameOut.AutoSize = true;
-            this.lblCustNameOut.Location = new System.Drawing.Point(191, 148);
+            this.lblCustNameOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustNameOut.Location = new System.Drawing.Point(204, 148);
             this.lblCustNameOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustNameOut.Name = "lblCustNameOut";
-            this.lblCustNameOut.Size = new System.Drawing.Size(35, 13);
+            this.lblCustNameOut.Size = new System.Drawing.Size(50, 16);
             this.lblCustNameOut.TabIndex = 47;
             this.lblCustNameOut.Text = "label7";
             // 
             // lblRefNumOut
             // 
             this.lblRefNumOut.AutoSize = true;
-            this.lblRefNumOut.Location = new System.Drawing.Point(191, 102);
+            this.lblRefNumOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRefNumOut.Location = new System.Drawing.Point(204, 102);
             this.lblRefNumOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRefNumOut.Name = "lblRefNumOut";
-            this.lblRefNumOut.Size = new System.Drawing.Size(25, 13);
+            this.lblRefNumOut.Size = new System.Drawing.Size(34, 16);
             this.lblRefNumOut.TabIndex = 46;
             this.lblRefNumOut.Text = "Null";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(356, 367);
+            this.button1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.button1.Location = new System.Drawing.Point(385, 320);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 26);
             this.button1.TabIndex = 45;
             this.button1.Text = "Proceed";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label6
             // 
@@ -166,18 +175,28 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(27, 26);
+            this.label1.Location = new System.Drawing.Point(91, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(345, 44);
             this.label1.TabIndex = 39;
             this.label1.Text = "Confirmation Letter";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GuestBookingSystem.Properties.Resources.Capture;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(49, 44);
+            this.pictureBox1.TabIndex = 51;
+            this.pictureBox1.TabStop = false;
+            // 
             // ConfirmationLetter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(491, 357);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblTotalOut);
             this.Controls.Add(this.lblDepartureDateOut);
             this.Controls.Add(this.lblArrivalDateOut);
@@ -193,6 +212,7 @@
             this.Name = "ConfirmationLetter";
             this.Text = "ConfirmationLetter";
             this.Load += new System.EventHandler(this.ConfirmationLetter_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +232,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
