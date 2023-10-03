@@ -177,6 +177,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="HotelBookingDatabaseDataSet.xsc">
       <DependentUpon>HotelBookingDatabaseDataSet.xsd</DependentUpon>
@@ -210,6 +211,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>HotelBookingDatabase.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Capture.PNG" />
+    <None Include="Resources\thumbnail_image0011.png" />
+    <None Include="Resources\thumbnail_image001.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
