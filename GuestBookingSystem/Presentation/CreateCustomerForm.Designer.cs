@@ -45,11 +45,13 @@
             this.lblPostalCode = new System.Windows.Forms.Label();
             this.txtStreetA = new System.Windows.Forms.TextBox();
             this.lblStreetAdress = new System.Windows.Forms.Label();
-            this.txtProvince = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHeadingCreateCustomer
@@ -57,7 +59,7 @@
             this.lblHeadingCreateCustomer.AutoSize = true;
             this.lblHeadingCreateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeadingCreateCustomer.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblHeadingCreateCustomer.Location = new System.Drawing.Point(32, 9);
+            this.lblHeadingCreateCustomer.Location = new System.Drawing.Point(100, 15);
             this.lblHeadingCreateCustomer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHeadingCreateCustomer.Name = "lblHeadingCreateCustomer";
             this.lblHeadingCreateCustomer.Size = new System.Drawing.Size(340, 44);
@@ -243,14 +245,6 @@
             this.lblStreetAdress.TabIndex = 16;
             this.lblStreetAdress.Text = "Street Address";
             // 
-            // txtProvince
-            // 
-            this.txtProvince.Location = new System.Drawing.Point(218, 331);
-            this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProvince.Name = "txtProvince";
-            this.txtProvince.Size = new System.Drawing.Size(251, 20);
-            this.txtProvince.TabIndex = 14;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(218, 210);
@@ -283,11 +277,29 @@
             this.txtName.Size = new System.Drawing.Size(251, 20);
             this.txtName.TabIndex = 31;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GuestBookingSystem.Properties.Resources.Capture;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtProvince
+            // 
+            this.txtProvince.Location = new System.Drawing.Point(218, 331);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(251, 20);
+            this.txtProvince.TabIndex = 14;
+            // 
             // CreateCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 453);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtCustID);
             this.Controls.Add(this.lblCustID);
             this.Controls.Add(this.txtTownOrCity);
@@ -315,6 +327,7 @@
             this.Text = "CreateCustomerForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateCustomerForm_FormClosed);
             this.Load += new System.EventHandler(this.CreateCustomerForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,12 +353,13 @@
         private System.Windows.Forms.Label lblPostalCode;
         private System.Windows.Forms.TextBox txtStreetA;
         private System.Windows.Forms.Label lblStreetAdress;
-        private System.Windows.Forms.TextBox txtProvince;
 
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhoneNum;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtProvince;
         //private System.Windows.Forms.Label lblCountry;
         //private System.Windows.Forms.Label lblEmail;
         //private System.Windows.Forms.Label lblPhoneNumber;
