@@ -24,7 +24,8 @@ namespace GuestBookingSystem.Presentation
         private CustomerController customerController;
         private FormStates state;
         private Customer customer;
-        
+
+        string[] numbersCheck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         public enum FormStates
         {
             View = 0,
@@ -177,23 +178,103 @@ namespace GuestBookingSystem.Presentation
             txtPostalCode.Text = customerTemp.PostalCode;
         }
 
+
+        //method for input integrity 
+        private bool checkNumbers(String value)
+        {
+
+            bool check = false;
+            for (int i = 0; i <= value.Length; i++)
+            {
+                string temp = value.Substring(i, i + 1);
+
+                for (int j = 0; j < numbersCheck.Length; j++)
+                {
+                    if (!temp.Equals(numbersCheck[j]))
+                    {
+                        check = true;
+
+
+                    }
+                }
+            }
+
+            return check;
+
+
+        }
+
+        //method for input integrity
+        private bool checkLetters(String value)
+        {
+            bool check = false;
+            for (int i = 0; i <= value.Length; i++)
+            {
+                string temp = value.Substring(i, i + 1);
+
+                for (int j = 0; j < numbersCheck.Length; j++)
+                {
+                    if (temp.Equals(numbersCheck[j]))
+                    {
+                        check = true;
+
+
+                    }
+                }
+            }
+
+            return check;
+
+        }
+
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            PopulateObject();
+            bool checkPhone = checkNumbers(txtPhone.Text);
+            bool checkPostal = checkNumbers(txtPostalCode.Text);
 
-            if (state == FormStates.Edit)
+            bool checkCity = checkLetters(txtTownOrCity.Text);
+            bool checkProvince = checkLetters(txtProvince.Text);
+            if (txtTownOrCity.Text.Equals("") || txtProvince.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhone.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetAddress.Text.Equals("") || txtSurname.Text.Equals(""))
             {
-                customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
+                MessageBox.Show("Please fill ensure all the fields are filled");
+
+
+
+            }
+            else if (txtPostalCode.TextLength != 4 || checkPostal == true)
+            {
+                MessageBox.Show("Please enter a valid postal code");
+            }
+            else
+            if (checkPhone == true || txtPhone.TextLength != 10)
+            {
+                MessageBox.Show("Please enter a valid phone number");
+
+            }
+            else if (checkCity == true || checkProvince == true)
+            {
+                MessageBox.Show("Please enter a valid province or city");
             }
             else
             {
-                customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
-            }
 
-            customerController.FinalizeChanges(customer);
-            ClearAll();
-            state = FormStates.View;
-            setUpCustomerListView();
+                PopulateObject();
+
+                if (state == FormStates.Edit)
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
+                }
+                else
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
+                }
+
+                customerController.FinalizeChanges(customer);
+                ClearAll();
+                state = FormStates.View;
+                setUpCustomerListView();
+            }
 
         }
 
