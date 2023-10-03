@@ -18,7 +18,9 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class CustomerListingForm : Form
     {
-        
+
+        #region Data Members
+
         private bool isOpen = false;
         private Collection<Customer> customers;
         private CustomerController customerController;
@@ -34,11 +36,19 @@ namespace GuestBookingSystem.Presentation
             Delete = 3
         }
 
+        #endregion
+
+        #region Property Methods
+
         public bool IsOpen
         {
             get { return isOpen; }
         }
-        
+
+        #endregion
+
+        #region Constructor
+
         public CustomerListingForm(CustomerController customerControllerTemp)
         {
             InitializeComponent();
@@ -49,6 +59,8 @@ namespace GuestBookingSystem.Presentation
             this.FormClosed += CustomerListingForm_FormClosed;
             state = FormStates.View;
         }
+
+        #endregion 
 
         private void CustomerListingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -67,6 +79,8 @@ namespace GuestBookingSystem.Presentation
             customerListView.View = View.Details;
             this.WindowState = FormWindowState.Maximized;
         }
+
+        #region Utility Methods
 
         private void setUpCustomerListView()
         {
@@ -102,18 +116,6 @@ namespace GuestBookingSystem.Presentation
             customerListView.Refresh();
             customerListView.GridLines = true;
 
-        }
-
-        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowAll(true);
-            state = FormStates.View;
-            EnableEntries(false);
-            if (customerListView.SelectedItems.Count > 0)
-            {
-                customer = customerController.Find(customerListView.SelectedItems[0].Text);
-                PopulateTextBoxes(customer);
-            }
         }
 
         private void EnableEntries(bool value)
@@ -178,6 +180,39 @@ namespace GuestBookingSystem.Presentation
             txtPostalCode.Text = customerTemp.PostalCode;
         }
 
+        private void PopulateObject()
+        {
+            customer = new Customer();
+            customer.CustID = txtCustomerID.Text;
+            customer.Name = txtName.Text;
+            customer.Surname = txtSurname.Text;
+            customer.Email = txtEmail.Text;
+            customer.StreetAddress = txtStreetAddress.Text;
+            customer.TownOrCity = txtTownOrCity.Text;
+            customer.Province = txtProvince.Text;
+            customer.PostalCode = txtPostalCode.Text;
+            customer.Phone = txtPhone.Text;
+        }
+
+
+        #endregion 
+
+        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowAll(true);
+            state = FormStates.View;
+            EnableEntries(false);
+            if (customerListView.SelectedItems.Count > 0)
+            {
+                customer = customerController.Find(customerListView.SelectedItems[0].Text);
+                PopulateTextBoxes(customer);
+            }
+
+
+        }
+
+        #region Integrity helper methods
+
 
         //method for input integrity 
         private bool checkNumbers(String value)
@@ -227,6 +262,7 @@ namespace GuestBookingSystem.Presentation
 
         }
 
+        #endregion 
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -278,19 +314,7 @@ namespace GuestBookingSystem.Presentation
 
         }
 
-        private void PopulateObject()
-        {
-            customer = new Customer();
-            customer.CustID = txtCustomerID.Text;
-            customer.Name = txtName.Text;
-            customer.Surname = txtSurname.Text;
-            customer.Email = txtEmail.Text;
-            customer.StreetAddress = txtStreetAddress.Text;
-            customer.TownOrCity = txtTownOrCity.Text;
-            customer.Province = txtProvince.Text;
-            customer.PostalCode = txtPostalCode.Text;
-            customer.Phone = txtPhone.Text;
-        }
+        
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -306,8 +330,10 @@ namespace GuestBookingSystem.Presentation
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            
             EnableEntries(false);
             ClearAll();
+            this.Close();
         }
     }
 }
