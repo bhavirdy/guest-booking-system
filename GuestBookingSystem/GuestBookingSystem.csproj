@@ -122,6 +122,18 @@
     <Compile Include="Presentation\CustomerListingForm.Designer.cs">
       <DependentUpon>CustomerListingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\LocationReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\LocationReport.Designer.cs">
+      <DependentUpon>LocationReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OccupancyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\OccupancyReport.Designer.cs">
+      <DependentUpon>OccupancyReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\BookingListingForm.resx">
+      <DependentUpon>BookingListingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CheckAvailability.resx">
       <DependentUpon>CheckAvailability.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CustomerListingForm.resx">
       <DependentUpon>CustomerListingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\LocationReport.resx">
+      <DependentUpon>LocationReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MakeBookingForm.resx">
       <DependentUpon>MakeBookingForm.cs</DependentUpon>
