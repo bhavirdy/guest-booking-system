@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GuestBookingSystem.Presentation
 {
-    public partial class BookingListingForm : Form
+    public partial class LocationReport : Form
     {
-        public BookingListingForm()
+        public LocationReport()
         {
             InitializeComponent();
-        }
-
-        private void BookingListingForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

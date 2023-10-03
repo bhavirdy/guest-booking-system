@@ -42,11 +42,13 @@
             this.dateTimePickerArrival = new System.Windows.Forms.DateTimePicker();
             this.rBtnExistingCustomer = new System.Windows.Forms.RadioButton();
             this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button3.Location = new System.Drawing.Point(221, 398);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
@@ -84,7 +86,7 @@
             this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeading.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblHeading.Location = new System.Drawing.Point(50, 9);
+            this.lblHeading.Location = new System.Drawing.Point(115, 22);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHeading.Name = "lblHeading";
             this.lblHeading.Size = new System.Drawing.Size(290, 44);
@@ -114,7 +116,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnCancel.Location = new System.Drawing.Point(49, 398);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
@@ -127,12 +129,12 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnSubmit.Location = new System.Drawing.Point(394, 398);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(67, 32);
+            this.btnSubmit.Size = new System.Drawing.Size(79, 32);
             this.btnSubmit.TabIndex = 26;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -205,11 +207,21 @@
             this.rBtnNewCustomer.UseVisualStyleBackColor = true;
             this.rBtnNewCustomer.CheckedChanged += new System.EventHandler(this.rBtnNewCustomer_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GuestBookingSystem.Properties.Resources.Capture;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(51, 44);
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            // 
             // MakeBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 470);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rBtnNewCustomer);
             this.Controls.Add(this.rBtnExistingCustomer);
             this.Controls.Add(this.button3);
@@ -229,6 +241,7 @@
             this.Text = "MakeBookingForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MakeBookingForm_FormClosed);
             this.Load += new System.EventHandler(this.MakeBookingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +262,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerArrival;
         private System.Windows.Forms.RadioButton rBtnExistingCustomer;
         private System.Windows.Forms.RadioButton rBtnNewCustomer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

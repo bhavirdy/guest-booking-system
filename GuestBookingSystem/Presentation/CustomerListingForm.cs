@@ -18,13 +18,16 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class CustomerListingForm : Form
     {
-        
+
+        #region Data Members
+
         private bool isOpen = false;
         private Collection<Customer> customers;
         private CustomerController customerController;
         private FormStates state;
         private Customer customer;
-        
+
+        string[] numbersCheck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         public enum FormStates
         {
             View = 0,
@@ -33,11 +36,19 @@ namespace GuestBookingSystem.Presentation
             Delete = 3
         }
 
+        #endregion
+
+        #region Property Methods
+
         public bool IsOpen
         {
             get { return isOpen; }
         }
-        
+
+        #endregion
+
+        #region Constructor
+
         public CustomerListingForm(CustomerController customerControllerTemp)
         {
             InitializeComponent();
@@ -48,6 +59,8 @@ namespace GuestBookingSystem.Presentation
             this.FormClosed += CustomerListingForm_FormClosed;
             state = FormStates.View;
         }
+
+        #endregion 
 
         private void CustomerListingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -66,6 +79,8 @@ namespace GuestBookingSystem.Presentation
             customerListView.View = View.Details;
             this.WindowState = FormWindowState.Maximized;
         }
+
+        #region Utility Methods
 
         private void setUpCustomerListView()
         {
@@ -101,18 +116,6 @@ namespace GuestBookingSystem.Presentation
             customerListView.Refresh();
             customerListView.GridLines = true;
 
-        }
-
-        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowAll(true);
-            state = FormStates.View;
-            EnableEntries(false);
-            if (customerListView.SelectedItems.Count > 0)
-            {
-                customer = customerController.Find(customerListView.SelectedItems[0].Text);
-                PopulateTextBoxes(customer);
-            }
         }
 
         private void EnableEntries(bool value)
@@ -177,26 +180,6 @@ namespace GuestBookingSystem.Presentation
             txtPostalCode.Text = customerTemp.PostalCode;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            PopulateObject();
-
-            if (state == FormStates.Edit)
-            {
-                customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
-            }
-            else
-            {
-                customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
-            }
-
-            customerController.FinalizeChanges(customer);
-            ClearAll();
-            state = FormStates.View;
-            setUpCustomerListView();
-
-        }
-
         private void PopulateObject()
         {
             customer = new Customer();
@@ -210,6 +193,128 @@ namespace GuestBookingSystem.Presentation
             customer.PostalCode = txtPostalCode.Text;
             customer.Phone = txtPhone.Text;
         }
+
+
+        #endregion 
+
+        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowAll(true);
+            state = FormStates.View;
+            EnableEntries(false);
+            if (customerListView.SelectedItems.Count > 0)
+            {
+                customer = customerController.Find(customerListView.SelectedItems[0].Text);
+                PopulateTextBoxes(customer);
+            }
+
+
+        }
+
+        #region Integrity helper methods
+
+
+        //method for input integrity 
+        private bool checkNumbers(String value)
+        {
+
+            bool check = false;
+            for (int i = 0; i <= value.Length; i++)
+            {
+                string temp = value.Substring(i, i + 1);
+
+                for (int j = 0; j < numbersCheck.Length; j++)
+                {
+                    if (!temp.Equals(numbersCheck[j]))
+                    {
+                        check = true;
+
+
+                    }
+                }
+            }
+
+            return check;
+
+
+        }
+
+        //method for input integrity
+        private bool checkLetters(String value)
+        {
+            bool check = false;
+            for (int i = 0; i <= value.Length; i++)
+            {
+                string temp = value.Substring(i, i + 1);
+
+                for (int j = 0; j < numbersCheck.Length; j++)
+                {
+                    if (temp.Equals(numbersCheck[j]))
+                    {
+                        check = true;
+
+
+                    }
+                }
+            }
+
+            return check;
+
+        }
+
+        #endregion 
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            bool checkPhone = checkNumbers(txtPhone.Text);
+            bool checkPostal = checkNumbers(txtPostalCode.Text);
+
+            bool checkCity = checkLetters(txtTownOrCity.Text);
+            bool checkProvince = checkLetters(txtProvince.Text);
+            if (txtTownOrCity.Text.Equals("") || txtProvince.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhone.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetAddress.Text.Equals("") || txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill ensure all the fields are filled");
+
+
+
+            }
+            else if (txtPostalCode.TextLength != 4 || checkPostal == true)
+            {
+                MessageBox.Show("Please enter a valid postal code");
+            }
+            else
+            if (checkPhone == true || txtPhone.TextLength != 10)
+            {
+                MessageBox.Show("Please enter a valid phone number");
+
+            }
+            else if (checkCity == true || checkProvince == true)
+            {
+                MessageBox.Show("Please enter a valid province or city");
+            }
+            else
+            {
+
+                PopulateObject();
+
+                if (state == FormStates.Edit)
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
+                }
+                else
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
+                }
+
+                customerController.FinalizeChanges(customer);
+                ClearAll();
+                state = FormStates.View;
+                setUpCustomerListView();
+            }
+
+        }
+
+        
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -225,8 +330,10 @@ namespace GuestBookingSystem.Presentation
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            
             EnableEntries(false);
             ClearAll();
+            this.Close();
         }
     }
 }

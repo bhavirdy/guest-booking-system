@@ -24,6 +24,7 @@ namespace GuestBookingSystem.Presentation
         private BookingController bookingController = new BookingController();
 
         private bool isOpen = false;
+        string[] numbersCheck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         private string currentState = "Existing Customer";
 
         #endregion
@@ -64,7 +65,13 @@ namespace GuestBookingSystem.Presentation
 
         #region Utility Methods
 
+        private string generateRef()
+        {
+            string custStart = txtCustID.ToString().Substring(0, 3);
+            string cardNum = txtCardNum.ToString().Substring(0, 2);
 
+            return custStart + cardNum;
+        }
         private void PopulateObject()
         {
             booking.BookingID = bookingController.getUniqueBookingID();
@@ -116,9 +123,35 @@ namespace GuestBookingSystem.Presentation
             }
         }
 
+        private bool checkNumbers(String value)
+        {
+
+            bool check = false;
+            for (int i = 0; i <= value.Length; i++)
+            {
+                string temp = value.Substring(i, i + 1);
+
+                for (int j = 0; j < numbersCheck.Length; j++)
+                {
+                    if (!temp.Equals(numbersCheck[j]))
+                    {
+                        check = true;
+
+
+                    }
+                }
+            }
+
+            return check;
+
+
+        }
+
         #endregion
 
         #region Form Events
+
+
 
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -133,8 +166,10 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            bool checkCard = checkNumbers(txtCardNum.Text);
             if (currentState == "New Customer")
             {
+
                 //open create customer form
                 this.Close();
                 CustomerController customerController = new CustomerController();
@@ -153,6 +188,12 @@ namespace GuestBookingSystem.Presentation
                 {
                     MessageBox.Show("Cannot choose a departure date that is before the arrival date");
                 }
+
+                else
+                if (txtCardNum.Text.Equals("") || checkCard == true)
+                {
+                    MessageBox.Show("Please enter a valid Card Number");
+                }
                 else
                 {
                     //add booking to DB
@@ -160,6 +201,10 @@ namespace GuestBookingSystem.Presentation
                     bookingController.DataMaintanence(booking, Data.DB.DBOperation.Add);
                     bookingController.FinalizeChanges(booking);
                     MessageBox.Show("Booking entered!");
+                    string referenceNum = generateRef();
+                    ConfirmationLetter cl = new ConfirmationLetter(referenceNum, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
+                    cl.Show();
+                    this.Close();
                     ClearAll();
 
                 }
