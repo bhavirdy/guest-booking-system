@@ -40,7 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCustomerID = new System.Windows.Forms.Label();
             this.lblBookingID = new System.Windows.Forms.Label();
-            this.customerListView = new System.Windows.Forms.ListView();
+            this.bookingListView = new System.Windows.Forms.ListView();
             this.label11 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -61,6 +61,7 @@
             this.btnSubmit.TabIndex = 58;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -73,6 +74,7 @@
             this.btnCancel.TabIndex = 57;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtCardNumber
             // 
@@ -113,6 +115,7 @@
             this.txtBookingID.Location = new System.Drawing.Point(387, 390);
             this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
             this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.ReadOnly = true;
             this.txtBookingID.Size = new System.Drawing.Size(151, 20);
             this.txtBookingID.TabIndex = 52;
             // 
@@ -176,14 +179,15 @@
             this.lblBookingID.TabIndex = 47;
             this.lblBookingID.Text = "BookingID";
             // 
-            // customerListView
+            // bookingListView
             // 
-            this.customerListView.HideSelection = false;
-            this.customerListView.Location = new System.Drawing.Point(28, 109);
-            this.customerListView.Name = "customerListView";
-            this.customerListView.Size = new System.Drawing.Size(790, 261);
-            this.customerListView.TabIndex = 46;
-            this.customerListView.UseCompatibleStateImageBehavior = false;
+            this.bookingListView.HideSelection = false;
+            this.bookingListView.Location = new System.Drawing.Point(28, 109);
+            this.bookingListView.Name = "bookingListView";
+            this.bookingListView.Size = new System.Drawing.Size(790, 261);
+            this.bookingListView.TabIndex = 46;
+            this.bookingListView.UseCompatibleStateImageBehavior = false;
+            this.bookingListView.SelectedIndexChanged += new System.EventHandler(this.bookingListView_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -206,6 +210,7 @@
             this.btnEdit.TabIndex = 44;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -217,6 +222,7 @@
             this.btnDelete.TabIndex = 43;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblBookings
             // 
@@ -268,13 +274,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCustomerID);
             this.Controls.Add(this.lblBookingID);
-            this.Controls.Add(this.customerListView);
+            this.Controls.Add(this.bookingListView);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblBookings);
             this.Name = "BookingListingForm";
             this.Text = "BookingListingForm";
+            this.Activated += new System.EventHandler(this.BookingListingForm_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BookingListingForm_FormClosed);
             this.Load += new System.EventHandler(this.BookingListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -296,7 +304,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCustomerID;
         private System.Windows.Forms.Label lblBookingID;
-        private System.Windows.Forms.ListView customerListView;
+        private System.Windows.Forms.ListView bookingListView;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
