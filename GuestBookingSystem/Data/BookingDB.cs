@@ -67,9 +67,6 @@ namespace GuestBookingSystem.Data
                     bookTemp.RoomNumber = Convert.ToString(myRow["RoomID"]).TrimEnd();
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
                     bookTemp.LeaveDate = Convert.ToDateTime(myRow["LeaveDate"]);
-                    //bookTemp.Deposit = Convert.ToDouble(myRow["Deposit"]);
-                    //bookTemp.TotalPrice = Convert.ToDouble(myRow["TotalPrice"]);
-                    //bookTemp.PricePerNight = Convert.ToDouble(myRow["PricePerNight"]);
                 }
                 bookings.Add(bookTemp);
             }
@@ -89,7 +86,31 @@ namespace GuestBookingSystem.Data
             rowTemp["Deposit"] = bookTemp.Deposit;
             rowTemp["TotalPrice"] = bookTemp.TotalPrice;
             rowTemp["PricePerNight"] = bookTemp.PricePerNight;
+        }
 
+        private int FindRow(Booking bookingTemp, string table)
+        {
+            int rowIndex = 0;
+            DataRow myRow;
+            int returnValue = -1;
+
+            foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
+            {
+                myRow = myRow_loopVariable;
+
+                // ignore deleted rows
+                if (myRow.RowState != DataRowState.Deleted)
+                {
+                    if (bookingTemp.BookingID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["BookingID"]))
+                    {
+                        returnValue = rowIndex;
+                        break;
+                    }
+                }
+
+                rowIndex++;
+            }
+            return returnValue;
         }
         #endregion
 
@@ -110,13 +131,13 @@ namespace GuestBookingSystem.Data
 
                 // For the Edit section you have to find a row instead of creating a new row.
                 case DB.DBOperation.Edit:
-                    //rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
-                    //FillRow(rowTemp, bookingTemp, operation);
+                    rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
+                    FillRow(rowTemp, bookingTemp, operation);
                     break;
 
                 case DB.DBOperation.Delete:
-                    //rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
-                    //dsMain.Tables[dataTable].Rows.Remove(rowTemp);
+                    rowTemp = dsMain.Tables[dataTable].Rows[FindRow(bookingTemp, dataTable)];
+                    dsMain.Tables[dataTable].Rows.Remove(rowTemp);
                     break;
             }
         }
@@ -146,6 +167,61 @@ namespace GuestBookingSystem.Data
         {
             daMain.InsertCommand = new SqlCommand("INSERT into Booking (BookingID, CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice) VALUES (@BookingID, @CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice)", cnMain);
             BUILD_INSERT_Parameters(bTemp);
+        }
+        private void BUILD_UPDATE_Parameters(Booking bookingTemp)
+        {
+            SqlParameter param = default(SqlParameter);
+
+            param = new SqlParameter("@Original_ID", SqlDbType.VarChar, 50, "BookingID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 50, "ArriveDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 50, "LeaveDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomID", SqlDbType.VarChar, 50, "RoomID");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Money, 50, "Deposit");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@PricePerNight", SqlDbType.Money, 50, "PricePerNight");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 50, "TotalPrice");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+        }
+
+        private void CREATE_UPDATE_Command(Booking bookingTemp)
+        {
+            daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET CustomerID = @CustomerID, ArriveDate = @ArriveDate, LeaveDate = @LeaveDate, RoomID = @RoomID, Deposit = @Deposit, PricePerNight = @PricePerNight, TotalPrice = @TotalPrice " + "WHERE BookingID = @Original_ID", cnMain);
+            BUILD_UPDATE_Parameters(bookingTemp);
+        }
+
+        private void BUILD_DELETE_Parameters(Booking bookingTemp)
+        {
+            SqlParameter param = new SqlParameter("@BookingID", SqlDbType.VarChar, 50, "BookingID");
+            param.SourceVersion = DataRowVersion.Original; // Use Original version for DELETE
+            daMain.DeleteCommand.Parameters.Add(param);
+        }
+
+        private void CREATE_DELETE_Command(Booking bookingTemp)
+        {
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Booking WHERE BookingID = @BookingID", cnMain);
+            BUILD_DELETE_Parameters(bookingTemp);
         }
 
         public bool IsRoomAvailable(int roomID, DateTime arriveDate, DateTime leaveDate)
@@ -208,6 +284,8 @@ namespace GuestBookingSystem.Data
         {
             bool success = true;
             CREATE_INSERT_Command(bTemp);
+            CREATE_UPDATE_Command(bTemp);
+            CREATE_DELETE_Command(bTemp);
             success = UpdateDataSource(sqlSt, table);
             return success;
         }

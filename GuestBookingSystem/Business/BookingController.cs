@@ -18,9 +18,6 @@ namespace GuestBookingSystem.Business
         BookingDB bookingDB;
         Collection<Booking> bookings;
 
-        //go through rooms and find one that is not assigned
-        Collection<Room> rooms;
-
         public Collection<Booking> Bookings
         {
             get { return bookings; }
@@ -91,20 +88,23 @@ namespace GuestBookingSystem.Business
 
         public int FindIndex(Booking bookTemp)
         {
-            int counter = 0;
+            int count = 0;
             bool found = false;
-            found = (bookTemp.BookingID == bookings[counter].BookingID);
-            while (found == false && counter < bookings.Count)
-            while(found == false && counter < bookings.Count)
 
+            while (count < bookings.Count)
             {
-                found = (bookTemp.BookingID == bookings[counter].BookingID);
+                if (bookTemp.BookingID == bookings[count].BookingID)
+                {
+                    found = true;
+                    break; // Exit the loop if a match is found
+                }
 
+                count++;
             }
 
             if (found)
             {
-                return counter;
+                return count;
             }
             else
             {

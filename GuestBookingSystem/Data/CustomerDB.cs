@@ -221,7 +221,7 @@ namespace GuestBookingSystem.Data
 
         private void CREATE_UPDATE_Command(Customer custTemp)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Customer SET Name = @Name, Surname = @Surname, Email = @Email, StreetAddress = @StreetAddress " + "WHERE CustomerID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Customer SET Name = @Name, Surname = @Surname, Email = @Email, StreetAddress = @StreetAddress, TownOrCity = @TownOrCity, PostalCode = @PostalCode, Province = @Province, Phone = @Phone " + "WHERE CustomerID = @Original_ID", cnMain);
             BUILD_UPDATE_Parameters(custTemp);
         }
 
