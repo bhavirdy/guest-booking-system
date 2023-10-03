@@ -104,6 +104,12 @@
     <Compile Include="Presentation\CheckAvailability.Designer.cs">
       <DependentUpon>CheckAvailability.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ConfirmationLetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ConfirmationLetter.Designer.cs">
+      <DependentUpon>ConfirmationLetter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\CreateCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentation\CheckAvailability.resx">
       <DependentUpon>CheckAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\ConfirmationLetter.resx">
+      <DependentUpon>ConfirmationLetter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\CreateCustomerForm.resx">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
