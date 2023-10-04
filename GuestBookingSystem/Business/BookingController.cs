@@ -13,29 +13,29 @@ namespace GuestBookingSystem.Business
 {
     public class BookingController
     {
-
         #region Data Members
+
         BookingDB bookingDB;
         Collection<Booking> bookings;
 
+        #endregion
+
+        #region Property Members
         public Collection<Booking> Bookings
         {
             get { return bookings; }
         }
-
         #endregion
 
         #region Constructor
-
         public BookingController()
         {
             bookingDB = new BookingDB();
             bookings = bookingDB.AllBookings;
         }
-
         #endregion
-        #region Databse Communication
 
+        #region Database Communication
         public void DataMaintanence(Booking bookingTemp, DB.DBOperation operation)
         {
             int index = 0;
@@ -64,7 +64,15 @@ namespace GuestBookingSystem.Business
         {
             return bookingDB.UpdateDataSource(bookingTemp);
         }
+        public String getUniqueBookingID()
+        {
+            return bookingDB.GenerateUniqueBookingID();
+        }
 
+        public String getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
+        {
+            return bookingDB.FindFirstAvailableRoom(arriveDate, leaveDate);
+        }
         #endregion
 
         #region Search Methods
@@ -128,17 +136,6 @@ namespace GuestBookingSystem.Business
             return count;
         }
 
-        #endregion 
-
-        public String getUniqueBookingID ()
-        {
-            return bookingDB.GenerateUniqueBookingID();
-        }
-
-        public String getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
-        {
-            return bookingDB.FindFirstAvailableRoom(arriveDate, leaveDate);
-        }
-
+        #endregion
     }
 }
