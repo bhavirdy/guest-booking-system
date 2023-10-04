@@ -45,12 +45,11 @@ namespace GuestBookingSystem.Data
 
         #endregion
 
+        #region Utility Methods
         public DataSet GetDataSet()
         {
             return dsMain;
         }
-
-        #region Utility Methods
         private void Add2Collection(String tableTemp)
         {
             DataRow myRow = null;
