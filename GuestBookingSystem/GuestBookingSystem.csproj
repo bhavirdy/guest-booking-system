@@ -184,6 +184,9 @@
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\OccupancyReport.resx">
+      <DependentUpon>OccupancyReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ViewTables.resx">
       <DependentUpon>ViewTables.cs</DependentUpon>
     </EmbeddedResource>

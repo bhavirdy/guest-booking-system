@@ -112,6 +112,22 @@ namespace GuestBookingSystem.Business
             }
         }
 
+        //method for occupancy report to count the number of bookings for specified dates
+        public int bookingCount(DateTime first, DateTime second)
+        {
+
+            int count = 0;
+            int index = 0;
+            while (index < bookings.Count)
+            {
+                if ((bookings[index].LeaveDate <= second) && (bookings[index].ArriveDate >= first))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
+
         #endregion 
 
         public String getUniqueBookingID ()
