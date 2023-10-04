@@ -32,7 +32,9 @@ namespace GuestBookingSystem.Presentation
         private void btnProceed_Click(object sender, EventArgs e)
         {
             this.Close();
-            MakeBookingForm makeBookingForm = new MakeBookingForm();
+
+            //moves the dates and sets them on the booking form 
+            MakeBookingForm makeBookingForm = new MakeBookingForm(dateTimePicker1.Value, dateTimePicker2.Value);
             makeBookingForm.MdiParent = this.MdiParent;
             makeBookingForm.Show();
         }

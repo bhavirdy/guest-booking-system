@@ -55,6 +55,16 @@ namespace GuestBookingSystem.Presentation
             UpdateControlVisibility();
         }
 
+        public MakeBookingForm(DateTime date1, DateTime date2)
+        {
+            InitializeComponent();
+            this.isOpen = true;
+            this.dateTimePickerArrival.Value = date1;
+            this.dateTimePickerDepartureDate.Value = date2;
+            currentState = "Existing Customer";
+            UpdateControlVisibility();
+        }
+
         private void MakeBookingForm_Activated(object sender, EventArgs e)
         {
             currentState = "Existing Customer";
