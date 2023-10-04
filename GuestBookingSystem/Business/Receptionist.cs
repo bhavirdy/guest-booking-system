@@ -11,7 +11,6 @@ namespace GuestBookingSystem.Business
 
         #region Data Members
         private int recpNum;
-
         #endregion
 
         #region Property Members
