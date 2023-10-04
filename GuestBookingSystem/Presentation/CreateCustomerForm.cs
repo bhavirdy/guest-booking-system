@@ -22,6 +22,8 @@ namespace GuestBookingSystem.Presentation
         private Customer customer = new Customer();
         private CustomerController customerController;
         public bool customerFormClosed = false;
+        DateTime dateA;
+        DateTime dateD;
 
         string[] numbersCheck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -32,10 +34,12 @@ namespace GuestBookingSystem.Presentation
 
         #region Constructor
 
-        public CreateCustomerForm(CustomerController controllerTemp)
+        public CreateCustomerForm(CustomerController controllerTemp, DateTime date1, DateTime date2)
         {
             InitializeComponent();
             customerController = controllerTemp;
+            dateA = date1;
+            dateD = date2;
             isOpen = true;
         }
 
@@ -179,7 +183,7 @@ namespace GuestBookingSystem.Presentation
 
             }
 
-            MakeBookingForm makeBookingForm = new MakeBookingForm(txtCustID.Text);
+            MakeBookingForm makeBookingForm = new MakeBookingForm(txtCustID.Text, dateA, dateD);
             makeBookingForm.MdiParent = this.MdiParent;
             this.Close();
             makeBookingForm.Show();

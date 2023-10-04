@@ -46,12 +46,14 @@ namespace GuestBookingSystem.Presentation
             this.isOpen = true;
         }
 
-        public MakeBookingForm(String CustomerID)
+        public MakeBookingForm(String CustomerID, DateTime dateA, DateTime dateD)
         {
             InitializeComponent();
             this.isOpen = true;
             txtCustID.Text = CustomerID;
             currentState = "Existing Customer";
+            dateTimePickerArrival.Value = dateA;
+            dateTimePickerDepartureDate.Value = dateD;
             UpdateControlVisibility();
         }
 
@@ -183,7 +185,7 @@ namespace GuestBookingSystem.Presentation
                 //open create customer form
                 this.Close();
                 CustomerController customerController = new CustomerController();
-                CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
+                CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
                 createCustomerForm.MdiParent = this.MdiParent;
                 createCustomerForm.Show();
 
