@@ -34,6 +34,13 @@ namespace GuestBookingSystem.Presentation
         }
         #endregion
 
+        public bool IsOpen
+        {
+            get { return isOpen; }
+        }
+
+        #region Constructor
+
         public BookingListingForm(BookingController bookingControllerTemp)
         {
             InitializeComponent();
@@ -44,6 +51,7 @@ namespace GuestBookingSystem.Presentation
             this.FormClosed += BookingListingForm_FormClosed;
             state = FormStates.View;
         }
+        #endregion 
 
         #region Form events
         private void BookingListingForm_Load(object sender, EventArgs e)

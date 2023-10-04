@@ -81,7 +81,7 @@
             this.txtCardNumber.Location = new System.Drawing.Point(387, 516);
             this.txtCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtCardNumber.Name = "txtCardNumber";
-            this.txtCardNumber.Size = new System.Drawing.Size(76, 20);
+            this.txtCardNumber.Size = new System.Drawing.Size(151, 20);
             this.txtCardNumber.TabIndex = 56;
             // 
             // dateDeparture
@@ -251,7 +251,7 @@
             this.pictureBox1.Image = global::GuestBookingSystem.Properties.Resources.Capture;
             this.pictureBox1.Location = new System.Drawing.Point(28, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 51);
+            this.pictureBox1.Size = new System.Drawing.Size(55, 52);
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             // 

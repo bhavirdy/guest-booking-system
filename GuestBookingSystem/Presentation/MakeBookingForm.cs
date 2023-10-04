@@ -46,11 +46,23 @@ namespace GuestBookingSystem.Presentation
             this.isOpen = true;
         }
 
-        public MakeBookingForm(String CustomerID)
+        public MakeBookingForm(String CustomerID, DateTime dateA, DateTime dateD)
         {
             InitializeComponent();
             this.isOpen = true;
             txtCustID.Text = CustomerID;
+            currentState = "Existing Customer";
+            dateTimePickerArrival.Value = dateA;
+            dateTimePickerDepartureDate.Value = dateD;
+            UpdateControlVisibility();
+        }
+
+        public MakeBookingForm(DateTime date1, DateTime date2)
+        {
+            InitializeComponent();
+            this.isOpen = true;
+            this.dateTimePickerArrival.Value = date1;
+            this.dateTimePickerDepartureDate.Value = date2;
             currentState = "Existing Customer";
             UpdateControlVisibility();
         }
@@ -173,7 +185,7 @@ namespace GuestBookingSystem.Presentation
                 //open create customer form
                 this.Close();
                 CustomerController customerController = new CustomerController();
-                CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController);
+                CreateCustomerForm createCustomerForm = new CreateCustomerForm(customerController, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
                 createCustomerForm.MdiParent = this.MdiParent;
                 createCustomerForm.Show();
 
@@ -202,7 +214,7 @@ namespace GuestBookingSystem.Presentation
                     bookingController.FinalizeChanges(booking);
                     MessageBox.Show("Booking entered!");
                     string referenceNum = generateRef();
-                    ConfirmationLetter cl = new ConfirmationLetter(referenceNum, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
+                    ConfirmationLetter cl = new ConfirmationLetter(booking.BookingID, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);  ;
                     cl.Show();
                     this.Close();
                     ClearAll();
@@ -223,9 +235,6 @@ namespace GuestBookingSystem.Presentation
         {
             ClearAll();
         }
-
-
-        #endregion
 
         private void MakeBookingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -275,4 +284,6 @@ namespace GuestBookingSystem.Presentation
             }
         }
     }
+
+    #endregion
 }
