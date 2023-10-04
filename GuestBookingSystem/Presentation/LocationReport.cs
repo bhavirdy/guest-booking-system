@@ -16,7 +16,14 @@ namespace GuestBookingSystem.Presentation
     public partial class LocationReport : Form
     {
 
+        private bool isOpen = false;
+
         CustomerController customerC = new CustomerController();
+
+        public bool IsOpen
+        {
+            get { return isOpen; }
+        }
 
         public LocationReport()
         {
@@ -59,6 +66,11 @@ namespace GuestBookingSystem.Presentation
 
 
 
+
+        }
+
+        private void LocationReport_Load(object sender, EventArgs e)
+        {
 
         }
     }

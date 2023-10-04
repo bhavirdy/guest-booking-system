@@ -15,7 +15,15 @@ namespace GuestBookingSystem.Presentation
     public partial class OccupancyReport : Form
     {
 
+
+        private bool isOpen = false;
+
         BookingController bookingC = new BookingController();
+
+        public bool IsOpen
+        {
+            get { return isOpen; }
+        }
         public OccupancyReport()
         {
             InitializeComponent();

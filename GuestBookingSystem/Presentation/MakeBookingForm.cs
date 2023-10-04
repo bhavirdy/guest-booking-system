@@ -214,7 +214,7 @@ namespace GuestBookingSystem.Presentation
                     bookingController.FinalizeChanges(booking);
                     MessageBox.Show("Booking entered!");
                     string referenceNum = generateRef();
-                    ConfirmationLetter cl = new ConfirmationLetter(referenceNum, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
+                    ConfirmationLetter cl = new ConfirmationLetter(booking.BookingID, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);  ;
                     cl.Show();
                     this.Close();
                     ClearAll();
@@ -235,9 +235,6 @@ namespace GuestBookingSystem.Presentation
         {
             ClearAll();
         }
-
-
-        #endregion
 
         private void MakeBookingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -287,4 +284,6 @@ namespace GuestBookingSystem.Presentation
             }
         }
     }
+
+    #endregion
 }

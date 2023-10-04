@@ -19,9 +19,12 @@ namespace GuestBookingSystem.Presentation
         private CheckAvailability checkAvailability;
         private MakeBookingForm makeBookingForm;
         private ViewTables viewTables;
-        private CreateCustomerForm createCustomerForm;
         private CustomerListingForm customerListingForm;
         private CustomerController customerController = new CustomerController();
+        private OccupancyReport occupancyReport;
+        private BookingListingForm bookingListingForm;
+        private LocationReport locationReport;
+        private BookingController bookingController = new BookingController();
 
         #endregion
 
@@ -64,7 +67,7 @@ namespace GuestBookingSystem.Presentation
             }
         }
 
-        #endregion
+     
 
         private void ViewTables()
         {
@@ -104,24 +107,6 @@ namespace GuestBookingSystem.Presentation
             checkAvailability.Show();
         }
 
-        private void createACustomerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if (createCustomerForm == null)
-            //{
-            //    CreateCustomer();
-            //}
-            //else if (!createCustomerForm.IsOpen)
-            //{
-            //    CreateCustomer();
-            //}
-        }
-
-        public void CreateCustomer()
-        {
-            createCustomerForm = new CreateCustomerForm(customerController);
-            createCustomerForm.MdiParent = this;
-            createCustomerForm.Show();
-        }
 
         private void customerListingToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -141,5 +126,63 @@ namespace GuestBookingSystem.Presentation
             customerListingForm.MdiParent = this;
             customerListingForm.Show();
         }
+
+        private void occupancyReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (occupancyReport == null)
+            {
+                OccupancyReport();
+            }
+            else if (!occupancyReport.IsOpen)
+            {
+                OccupancyReport();
+            }
+        }
+
+        private void OccupancyReport()
+        {
+            occupancyReport = new OccupancyReport();
+            occupancyReport.MdiParent = this;
+            occupancyReport.Show();
+        }
+
+        private void locationReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (locationReport == null)
+            {
+                LocationReport();
+            }else if (!locationReport.IsOpen)
+            {
+                LocationReport();
+            }
+        }
+
+        private void LocationReport()
+        {
+            locationReport = new LocationReport();
+            locationReport.MdiParent = this;
+            locationReport.Show();
+        }
+
+        private void bookingListingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bookingListingForm == null)
+            {
+                BookingListingForm();
+            }else if (!bookingListingForm.IsOpen)
+            {
+                BookingListingForm();
+            }
+        }
+
+        private void BookingListingForm()
+        {
+            bookingListingForm = new BookingListingForm(bookingController);
+            bookingListingForm.MdiParent = this;
+            bookingListingForm.Show();
+
+        }
     }
+
+    #endregion
 }

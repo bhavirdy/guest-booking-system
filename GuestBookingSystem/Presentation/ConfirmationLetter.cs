@@ -12,10 +12,10 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class ConfirmationLetter : Form
     {
-        public ConfirmationLetter(String name, DateTime dateA, DateTime dateD)
+        public ConfirmationLetter(string reference, DateTime dateA, DateTime dateD)
         {
             InitializeComponent();
-            lblCustNameOut.Text = name;
+            lblRefNumOut.Text = reference;
             lblArrivalDateOut.Text = dateA.ToString();
             lblDepartureDateOut.Text = dateD.ToString();
 

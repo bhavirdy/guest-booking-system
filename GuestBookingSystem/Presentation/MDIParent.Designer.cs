@@ -36,10 +36,10 @@
             this.bookingListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.occupancyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locationReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,8 +84,9 @@
             // bookingListingToolStripMenuItem
             // 
             this.bookingListingToolStripMenuItem.Name = "bookingListingToolStripMenuItem";
-            this.bookingListingToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.bookingListingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bookingListingToolStripMenuItem.Text = "Booking Listing";
+            this.bookingListingToolStripMenuItem.Click += new System.EventHandler(this.bookingListingToolStripMenuItem_Click);
             // 
             // customersToolStripMenuItem
             // 
@@ -116,12 +117,14 @@
             this.occupancyReportToolStripMenuItem.Name = "occupancyReportToolStripMenuItem";
             this.occupancyReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.occupancyReportToolStripMenuItem.Text = "Occupancy Report";
+            this.occupancyReportToolStripMenuItem.Click += new System.EventHandler(this.occupancyReportToolStripMenuItem_Click);
             // 
             // locationReportToolStripMenuItem
             // 
             this.locationReportToolStripMenuItem.Name = "locationReportToolStripMenuItem";
             this.locationReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.locationReportToolStripMenuItem.Text = "Location Report";
+            this.locationReportToolStripMenuItem.Click += new System.EventHandler(this.locationReportToolStripMenuItem_Click);
             // 
             // MDIParent
             // 
