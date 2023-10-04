@@ -8,7 +8,7 @@ namespace GuestBookingSystem.Business
 {
     public class Person
     {
-        #region Data Member
+        #region Data Members
         private String name;
         private String surname;
         private String email;
@@ -17,7 +17,6 @@ namespace GuestBookingSystem.Business
         private String province;
         private String postalCode;
         private String phone;
-
         #endregion
 
         #region Property Members
@@ -74,7 +73,7 @@ namespace GuestBookingSystem.Business
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
         public Person()
         { }
