@@ -13,7 +13,6 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class MDIParent : Form
     {
-
         #region Data Members
         private int childFormNumber = 0;
         private CheckAvailability checkAvailability;
@@ -29,7 +28,6 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Constructor
-
 
         public MDIParent()
         {
@@ -66,8 +64,6 @@ namespace GuestBookingSystem.Presentation
                 MakeaBookingForm();
             }
         }
-
-     
 
         private void ViewTables()
         {

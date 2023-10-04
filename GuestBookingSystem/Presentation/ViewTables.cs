@@ -13,20 +13,26 @@ using System.Windows.Forms;
 namespace GuestBookingSystem.Presentation
 {
     public partial class ViewTables : Form
-    { 
-
+    {
+        #region Data members
         private bool isOpen = false;
+        #endregion
 
+        #region Property Methods
         public bool IsOpen
         {
             get { return isOpen; }
         }
+        #endregion
 
+        #region Constructor
         public ViewTables()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form Events
         private void button1_Click(object sender, EventArgs e)
         {
             CustomerDB customerDB = new CustomerDB();
@@ -66,5 +72,6 @@ namespace GuestBookingSystem.Presentation
         {
             MessageBox.Show("Not working yet");
         }
+        #endregion
     }
 }

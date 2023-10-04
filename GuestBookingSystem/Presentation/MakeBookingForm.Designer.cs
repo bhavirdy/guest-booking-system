@@ -66,7 +66,6 @@
             this.txtCardNum.Name = "txtCardNum";
             this.txtCardNum.Size = new System.Drawing.Size(204, 20);
             this.txtCardNum.TabIndex = 36;
-            this.txtCardNum.TextChanged += new System.EventHandler(this.txtCardNum_TextChanged);
             // 
             // label2
             // 
@@ -79,7 +78,6 @@
             this.label2.Size = new System.Drawing.Size(97, 18);
             this.label2.TabIndex = 35;
             this.label2.Text = "Card Number";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblHeading
             // 

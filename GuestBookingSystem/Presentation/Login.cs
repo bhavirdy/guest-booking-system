@@ -12,9 +12,11 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class Login : Form
     {
+        #region Constructor
         public Login()
         {
             InitializeComponent();
         }
+        #endregion
     }
 }

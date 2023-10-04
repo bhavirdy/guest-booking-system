@@ -1,5 +1,0 @@
-INSERT INTO [dbo].[Room] ([RoomID], [NumBeds], [Serviced]) VALUES (1, 1, 1)
-INSERT INTO [dbo].[Room] ([RoomID], [NumBeds], [Serviced]) VALUES (2, 1, 1)
-INSERT INTO [dbo].[Room] ([RoomID], [NumBeds], [Serviced]) VALUES (3, 1, 0)
-INSERT INTO [dbo].[Room] ([RoomID], [NumBeds], [Serviced]) VALUES (4, 1, 1)
-INSERT INTO [dbo].[Room] ([RoomID], [NumBeds], [Serviced]) VALUES (5, 1, 1)

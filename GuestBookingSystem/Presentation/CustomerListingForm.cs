@@ -60,8 +60,72 @@ namespace GuestBookingSystem.Presentation
             state = FormStates.View;
         }
 
-        #endregion 
+        #endregion
 
+        #region Form Events
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            bool checkPhone = checkNumbers(txtPhone.Text);
+            bool checkPostal = checkNumbers(txtPostalCode.Text);
+
+            bool checkCity = checkLetters(txtTownOrCity.Text);
+            bool checkProvince = checkLetters(txtProvince.Text);
+            if (txtTownOrCity.Text.Equals("") || txtProvince.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhone.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetAddress.Text.Equals("") || txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill ensure all the fields are filled");
+            }
+            else if (txtPostalCode.TextLength != 4 || checkPostal == true)
+            {
+                MessageBox.Show("Please enter a valid postal code");
+            }
+            else
+            if (checkPhone == true || txtPhone.TextLength != 10)
+            {
+                MessageBox.Show("Please enter a valid phone number");
+            }
+            else if (checkCity == true || checkProvince == true)
+            {
+                MessageBox.Show("Please enter a valid province or city");
+            }
+            else
+            {
+                PopulateObject();
+
+                if (state == FormStates.Edit)
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
+                }
+                else
+                {
+                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
+                }
+
+                customerController.FinalizeChanges(customer);
+                ClearAll();
+                state = FormStates.View;
+                setUpCustomerListView();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            state = FormStates.Delete;
+            EnableEntries(true);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            state = FormStates.Edit;
+            EnableEntries(true);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+            EnableEntries(false);
+            ClearAll();
+            this.Close();
+        }
         private void CustomerListingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.isOpen = false;
@@ -79,6 +143,20 @@ namespace GuestBookingSystem.Presentation
             customerListView.View = View.Details;
             this.WindowState = FormWindowState.Maximized;
         }
+
+        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowAll(true);
+            state = FormStates.View;
+            EnableEntries(false);
+            if (customerListView.SelectedItems.Count > 0)
+            {
+                customer = customerController.Find(customerListView.SelectedItems[0].Text);
+                PopulateTextBoxes(customer);
+            }
+
+        }
+        #endregion
 
         #region Utility Methods
 
@@ -197,20 +275,6 @@ namespace GuestBookingSystem.Presentation
 
         #endregion 
 
-        private void customerListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowAll(true);
-            state = FormStates.View;
-            EnableEntries(false);
-            if (customerListView.SelectedItems.Count > 0)
-            {
-                customer = customerController.Find(customerListView.SelectedItems[0].Text);
-                PopulateTextBoxes(customer);
-            }
-
-
-        }
-
         #region Integrity helper methods
 
 
@@ -263,77 +327,5 @@ namespace GuestBookingSystem.Presentation
         }
 
         #endregion 
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            bool checkPhone = checkNumbers(txtPhone.Text);
-            bool checkPostal = checkNumbers(txtPostalCode.Text);
-
-            bool checkCity = checkLetters(txtTownOrCity.Text);
-            bool checkProvince = checkLetters(txtProvince.Text);
-            if (txtTownOrCity.Text.Equals("") || txtProvince.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhone.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetAddress.Text.Equals("") || txtSurname.Text.Equals(""))
-            {
-                MessageBox.Show("Please fill ensure all the fields are filled");
-
-
-
-            }
-            else if (txtPostalCode.TextLength != 4 || checkPostal == true)
-            {
-                MessageBox.Show("Please enter a valid postal code");
-            }
-            else
-            if (checkPhone == true || txtPhone.TextLength != 10)
-            {
-                MessageBox.Show("Please enter a valid phone number");
-
-            }
-            else if (checkCity == true || checkProvince == true)
-            {
-                MessageBox.Show("Please enter a valid province or city");
-            }
-            else
-            {
-
-                PopulateObject();
-
-                if (state == FormStates.Edit)
-                {
-                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Edit);
-                }
-                else
-                {
-                    customerController.DataMaintanence(customer, Data.DB.DBOperation.Delete);
-                }
-
-                customerController.FinalizeChanges(customer);
-                ClearAll();
-                state = FormStates.View;
-                setUpCustomerListView();
-            }
-
-        }
-
-        
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            state = FormStates.Delete;
-            EnableEntries(true);
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            state = FormStates.Edit;
-            EnableEntries(true);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            
-            EnableEntries(false);
-            ClearAll();
-            this.Close();
-        }
     }
 }

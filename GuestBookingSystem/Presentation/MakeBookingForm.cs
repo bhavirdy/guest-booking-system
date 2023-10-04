@@ -17,8 +17,6 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class MakeBookingForm : Form
     {
-
-
         #region Data Members
         private Booking booking = new Booking();
         private BookingController bookingController = new BookingController();
@@ -29,7 +27,7 @@ namespace GuestBookingSystem.Presentation
 
         #endregion
 
-        #region Property Members
+        #region Property Methods
         public bool IsOpen
         {
             set { isOpen = value; }
@@ -67,16 +65,9 @@ namespace GuestBookingSystem.Presentation
             UpdateControlVisibility();
         }
 
-        private void MakeBookingForm_Activated(object sender, EventArgs e)
-        {
-            currentState = "Existing Customer";
-            UpdateControlVisibility();
-        }
-
         #endregion
 
         #region Utility Methods
-
         private string generateRef()
         {
             string custStart = txtCustID.ToString().Substring(0, 3);
@@ -162,9 +153,11 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Form Events
-
-
-
+        private void MakeBookingForm_Activated(object sender, EventArgs e)
+        {
+            currentState = "Existing Customer";
+            UpdateControlVisibility();
+        }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -244,26 +237,6 @@ namespace GuestBookingSystem.Presentation
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCardNum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPaid_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void rBtnNewCustomer_CheckedChanged(object sender, EventArgs e)

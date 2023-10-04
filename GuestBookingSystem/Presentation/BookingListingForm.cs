@@ -34,10 +34,12 @@ namespace GuestBookingSystem.Presentation
         }
         #endregion
 
+        #region Property Members
         public bool IsOpen
         {
             get { return isOpen; }
         }
+        #endregion
 
         #region Constructor
 

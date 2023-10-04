@@ -15,20 +15,27 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class CheckAvailability : Form
     {
+        #region Data Members
         private bool isOpen = false;
         private CustomerController customerController;
+        #endregion
 
+        #region Property Members
         public bool IsOpen
         {
             get { return isOpen; }
         }
+        #endregion
 
+        #region Constructor
         public CheckAvailability()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
+        #endregion
 
+        #region Form Events
         private void btnProceed_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -97,6 +104,9 @@ namespace GuestBookingSystem.Presentation
             }
 
         }
+        #endregion
+
+        #region Utility Methods
         private (decimal PricePerNight, decimal TotalPrice, decimal Deposit) CalculateRoomPricing(DateTime arriveDate, DateTime leaveDate)
         {
             // Define seasonal rates.
@@ -152,5 +162,6 @@ namespace GuestBookingSystem.Presentation
 
             return (pricePerNight, totalPrice, deposit);
         }
+        #endregion
     }
 }

@@ -45,12 +45,6 @@ namespace GuestBookingSystem.Presentation
 
         #endregion
 
-
-        private void CreateCustomerForm_Activated(object sender, EventArgs e)
-        {
-
-        }
-
         #region Property Methods
 
         public bool IsOpen
@@ -147,6 +141,11 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Form Events
+        private void CreateCustomerForm_Activated(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnSubmitC_Click(object sender, EventArgs e)
         {
 

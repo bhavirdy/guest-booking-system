@@ -15,20 +15,27 @@ namespace GuestBookingSystem.Presentation
     public partial class OccupancyReport : Form
     {
 
-
+        #region Data Members
         private bool isOpen = false;
 
         BookingController bookingC = new BookingController();
+        #endregion
 
+        #region Property Methods
         public bool IsOpen
         {
             get { return isOpen; }
         }
+        #endregion
+
+        #region Constructor
         public OccupancyReport()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form Events
         private void lblHeading_Click(object sender, EventArgs e)
         {
 
@@ -45,5 +52,6 @@ namespace GuestBookingSystem.Presentation
 
             txtCount.Text = c.ToString();
         }
+        #endregion
     }
 }

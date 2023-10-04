@@ -15,21 +15,27 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class LocationReport : Form
     {
-
+        #region Data Members
         private bool isOpen = false;
 
         CustomerController customerC = new CustomerController();
+        #endregion
 
+        #region Property Methods
         public bool IsOpen
         {
             get { return isOpen; }
         }
+        #endregion
 
+        #region Constructor
         public LocationReport()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form Events
         private void chart1_Click(object sender, EventArgs e)
         {
 
@@ -46,7 +52,6 @@ namespace GuestBookingSystem.Presentation
             int numCustNW = customerC.countCustomers("North West");
             int numCustNC = customerC.countCustomers("Northen Cape");
             int numCustWC = customerC.countCustomers("Western Cape");
-
             
             chart1.Series["Customer Count"].ChartType = SeriesChartType.Column;
             Series s = new Series();
@@ -63,15 +68,12 @@ namespace GuestBookingSystem.Presentation
             s.Points.Add(new DataPoint(7, numCustNC) { AxisLabel = "Northen Cape" });
             s.Points.Add(new DataPoint(8, numCustWC) { AxisLabel = "Western Cape" });
            
-
-
-
-
         }
 
         private void LocationReport_Load(object sender, EventArgs e)
         {
 
         }
+        #endregion
     }
 }
