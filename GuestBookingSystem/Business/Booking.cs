@@ -18,7 +18,6 @@ namespace GuestBookingSystem.Business
         private String roomNumber;
         private String cardNumber;
         private String paid;
-
         private double deposit;
         private double totalPrice;
         private double pricePerNight;
@@ -27,7 +26,6 @@ namespace GuestBookingSystem.Business
         private DateTime midSeasonEndDate = new DateTime(2023, 12, 15);
         private DateTime highSeasonStartDate = new DateTime(2023, 12, 16);
         private DateTime highSeasonEndDate = new DateTime(2023, 12, 31);
-
         #endregion
 
         #region Property Members
@@ -60,13 +58,11 @@ namespace GuestBookingSystem.Business
             set { deposit = value; }
         }
 
-
         public double TotalPrice
         {
             get { return totalPrice; }
             set { totalPrice = value; }
         }
-
 
         public String BookingID
         {
@@ -79,7 +75,6 @@ namespace GuestBookingSystem.Business
             set { cardNumber = value; }
             get { return cardNumber; }
         }
-
         public String Paid
         {
             set { Paid = value; }
@@ -92,11 +87,9 @@ namespace GuestBookingSystem.Business
             set { pricePerNight = value; }
 
         }
-
         #endregion
 
-        #region Constructor
-
+        #region Constructors
         public Booking()
         {
 
@@ -113,11 +106,9 @@ namespace GuestBookingSystem.Business
             this.setTotalPrice();
             this.setDeposit();
         }
-
         #endregion
 
-        #region methods
-
+        #region Methods
         public void setPricePerNight()
         {
             //determine pricePerNight -- does not take into account if a booking is partially in multiple different seasons eg: in both low and mid season
@@ -164,26 +155,6 @@ namespace GuestBookingSystem.Business
             this.LeaveDate = newLeaveDate;
             return true;
         }
-
-        public bool cancel()
-        { return false; }
-
-        public bool isCancelled()
-        {
-            return false;
-        }
-
-        public bool getStatus()
-        {
-            return false;
-        }
-
-        public bool confirmBooking()
-        {
-            return false;
-        }
         #endregion
-
     }
-
 }
