@@ -8,11 +8,16 @@ namespace GuestBookingSystem.Business
 {
     internal class PaymentProcessor
     {
+        #region Constructor
         public PaymentProcessor() { }
 
+        #endregion
+
+        #region Methods
         public bool processPayment(int cardNo, double amount)
         {
             return true;
         }
+        #endregion
     }
 }

@@ -71,7 +71,6 @@
     <Compile Include="Business\Customer.cs" />
     <Compile Include="Business\CustomerController.cs" />
     <Compile Include="Business\CustomerLocationReportGenerator.cs" />
-    <Compile Include="Business\HotelBookingSystem.cs" />
     <Compile Include="Business\OccupancyReportGenerator.cs" />
     <Compile Include="Business\PaymentProcessor.cs" />
     <Compile Include="Business\Person.cs" />
