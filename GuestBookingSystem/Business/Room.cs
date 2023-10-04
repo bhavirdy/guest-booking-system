@@ -8,8 +8,7 @@ namespace GuestBookingSystem.Business
 {
     internal class Room
     {
-
-        #region DataMembers
+        #region Data Members
         private int roomID;
         private int numBeds;
         #endregion
@@ -29,7 +28,7 @@ namespace GuestBookingSystem.Business
 
         #endregion
 
-        #region Constructor
+        #region Constructors
         
         public Room()
         { }
