@@ -77,6 +77,20 @@ namespace GuestBookingSystem.Business
             }
         }
 
+        public int countCustomers(string prov)
+        {
+            int count = 0;
+            int index = 0;
+            while (index < customerCollection.Count)
+            {
+                if ((customerCollection[index].Province  == prov ))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
+
         #endregion 
 
         #region DataBase Communication
