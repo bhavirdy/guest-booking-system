@@ -26,12 +26,14 @@ namespace GuestBookingSystem.Presentation
 
         private void btnNo_Click(object sender, EventArgs e)
         {
+            //add to database, have to pass booking object 
             MessageBox.Show("Please inform the customer that they will need to pay the deposit within seven days or their booking will be cancelled");
             this.Close();
         }
 
         private void btnYes_Click(object sender, EventArgs e)
         {
+            //add to database 
             MessageBox.Show("Thank you for making the deposit");
             ConfirmationLetter cl = new ConfirmationLetter(reference, date1, date2); ;
             cl.Show();

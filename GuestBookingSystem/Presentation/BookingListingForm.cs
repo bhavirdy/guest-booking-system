@@ -144,6 +144,7 @@ namespace GuestBookingSystem.Presentation
             btnEdit.Visible = value;
         }
 
+        //display the contents of the Booking table in the databse to the list view component 
         private void setUpBookingListView()
         {
             ListViewItem bookingDetails;
@@ -201,6 +202,7 @@ namespace GuestBookingSystem.Presentation
             dateDeparture.Value = DateTime.Now;
         }
 
+        //adds the details of the booking to text boxes to be edited 
         private void PopulateTextBoxes(Booking bookingTemp)
         {
             txtBookingID.Text = bookingTemp.BookingID;
