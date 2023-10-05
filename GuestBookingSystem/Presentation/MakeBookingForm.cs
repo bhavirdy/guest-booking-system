@@ -207,9 +207,11 @@ namespace GuestBookingSystem.Presentation
                     bookingController.FinalizeChanges(booking);
                     MessageBox.Show("Booking entered!");
                     string referenceNum = generateRef();
-                    ConfirmationLetter cl = new ConfirmationLetter(booking.BookingID, dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);  ;
-                    cl.Show();
+                    Payment paymentForm = new Payment(booking.BookingID, booking.ArriveDate, booking.LeaveDate);
+                    paymentForm.Show();
+                    
                     this.Close();
+                    MessageBox.Show("Please ask the customer if they will make a deposit payment now or at a later date.");
                     ClearAll();
 
                 }

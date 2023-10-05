@@ -62,6 +62,7 @@ namespace GuestBookingSystem.Presentation
             isOpen = false;
         }
 
+        //The check button displays the rooms available for a given period with the pricing
         private void btnCheck_Click(object sender, EventArgs e)
         {
             
@@ -74,6 +75,8 @@ namespace GuestBookingSystem.Presentation
 
             DateTime arriveDate = dateTimePicker1.Value;
             DateTime leaveDate = dateTimePicker2.Value;
+
+            //integrity control
             if (arriveDate > leaveDate)
             {
                 MessageBox.Show("Cannot choose a departure date that is before the arrival date");
@@ -97,6 +100,7 @@ namespace GuestBookingSystem.Presentation
                     }
                 }
 
+                //Condition is no rooms are available
                 if (availableRooms.Count == 0)
                 {
                     richTextBox1.AppendText("No rooms available for the specified dates.");
@@ -107,6 +111,8 @@ namespace GuestBookingSystem.Presentation
         #endregion
 
         #region Utility Methods
+
+        //method 
         private (decimal PricePerNight, decimal TotalPrice, decimal Deposit) CalculateRoomPricing(DateTime arriveDate, DateTime leaveDate)
         {
             // Define seasonal rates.
