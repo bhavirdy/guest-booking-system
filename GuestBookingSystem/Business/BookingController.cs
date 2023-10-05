@@ -18,6 +18,8 @@ namespace GuestBookingSystem.Business
         BookingDB bookingDB;
         Collection<Booking> bookings;
 
+        string[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+
         #endregion
 
         #region Property Members
@@ -134,6 +136,35 @@ namespace GuestBookingSystem.Business
                 }
             }
             return count;
+        }
+
+        //method to count the number of bookings for each month
+        public int[] countMonths(int first, int second)
+        {
+            int count = 0;
+            int index = 0;
+
+            int index2 = 0;
+
+            int[] countTemp = new int[12];
+
+            for (int x = first; x < second + 1; x++)
+            {
+                while (index < bookings.Count)
+                {
+                    if (bookings[index].ArriveDate.Month.ToString().Equals(months[x]) || (bookings[index].LeaveDate.Month.ToString().Equals(months[x])))
+                    {
+                        count++;
+                    }
+
+                    index++;
+                }
+
+                countTemp[index2] = count;
+                count = 0;
+            }
+
+            return countTemp;
         }
 
         #endregion
