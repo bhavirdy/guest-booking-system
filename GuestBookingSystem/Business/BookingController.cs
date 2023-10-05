@@ -38,6 +38,8 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Database Communication
+
+
         public void DataMaintanence(Booking bookingTemp, DB.DBOperation operation)
         {
             int index = 0;
@@ -79,6 +81,7 @@ namespace GuestBookingSystem.Business
 
         #region Search Methods
 
+        //finds the relevant booking given the ID
         public Booking Find(String ID)
         {
             int index = 0;
@@ -96,6 +99,7 @@ namespace GuestBookingSystem.Business
             return bookings[index];
         }
 
+        //finds the index of the booking in the bookings array
         public int FindIndex(Booking bookTemp)
         {
             int count = 0;

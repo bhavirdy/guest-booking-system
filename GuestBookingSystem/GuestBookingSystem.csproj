@@ -66,15 +66,9 @@
   <ItemGroup>
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\BookingController.cs" />
-    <Compile Include="Business\RoomController.cs" />
-    <Compile Include="Business\ConfirmationLetterGenerator.cs" />
     <Compile Include="Business\Customer.cs" />
     <Compile Include="Business\CustomerController.cs" />
-    <Compile Include="Business\CustomerLocationReportGenerator.cs" />
-    <Compile Include="Business\OccupancyReportGenerator.cs" />
-    <Compile Include="Business\PaymentProcessor.cs" />
     <Compile Include="Business\Person.cs" />
-    <Compile Include="Business\Receptionist.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\BookingDB.cs" />
     <Compile Include="Data\CustomerDB.cs" />

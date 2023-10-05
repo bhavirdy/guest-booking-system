@@ -36,6 +36,7 @@ namespace GuestBookingSystem.Business
 
         #region Search Methods
 
+        //finds a customer based on the customer ID
         public Customer Find(String ID)
         {
             int index = 0;
@@ -51,6 +52,7 @@ namespace GuestBookingSystem.Business
             return customerCollection[index];
         }
 
+        //finds the index of the customer in the customers array
         public int FindIndex(Customer custTemp)
         {
             int count = 0;
@@ -77,6 +79,7 @@ namespace GuestBookingSystem.Business
             }
         }
 
+        //counts the number of customers in a specific province
         public int countCustomers(string prov)
         {
             int count = 0;

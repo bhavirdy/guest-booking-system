@@ -50,6 +50,8 @@ namespace GuestBookingSystem.Data
         {
             return dsMain;
         }
+
+        //adds the bookings in the Bookings table to a collection
         private void Add2Collection(String tableTemp)
         {
             DataRow myRow = null;
@@ -71,6 +73,7 @@ namespace GuestBookingSystem.Data
             }
         }
 
+      
         private void FillRow(DataRow rowTemp, Booking bookTemp, DB.DBOperation operation)
         {
             if (operation == DB.DBOperation.Add)
