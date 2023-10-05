@@ -71,6 +71,8 @@
             // 
             // btnNo
             // 
+            this.btnNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNo.ForeColor = System.Drawing.Color.IndianRed;
             this.btnNo.Location = new System.Drawing.Point(71, 242);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(75, 23);
@@ -81,7 +83,9 @@
             // 
             // btnYes
             // 
-            this.btnYes.Location = new System.Drawing.Point(290, 242);
+            this.btnYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYes.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnYes.Location = new System.Drawing.Point(303, 242);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(75, 23);
             this.btnYes.TabIndex = 48;

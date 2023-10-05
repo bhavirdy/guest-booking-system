@@ -114,5 +114,10 @@ namespace GuestBookingSystem.Presentation
         {
             //get the number of bookings for each month and display 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
