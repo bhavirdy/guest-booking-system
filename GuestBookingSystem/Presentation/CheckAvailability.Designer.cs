@@ -47,7 +47,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(401, 84);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(437, 282);
+            this.richTextBox1.Size = new System.Drawing.Size(437, 367);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -55,7 +55,7 @@
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnCancel.Location = new System.Drawing.Point(12, 398);
+            this.btnCancel.Location = new System.Drawing.Point(12, 473);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(76, 35);
             this.btnCancel.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             this.btnProceed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProceed.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnProceed.Location = new System.Drawing.Point(648, 398);
+            this.btnProceed.Location = new System.Drawing.Point(648, 473);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.Size = new System.Drawing.Size(190, 35);
             this.btnProceed.TabIndex = 3;
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 445);
+            this.ClientSize = new System.Drawing.Size(862, 520);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblLeaveDate);
