@@ -202,7 +202,7 @@ namespace GuestBookingSystem.Presentation
                     bookingController.FinalizeChanges(booking);
                     MessageBox.Show("Booking entered!");
                     string referenceNum = generateRef();
-                    Payment paymentForm = new Payment(booking.BookingID, booking.ArriveDate, booking.LeaveDate);
+                    Payment paymentForm = new Payment(booking.BookingID, booking.ArriveDate, booking.LeaveDate, booking.BookingID);
                     paymentForm.Show();
                     
                     this.Close();

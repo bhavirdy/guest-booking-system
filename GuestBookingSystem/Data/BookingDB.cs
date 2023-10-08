@@ -267,6 +267,22 @@ namespace GuestBookingSystem.Data
             }
         }
 
+        public void SetBookingPaid(String bookingID)
+        {
+            cnMain.Open();
+
+            //sql command to update the Paid column for a specific booking
+            using (var command = new SqlCommand("UPDATE Booking SET Paid = 1 WHERE BookingID = @BookingID", cnMain))
+            {
+                command.Parameters.AddWithValue("@BookingID", bookingID);
+
+                //execute query to update the Paid column
+                command.ExecuteNonQuery();
+            }
+
+            cnMain.Close();
+        }
+
         public string GenerateUniqueBookingID()
         {
             //characters to be used in booking id

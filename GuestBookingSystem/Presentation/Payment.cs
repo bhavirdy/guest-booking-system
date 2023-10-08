@@ -1,4 +1,5 @@
 ﻿using GuestBookingSystem.Business;
+using GuestBookingSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +14,17 @@ namespace GuestBookingSystem.Presentation
 {
     public partial class Payment : Form
     {
-       private string reference;
+        private string reference;
         private DateTime date1;
         private DateTime date2;
-        public Payment(string reference, DateTime dateA, DateTime dateD)
+        private String bookingID;
+        public Payment(string reference, DateTime dateA, DateTime dateD, string bookingID)
         {
             InitializeComponent();
             this.reference = reference;
             this.date1 = dateA;
             this.date2 = dateD;
+            this.bookingID = bookingID;
         }
 
         private void btnNo_Click(object sender, EventArgs e)
@@ -34,6 +37,9 @@ namespace GuestBookingSystem.Presentation
         private void btnYes_Click(object sender, EventArgs e)
         {
             //add to database 
+            BookingDB bookingDB = new BookingDB();
+            bookingDB.SetBookingPaid(bookingID);
+
             MessageBox.Show("Thank you for making the deposit");
             ConfirmationLetter cl = new ConfirmationLetter(reference, date1, date2); ;
             cl.Show();
