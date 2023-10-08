@@ -74,7 +74,8 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructors
-
+        public Person()
+        { }
         public Person(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp)
         {
             name = nameTemp;
