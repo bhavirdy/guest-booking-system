@@ -32,8 +32,6 @@
             this.txtCardNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
-            this.txtCustID = new System.Windows.Forms.TextBox();
-            this.lblCustID = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.dateTimePickerDepartureDate = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +41,10 @@
             this.rBtnExistingCustomer = new System.Windows.Forms.RadioButton();
             this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.lblSurname = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             // txtCardNum
             // 
-            this.txtCardNum.Location = new System.Drawing.Point(201, 291);
+            this.txtCardNum.Location = new System.Drawing.Point(201, 335);
             this.txtCardNum.Margin = new System.Windows.Forms.Padding(2);
             this.txtCardNum.Name = "txtCardNum";
             this.txtCardNum.Size = new System.Drawing.Size(204, 20);
@@ -72,7 +74,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(57, 291);
+            this.label2.Location = new System.Drawing.Point(57, 335);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 18);
@@ -90,26 +92,6 @@
             this.lblHeading.Size = new System.Drawing.Size(290, 44);
             this.lblHeading.TabIndex = 32;
             this.lblHeading.Text = "Make a Booking";
-            // 
-            // txtCustID
-            // 
-            this.txtCustID.Location = new System.Drawing.Point(201, 165);
-            this.txtCustID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCustID.Name = "txtCustID";
-            this.txtCustID.Size = new System.Drawing.Size(204, 20);
-            this.txtCustID.TabIndex = 29;
-            // 
-            // lblCustID
-            // 
-            this.lblCustID.AutoSize = true;
-            this.lblCustID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustID.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCustID.Location = new System.Drawing.Point(56, 165);
-            this.lblCustID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCustID.Name = "lblCustID";
-            this.lblCustID.Size = new System.Drawing.Size(92, 18);
-            this.lblCustID.TabIndex = 28;
-            this.lblCustID.Text = "Customer ID";
             // 
             // btnCancel
             // 
@@ -139,7 +121,7 @@
             // 
             // dateTimePickerDepartureDate
             // 
-            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(201, 243);
+            this.dateTimePickerDepartureDate.Location = new System.Drawing.Point(201, 287);
             this.dateTimePickerDepartureDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDepartureDate.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerDepartureDate.Name = "dateTimePickerDepartureDate";
@@ -151,7 +133,7 @@
             this.lblLeaveDate.AutoSize = true;
             this.lblLeaveDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLeaveDate.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblLeaveDate.Location = new System.Drawing.Point(56, 244);
+            this.lblLeaveDate.Location = new System.Drawing.Point(56, 288);
             this.lblLeaveDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLeaveDate.Name = "lblLeaveDate";
             this.lblLeaveDate.Size = new System.Drawing.Size(108, 18);
@@ -163,7 +145,7 @@
             this.lblADate.AutoSize = true;
             this.lblADate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblADate.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblADate.Location = new System.Drawing.Point(56, 204);
+            this.lblADate.Location = new System.Drawing.Point(56, 248);
             this.lblADate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblADate.Name = "lblADate";
             this.lblADate.Size = new System.Drawing.Size(83, 18);
@@ -172,7 +154,7 @@
             // 
             // dateTimePickerArrival
             // 
-            this.dateTimePickerArrival.Location = new System.Drawing.Point(201, 204);
+            this.dateTimePickerArrival.Location = new System.Drawing.Point(201, 248);
             this.dateTimePickerArrival.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerArrival.MinDate = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             this.dateTimePickerArrival.Name = "dateTimePickerArrival";
@@ -212,11 +194,55 @@
             this.pictureBox1.TabIndex = 44;
             this.pictureBox1.TabStop = false;
             // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(201, 182);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(204, 20);
+            this.txtName.TabIndex = 46;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblName.Location = new System.Drawing.Point(56, 182);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(118, 18);
+            this.lblName.TabIndex = 45;
+            this.lblName.Text = "Customer Name";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(201, 215);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(204, 20);
+            this.txtSurname.TabIndex = 48;
+            // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSurname.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblSurname.Location = new System.Drawing.Point(56, 215);
+            this.lblSurname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(138, 18);
+            this.lblSurname.TabIndex = 47;
+            this.lblSurname.Text = "Customer Surname";
+            // 
             // MakeBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 470);
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rBtnNewCustomer);
             this.Controls.Add(this.rBtnExistingCustomer);
@@ -224,8 +250,6 @@
             this.Controls.Add(this.txtCardNum);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblHeading);
-            this.Controls.Add(this.txtCustID);
-            this.Controls.Add(this.lblCustID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.dateTimePickerDepartureDate);
@@ -248,8 +272,6 @@
         private System.Windows.Forms.TextBox txtCardNum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblHeading;
-        private System.Windows.Forms.TextBox txtCustID;
-        private System.Windows.Forms.Label lblCustID;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.DateTimePicker dateTimePickerDepartureDate;
@@ -259,5 +281,9 @@
         private System.Windows.Forms.RadioButton rBtnExistingCustomer;
         private System.Windows.Forms.RadioButton rBtnNewCustomer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Label lblSurname;
     }
 }

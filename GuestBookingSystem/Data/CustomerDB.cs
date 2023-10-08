@@ -265,6 +265,34 @@ namespace GuestBookingSystem.Data
             return success;
         }
 
-        #endregion
+        public string FindCustomerID(string firstName, string lastName)
+        {
+            cnMain.Open();
+
+            // SQL command to find a customer's ID by first name and last name
+            using (var command = new SqlCommand("SELECT CustomerID FROM Customer WHERE Name = @Name AND Surname = @Surname", cnMain))
+            {
+                command.Parameters.AddWithValue("@Name", firstName);
+                command.Parameters.AddWithValue("@Surname", lastName);
+
+                // Execute the query to retrieve the customer's ID
+                var result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    string customerID = result.ToString();
+                    cnMain.Close();
+                    return customerID;
+                }
+            }
+
+            cnMain.Close();
+
+            // If no matching customer is found, return null or an empty string as appropriate
+            return null; // or return string.Empty; depending on your preference
+        }
     }
+
+    #endregion
 }
+

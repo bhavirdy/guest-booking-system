@@ -45,11 +45,12 @@ namespace GuestBookingSystem.Presentation
             this.isOpen = true;
         }
 
-        public MakeBookingForm(String CustomerID, DateTime dateA, DateTime dateD)
+        public MakeBookingForm(String name, String surname, DateTime dateA, DateTime dateD)
         {
             InitializeComponent();
             this.isOpen = true;
-            txtCustID.Text = CustomerID;
+            txtName.Text = name;
+            txtSurname.Text = surname;
             currentState = "Existing Customer";
             dateTimePickerArrival.Value = dateA;
             dateTimePickerDepartureDate.Value = dateD;
@@ -71,7 +72,8 @@ namespace GuestBookingSystem.Presentation
         #region Utility Methods
         private string generateRef()
         {
-            string custStart = txtCustID.ToString().Substring(0, 3);
+            
+            string custStart = booking.CustomerID.ToString().Substring(0, 3);
             string cardNum = txtCardNum.ToString().Substring(0, 2);
 
             return custStart + cardNum;
@@ -79,7 +81,11 @@ namespace GuestBookingSystem.Presentation
         private void PopulateObject()
         {
             booking.BookingID = bookingController.getUniqueBookingID();
-            booking.CustomerID = txtCustID.Text;
+
+            //based on surname and name find customer id
+            CustomerDB customerDB = new CustomerDB();
+            booking.CustomerID = customerDB.FindCustomerID(txtName.Text,txtSurname.Text);
+            
             booking.ArriveDate = dateTimePickerArrival.Value;
             booking.LeaveDate = dateTimePickerDepartureDate.Value;
             booking.RoomNumber = bookingController.getFirstAvailableRoom(dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
@@ -91,7 +97,8 @@ namespace GuestBookingSystem.Presentation
 
         private void ClearAll()
         {
-            txtCustID.Text = "";
+            txtName.Text = "";
+            txtSurname.Text = "";
             txtCardNum.Text = "";
             dateTimePickerArrival.Value = DateTime.Today;
             dateTimePickerDepartureDate.Value = DateTime.Today;
@@ -102,8 +109,10 @@ namespace GuestBookingSystem.Presentation
             // Update control visibility based on the current state.
             if (currentState == "New Customer")
             {
-                lblCustID.Visible = false;
-                txtCustID.Visible = false;
+                lblName.Visible = false;
+                txtName.Visible = false;
+                lblSurname.Visible = false;
+                txtSurname.Visible = false;
                 txtCardNum.Visible = false;
                 lblADate.Visible = false;
                 lblLeaveDate.Visible = false;
@@ -114,8 +123,10 @@ namespace GuestBookingSystem.Presentation
             }
             else if (currentState == "Existing Customer")
             {
-                lblCustID.Visible = true;
-                txtCustID.Visible = true;
+                lblName.Visible = true;
+                txtName.Visible = true;
+                lblSurname.Visible = true;
+                txtSurname.Visible = true;
                 rBtnExistingCustomer.Checked = true;
                 txtCardNum.Visible = true;
                 lblADate.Visible = true;
@@ -173,11 +184,7 @@ namespace GuestBookingSystem.Presentation
             }
             else if (currentState == "Existing Customer")
             {
-                if (txtCustID.Text.Equals("") || txtCustID.TextLength != 13)
-                {
-                    MessageBox.Show("Please enter a valid CustomerID");
-                }
-                else if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
+                if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
                 {
                     MessageBox.Show("Cannot choose a departure date that is before the arrival date");
                 }
