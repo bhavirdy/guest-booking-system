@@ -96,17 +96,6 @@ namespace GuestBookingSystem.Business
         {
 
         }
-
-        public Booking(String custTemp, DateTime aDate, DateTime lDate, int rNum)
-        {
-            customerID = custTemp;
-            arriveDate = aDate;
-            leaveDate = lDate;
-            roomNumber = rNum;
-            this.setPricePerNight();
-            this.setTotalPrice();
-            this.setDeposit();
-        }
         #endregion
 
         #region Methods
