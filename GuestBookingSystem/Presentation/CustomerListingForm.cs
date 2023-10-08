@@ -13,6 +13,7 @@ using GuestBookingSystem.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace GuestBookingSystem.Presentation
 {
@@ -65,29 +66,7 @@ namespace GuestBookingSystem.Presentation
         #region Form Events
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            bool checkPhone = checkNumbers(txtPhone.Text);
-            bool checkPostal = checkNumbers(txtPostalCode.Text);
-
-            bool checkCity = checkLetters(txtTownOrCity.Text);
-            bool checkProvince = checkLetters(txtProvince.Text);
-            if (txtTownOrCity.Text.Equals("") || txtProvince.Text.Equals("") || txtEmail.Text.Equals("") || txtName.Text.Equals("") || txtPhone.Text.Equals("") || txtPostalCode.Text.Equals("") || txtStreetAddress.Text.Equals("") || txtSurname.Text.Equals(""))
-            {
-                MessageBox.Show("Please fill ensure all the fields are filled");
-            }
-            else if (txtPostalCode.TextLength != 4 || checkPostal == true)
-            {
-                MessageBox.Show("Please enter a valid postal code");
-            }
-            else
-            if (checkPhone == true || txtPhone.TextLength != 10)
-            {
-                MessageBox.Show("Please enter a valid phone number");
-            }
-            else if (checkCity == true || checkProvince == true)
-            {
-                MessageBox.Show("Please enter a valid province or city");
-            }
-            else
+            if (IntegrityCheck())
             {
                 PopulateObject();
 
@@ -273,57 +252,155 @@ namespace GuestBookingSystem.Presentation
         }
 
 
-        #endregion 
+        #endregion
 
         #region Integrity helper methods
 
 
         //method for input integrity 
-        private bool checkNumbers(String value)
+        //private bool checkNumbers(String value)
+        //{
+
+        //    //bool check = false;
+        //    //for (int i = 0; i <= value.Length; i++)
+        //    //{
+        //    //    string temp = value.Substring(i, i + 1);
+
+        //    //    for (int j = 0; j < numbersCheck.Length; j++)
+        //    //    {
+        //    //        if (!temp.Equals(numbersCheck[j]))
+        //    //        {
+        //    //            check = true;
+
+
+        //    //        }
+        //    //    }
+        //    //}
+
+        //    //return check;
+
+        //}
+
+        public static bool IsNDigitNumber(String value, int numberOfDigits)
         {
+            // Define a regular expression pattern for an N-digit number
+            string pattern = @"^\d{" + numberOfDigits + "}$";
 
-            bool check = false;
-            for (int i = 0; i <= value.Length; i++)
-            {
-                string temp = value.Substring(i, i + 1);
+            // Create a Regex object with the pattern
+            Regex regex = new Regex(pattern);
 
-                for (int j = 0; j < numbersCheck.Length; j++)
-                {
-                    if (!temp.Equals(numbersCheck[j]))
-                    {
-                        check = true;
-
-
-                    }
-                }
-            }
-
-            return check;
-
-
+            // Check if the TextBox's text matches the pattern
+            return regex.IsMatch(value);
         }
 
         //method for input integrity
-        private bool checkLetters(String value)
+        //private bool checkLetters(String value)
+        //{
+        //    bool check = false;
+        //    for (int i = 0; i <= value.Length; i++)
+        //    {
+        //        string temp = value.Substring(i, i + 1);
+
+        //        for (int j = 0; j < numbersCheck.Length; j++)
+        //        {
+        //            if (temp.Equals(numbersCheck[j]))
+        //            {
+        //                check = true;
+
+
+        //            }
+        //        }
+        //    }
+
+        //    return check;
+
+        //}
+
+        public static bool ContainsOnlyLettersAndSpaces(string input)
         {
-            bool check = false;
-            for (int i = 0; i <= value.Length; i++)
+            // Define a regular expression pattern for only letters (alphabetic characters)
+            string pattern = @"^[A-Za-z\s]+$";
+
+            // Create a Regex object with the pattern
+            Regex regex = new Regex(pattern);
+
+            // Check if the input string matches the pattern
+            return regex.IsMatch(input);
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            // Define a regular expression pattern for a valid email address
+            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
+
+            // Create a Regex object with the pattern
+            Regex regex = new Regex(pattern);
+
+            // Check if the email matches the pattern
+            return regex.IsMatch(email);
+        }
+
+        public bool IntegrityCheck()
+        {
+            // Check for empty fields
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                string.IsNullOrWhiteSpace(txtSurname.Text) ||
+                string.IsNullOrWhiteSpace(txtStreetAddress.Text) ||
+                string.IsNullOrWhiteSpace(txtTownOrCity.Text) ||
+                string.IsNullOrWhiteSpace(txtProvince.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtPhone.Text) ||
+                string.IsNullOrWhiteSpace(txtPostalCode.Text))
             {
-                string temp = value.Substring(i, i + 1);
-
-                for (int j = 0; j < numbersCheck.Length; j++)
-                {
-                    if (temp.Equals(numbersCheck[j]))
-                    {
-                        check = true;
-
-
-                    }
-                }
+                MessageBox.Show("Please ensure all the fields are filled.");
+                return false;
             }
 
-            return check;
+            // Check field-specific validations
+            if (!IsNDigitNumber(txtPhone.Text, 10))
+            {
+                MessageBox.Show("Please enter a valid phone number.");
+                return false;
+            }
 
+            if (!IsNDigitNumber(txtPostalCode.Text, 4))
+            {
+                MessageBox.Show("Please enter a valid postal code.");
+                return false;
+            }
+
+            if (!ContainsOnlyLettersAndSpaces(txtTownOrCity.Text))
+            {
+                MessageBox.Show("Please enter a valid city.");
+                return false;
+            }
+
+            if (!ContainsOnlyLettersAndSpaces(txtProvince.Text))
+            {
+                MessageBox.Show("Please enter a valid province.");
+                return false;
+            }
+
+            if (!ContainsOnlyLettersAndSpaces(txtName.Text))
+            {
+                MessageBox.Show("Please enter a valid name.");
+                return false;
+            }
+
+            if (!ContainsOnlyLettersAndSpaces(txtSurname.Text))
+            {
+                MessageBox.Show("Please enter a valid surname.");
+                return false;
+            }
+
+            if (!IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address.");
+                return false;
+            }
+
+            // All checks passed, the data is valid
+            return true;
         }
 
         #endregion 
