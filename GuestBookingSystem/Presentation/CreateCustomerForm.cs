@@ -210,21 +210,18 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmitC_Click(object sender, EventArgs e)
         {
-
             if (IntegrityCheck())
             {
                 PopulateObject();
                 MessageBox.Show("Customer entered!");
                 customerController.DataMaintanence(customer, Data.DB.DBOperation.Add);
                 customerController.FinalizeChanges(customer);
-
+                MakeBookingForm makeBookingForm = new MakeBookingForm(customer.CustID, dateA, dateD);
+                makeBookingForm.MdiParent = this.MdiParent;
+                this.Close();
+                makeBookingForm.Show();
+                ClearAll();
             }
-
-            MakeBookingForm makeBookingForm = new MakeBookingForm(customer.CustID, dateA, dateD);
-            makeBookingForm.MdiParent = this.MdiParent;
-            this.Close();
-            makeBookingForm.Show();
-            ClearAll();
         }
 
         private void CreateCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
