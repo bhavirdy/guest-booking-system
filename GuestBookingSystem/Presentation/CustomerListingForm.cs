@@ -65,6 +65,7 @@ namespace GuestBookingSystem.Presentation
         #region Form Events
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            //if integrity check is passed, continue
             if (IntegrityCheck())
             {
                 PopulateObject();
@@ -255,31 +256,6 @@ namespace GuestBookingSystem.Presentation
 
         #region Integrity helper methods
 
-
-        //method for input integrity 
-        //private bool checkNumbers(String value)
-        //{
-
-        //    //bool check = false;
-        //    //for (int i = 0; i <= value.Length; i++)
-        //    //{
-        //    //    string temp = value.Substring(i, i + 1);
-
-        //    //    for (int j = 0; j < numbersCheck.Length; j++)
-        //    //    {
-        //    //        if (!temp.Equals(numbersCheck[j]))
-        //    //        {
-        //    //            check = true;
-
-
-        //    //        }
-        //    //    }
-        //    //}
-
-        //    //return check;
-
-        //}
-
         public static bool IsNDigitNumber(String value, int numberOfDigits)
         {
             // Define a regular expression pattern for an N-digit number
@@ -291,29 +267,6 @@ namespace GuestBookingSystem.Presentation
             // Check if the TextBox's text matches the pattern
             return regex.IsMatch(value);
         }
-
-        //method for input integrity
-        //private bool checkLetters(String value)
-        //{
-        //    bool check = false;
-        //    for (int i = 0; i <= value.Length; i++)
-        //    {
-        //        string temp = value.Substring(i, i + 1);
-
-        //        for (int j = 0; j < numbersCheck.Length; j++)
-        //        {
-        //            if (temp.Equals(numbersCheck[j]))
-        //            {
-        //                check = true;
-
-
-        //            }
-        //        }
-        //    }
-
-        //    return check;
-
-        //}
 
         public static bool ContainsOnlyLettersAndSpaces(string input)
         {
