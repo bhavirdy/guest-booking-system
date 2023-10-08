@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GuestBookingSystem.Business;
 using GuestBookingSystem.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Text.RegularExpressions;
 
 
 namespace GuestBookingSystem.Presentation
@@ -129,25 +131,39 @@ namespace GuestBookingSystem.Presentation
         private bool checkNumbers(String value)
         {
 
-            bool check = false;
-            for (int i = 0; i <= value.Length; i++)
+            //bool check = false;
+            //for (int i = 0; i <= value.Length; i++)
+            //{
+            //    string temp = value.Substring(i, i + 1);
+
+            //    for (int j = 0; j < numbersCheck.Length; j++)
+            //    {
+            //        if (!temp.Equals(numbersCheck[j]))
+            //        {
+            //            check = true;
+
+
+            //        }
+            //    }
+            //}
+
+            //return check;
+
+            // Define a regular expression pattern for a 16-digit number
+            string pattern = @"^\d{16}$";
+
+            // Create a Regex object with the pattern
+            Regex regex = new Regex(pattern);
+
+            // Check if the TextBox's text matches the pattern
+            if (regex.IsMatch(value))
             {
-                string temp = value.Substring(i, i + 1);
-
-                for (int j = 0; j < numbersCheck.Length; j++)
-                {
-                    if (!temp.Equals(numbersCheck[j]))
-                    {
-                        check = true;
-
-
-                    }
-                }
+                return true;
             }
-
-            return check;
-
-
+            else
+            {
+                return false;
+            }
         }
 
         #endregion
@@ -172,6 +188,7 @@ namespace GuestBookingSystem.Presentation
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             bool checkCard = checkNumbers(txtCardNum.Text);
+
             if (currentState == "New Customer")
             {
 
@@ -195,7 +212,7 @@ namespace GuestBookingSystem.Presentation
                 }
 
                 else
-                if (txtCardNum.Text.Equals("") || checkCard == true)
+                if (txtCardNum.Text.Equals("") || checkCard == false)
                 {
                     MessageBox.Show("Please enter a valid Card Number");
                 }
