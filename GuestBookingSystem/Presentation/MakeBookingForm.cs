@@ -24,7 +24,6 @@ namespace GuestBookingSystem.Presentation
         private BookingController bookingController = new BookingController();
 
         private bool isOpen = false;
-        string[] numbersCheck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         private string currentState = "Existing Customer";
 
         #endregion
@@ -88,7 +87,6 @@ namespace GuestBookingSystem.Presentation
             booking.setPricePerNight();
             booking.setTotalPrice();
             booking.setDeposit();
-
         }
 
         private void ClearAll()
@@ -131,13 +129,13 @@ namespace GuestBookingSystem.Presentation
         private bool checkNumbers(String value)
         {
 
-            // Define a regular expression pattern for a 16-digit number
+            //Define pattern for a 16-digit number
             string pattern = @"^\d{16}$";
 
-            // Create a Regex object with the pattern
+            //Create a Regex object with the pattern
             Regex regex = new Regex(pattern);
 
-            // Check if the TextBox's text matches the pattern
+            //Check if the TextBox's text matches the pattern
             if (regex.IsMatch(value))
             {
                 return true;
@@ -157,18 +155,9 @@ namespace GuestBookingSystem.Presentation
             UpdateControlVisibility();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCustID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            //integrity check
             bool checkCard = checkNumbers(txtCardNum.Text);
 
             if (currentState == "New Customer")

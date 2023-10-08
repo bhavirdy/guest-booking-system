@@ -98,7 +98,6 @@
             this.txtCustID.Name = "txtCustID";
             this.txtCustID.Size = new System.Drawing.Size(204, 20);
             this.txtCustID.TabIndex = 29;
-            this.txtCustID.TextChanged += new System.EventHandler(this.txtCustID_TextChanged);
             // 
             // lblCustID
             // 
@@ -146,7 +145,6 @@
             this.dateTimePickerDepartureDate.Name = "dateTimePickerDepartureDate";
             this.dateTimePickerDepartureDate.Size = new System.Drawing.Size(204, 20);
             this.dateTimePickerDepartureDate.TabIndex = 25;
-            this.dateTimePickerDepartureDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lblLeaveDate
             // 
