@@ -291,13 +291,50 @@ namespace GuestBookingSystem.Data
 
             //uses Random class to build a random booking id of length 13
             Random random = new Random();
-            for (int i = 0; i < 13; i++)
+
+            //set a maximum number of attempts to generate a unique ID
+            int maxAttempts = 100;
+            int attemptCount = 0;
+
+            while (attemptCount < maxAttempts)
             {
-                int index = random.Next(chars.Length);
-                bookingID.Append(chars[index]);
+                bookingID.Clear();
+
+                for (int i = 0; i < 13; i++)
+                {
+                    int index = random.Next(chars.Length);
+                    bookingID.Append(chars[index]);
+                }
+
+                // Check if the generated booking ID already exists in the database
+                if (!IsBookingIDExists(bookingID.ToString()))
+                {
+                    return bookingID.ToString(); // Return the unique booking ID
+                }
+
+                attemptCount++;
             }
 
-            return bookingID.ToString();
+            throw new InvalidOperationException("Unable to generate a unique booking ID.");
+        }
+
+        private bool IsBookingIDExists(string bookingID)
+        {
+            cnMain.Open();
+
+            //sql command to check if the booking ID already exists in the Booking table
+            using (var command = new SqlCommand("SELECT COUNT(*) FROM Booking WHERE BookingID = @BookingID", cnMain))
+            {
+                command.Parameters.AddWithValue("@BookingID", bookingID);
+
+                //execute the query and get the count
+                int count = (int)command.ExecuteScalar();
+
+                cnMain.Close();
+
+                //return true if the count is greater than zero (booking ID exists), otherwise return false
+                return count > 0;
+            }
         }
 
         public int FindFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
