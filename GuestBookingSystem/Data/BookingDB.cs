@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GuestBookingSystem.Business;
+using System.Globalization;
 
 namespace GuestBookingSystem.Data
 {
@@ -302,6 +303,42 @@ namespace GuestBookingSystem.Data
 
                 return availableRoomID;
             }
+        }
+
+        //method to get total bookings per month
+        public Dictionary<string, int> GetBookingsPerMonth(int year)
+        {
+            Dictionary<string, int> bookingsPerMonth = new Dictionary<string, int>();
+
+            cnMain.Open();
+
+            //sql command to count bookings per month for all rooms in a specific year
+            using (var command = new SqlCommand("SELECT MONTH(ArriveDate) AS Month, COUNT(*) AS BookingCount " +
+                                                "FROM Booking " +
+                                                "WHERE YEAR(ArriveDate) = @Year " +
+                                                "GROUP BY MONTH(ArriveDate)", cnMain))
+            {
+                command.Parameters.AddWithValue("@Year", year);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int month = reader.GetInt32(0);
+                        int count = reader.GetInt32(1);
+
+                        //get the month name from the month number
+                        string monthName = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+
+                        //add the month and booking count to the dictionary
+                        bookingsPerMonth[monthName] = count;
+                    }
+                }
+            }
+
+            cnMain.Close();
+
+            return bookingsPerMonth;
         }
 
         public bool UpdateDataSource(Booking bTemp)
