@@ -89,7 +89,7 @@ namespace GuestBookingSystem.Business
         }
         #endregion
 
-        #region Constructors
+        #region Constructor
 
         //default constructor
         public Booking()

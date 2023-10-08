@@ -19,12 +19,6 @@ namespace GuestBookingSystem.Business
         public Customer()
         { }
 
-        public Customer(String nameTemp, String surnameTemp, String emailTemp, String phoneTemp, String streetAddressTemp, String townOrCityTemp, String postalCodeTemp, String provinceTemp, String custIDTemp, int bookingIDTemp) 
-            : base(nameTemp, surnameTemp, emailTemp, phoneTemp, streetAddressTemp, townOrCityTemp, postalCodeTemp, provinceTemp)
-        {
-            custID = custIDTemp;
-        }
-
         #endregion
 
         #region Property Members
