@@ -256,45 +256,46 @@ namespace GuestBookingSystem.Presentation
 
         #region Integrity helper methods
 
-        public static bool IsNDigitNumber(String value, int numberOfDigits)
+        public static bool IsNDigitNumber(string input, int numberOfDigits)
         {
-            // Define a regular expression pattern for an N-digit number
+            //Define pattern for an n digit number
             string pattern = @"^\d{" + numberOfDigits + "}$";
 
-            // Create a Regex object with the pattern
+            //Create a Regex object with the pattern
             Regex regex = new Regex(pattern);
 
-            // Check if the TextBox's text matches the pattern
-            return regex.IsMatch(value);
+            //Check if input string matches the pattern
+            return regex.IsMatch(input);
         }
 
         public static bool ContainsOnlyLettersAndSpaces(string input)
         {
-            // Define a regular expression pattern for only letters (alphabetic characters)
+            //Define pattern for only letters
             string pattern = @"^[A-Za-z\s]+$";
 
-            // Create a Regex object with the pattern
+            //Create a Regex object with the pattern
             Regex regex = new Regex(pattern);
 
-            // Check if the input string matches the pattern
+            //Check if input string matches pattern
             return regex.IsMatch(input);
         }
 
         public static bool IsValidEmail(string email)
         {
-            // Define a regular expression pattern for a valid email address
+            //Define pattern for a valid email address
             string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
 
             // Create a Regex object with the pattern
             Regex regex = new Regex(pattern);
 
-            // Check if the email matches the pattern
+            // Check if the email matches pattern
             return regex.IsMatch(email);
         }
 
+        //method to carry out integrity check on all relevent fields
         public bool IntegrityCheck()
         {
-            // Check for empty fields
+            //Check empty fields
             if (string.IsNullOrWhiteSpace(txtName.Text) ||
                 string.IsNullOrWhiteSpace(txtSurname.Text) ||
                 string.IsNullOrWhiteSpace(txtStreetAddress.Text) ||
@@ -308,7 +309,7 @@ namespace GuestBookingSystem.Presentation
                 return false;
             }
 
-            // Check field-specific validations
+            //Check each textbox
             if (!IsNDigitNumber(txtPhone.Text, 10))
             {
                 MessageBox.Show("Please enter a valid phone number.");
@@ -351,7 +352,7 @@ namespace GuestBookingSystem.Presentation
                 return false;
             }
 
-            // All checks passed, the data is valid
+            //data is valid
             return true;
         }
 
