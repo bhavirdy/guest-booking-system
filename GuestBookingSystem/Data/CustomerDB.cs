@@ -269,13 +269,13 @@ namespace GuestBookingSystem.Data
         {
             cnMain.Open();
 
-            // SQL command to find a customer's ID by first name and last name
+            //sql command to find a customer's ID by first name and last name
             using (var command = new SqlCommand("SELECT CustomerID FROM Customer WHERE Name = @Name AND Surname = @Surname", cnMain))
             {
                 command.Parameters.AddWithValue("@Name", firstName);
                 command.Parameters.AddWithValue("@Surname", lastName);
 
-                // Execute the query to retrieve the customer's ID
+                //execute query to retrieve the customer's ID
                 var result = command.ExecuteScalar();
 
                 if (result != null)
