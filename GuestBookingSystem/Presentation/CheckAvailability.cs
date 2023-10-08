@@ -91,8 +91,10 @@ namespace GuestBookingSystem.Presentation
 
                     if (isAvailable)
                     {
+                        //uses method to calculate potential room pricing based on arrive and leave date
                         var (pricePerNight, totalPrice, deposit) = CalculateRoomPricing(arriveDate, leaveDate);
 
+                        //adds information to textbox
                         availableRooms.Add(room);
                         richTextBox1.AppendText($"Room ID: {room.RoomID}, Num Beds: {room.NumBeds}\n");
                         richTextBox1.AppendText($"Price Per Night: {pricePerNight:C}, Total Price: {totalPrice:C}, Deposit: {deposit:C}\n");
@@ -100,7 +102,7 @@ namespace GuestBookingSystem.Presentation
                     }
                 }
 
-                //Condition is no rooms are available
+                //Condition if no rooms are available
                 if (availableRooms.Count == 0)
                 {
                     richTextBox1.AppendText("No rooms available for the specified dates.");
@@ -112,21 +114,20 @@ namespace GuestBookingSystem.Presentation
 
         #region Utility Methods
 
-        //method 
+        //method to calculate room price based on given arrive and leave date
         private (decimal PricePerNight, decimal TotalPrice, decimal Deposit) CalculateRoomPricing(DateTime arriveDate, DateTime leaveDate)
         {
-            // Define seasonal rates.
             decimal lowSeasonRate = 550;
             decimal midSeasonRate = 750;
             decimal highSeasonRate = 995;
 
-            // Define the booking deposit percentage.
+            // Define the booking deposit percentage
             decimal depositPercentage = 0.10m;
 
-            // Calculate the number of nights for the stay.
+            // Calculate the num nights of stay
             int numberOfNights = (leaveDate - arriveDate).Days;
 
-            // Determine the season based on the arrival date.
+            // Determine season based on the arrival date
             string season;
             if (arriveDate.Month >= 1 && arriveDate.Month <= 12 && arriveDate.Day >= 1 && arriveDate.Day <= 7)
             {
@@ -141,7 +142,7 @@ namespace GuestBookingSystem.Presentation
                 season = "High Season";
             }
 
-            // Calculate the price per night based on the season.
+            // Calculate price per night based on the season
             decimal pricePerNight;
             switch (season)
             {
@@ -155,15 +156,15 @@ namespace GuestBookingSystem.Presentation
                     pricePerNight = highSeasonRate;
                     break;
                 default:
-                    // Handle an invalid season here if needed.
+                    // Handles an invalid season
                     pricePerNight = 0;
                     break;
             }
 
-            // Calculate the total price for the stay.
+            // Calculate total price for the stay
             decimal totalPrice = pricePerNight * numberOfNights;
 
-            // Calculate the booking deposit.
+            // Calculate booking deposit
             decimal deposit = totalPrice * depositPercentage;
 
             return (pricePerNight, totalPrice, deposit);
