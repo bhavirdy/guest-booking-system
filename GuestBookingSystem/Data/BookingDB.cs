@@ -265,13 +265,15 @@ namespace GuestBookingSystem.Data
             }
         }
 
-        public string GenerateUniqueBookingID(int length = 13)
+        public string GenerateUniqueBookingID()
         {
+            //characters to be used in booking id
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder bookingID = new StringBuilder();
 
+            //uses Random class to build a random booking id of length 13
             Random random = new Random();
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < 13; i++)
             {
                 int index = random.Next(chars.Length);
                 bookingID.Append(chars[index]);
