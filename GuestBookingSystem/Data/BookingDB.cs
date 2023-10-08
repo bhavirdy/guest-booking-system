@@ -247,6 +247,7 @@ namespace GuestBookingSystem.Data
         public bool IsRoomAvailable(int roomID, DateTime arriveDate, DateTime leaveDate)
         {
             cnMain.Open();
+            //sql command to check if a given room is available in a given date range
             using (var command = new SqlCommand("SELECT COUNT(*) FROM Booking WHERE RoomID = @RoomID " +
                                                 "AND ((ArriveDate <= @LeaveDate AND LeaveDate >= @ArriveDate) " +
                                                 "OR (ArriveDate <= @ArriveDate AND LeaveDate >= @LeaveDate))",
@@ -256,11 +257,11 @@ namespace GuestBookingSystem.Data
                 command.Parameters.AddWithValue("@ArriveDate", arriveDate);
                 command.Parameters.AddWithValue("@LeaveDate", leaveDate);
 
-                // Execute the query to count overlapping bookings.
+                // Execute the query to count overlapping bookings
                 int overlappingBookingsCount = (int)command.ExecuteScalar();
                 cnMain.Close();
 
-                // If there are overlapping bookings, the room is not available.
+                // If there are overlapping bookings, the room is not available and 0 is returned
                 return overlappingBookingsCount == 0;
             }
         }
@@ -285,6 +286,7 @@ namespace GuestBookingSystem.Data
         public int FindFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
         {
             cnMain.Open();
+            //sql command to find and return first available room with a given arrive date and leave date
             using (var command = new SqlCommand("SELECT TOP 1 RoomID FROM Room WHERE RoomID NOT IN " +
                                                 "(SELECT DISTINCT RoomID FROM Booking " +
                                                 "WHERE (ArriveDate <= @LeaveDate AND LeaveDate >= @ArriveDate) " +
@@ -295,7 +297,7 @@ namespace GuestBookingSystem.Data
                 command.Parameters.AddWithValue("@LeaveDate", leaveDate);
 
                 // Execute the query to find the first available room.
-                int availableRoomID = Convert.ToInt32(command.ExecuteScalar());
+                int availableRoomID = (int)command.ExecuteScalar();
                 cnMain.Close();
 
                 return availableRoomID;
