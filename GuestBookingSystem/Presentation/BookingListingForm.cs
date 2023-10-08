@@ -158,6 +158,7 @@ namespace GuestBookingSystem.Presentation
             bookingListView.Columns.Insert(5, "CardNumber", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(6, "Paid", 100, HorizontalAlignment.Left);
 
+            bookingController = new BookingController();
             bookings = bookingController.Bookings;
 
             foreach (Booking booking in bookings)
