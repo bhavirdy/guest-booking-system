@@ -25,7 +25,7 @@ namespace GuestBookingSystem.Presentation
         #region Form Events
         private void ConfirmationLetter_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,5 +33,10 @@ namespace GuestBookingSystem.Presentation
             this.Close();
         }
         #endregion
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

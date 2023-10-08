@@ -118,6 +118,20 @@ namespace GuestBookingSystem.Data
             return returnValue;
         }
 
+        public string GenerateUniqueCustomerID(int length = 13)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder bookingID = new StringBuilder();
+
+            Random random = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(chars.Length);
+                bookingID.Append(chars[index]);
+            }
+
+            return bookingID.ToString();
+        }
 
         #endregion
 

@@ -47,6 +47,7 @@
             this.lblBookings = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkBoxPaid = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnSubmit.Location = new System.Drawing.Point(773, 553);
+            this.btnSubmit.Location = new System.Drawing.Point(777, 647);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(83, 26);
@@ -67,7 +68,7 @@
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnCancel.Location = new System.Drawing.Point(28, 571);
+            this.btnCancel.Location = new System.Drawing.Point(24, 647);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(83, 26);
@@ -106,6 +107,7 @@
             this.txtCustomerID.Location = new System.Drawing.Point(387, 420);
             this.txtCustomerID.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.ReadOnly = true;
             this.txtCustomerID.Size = new System.Drawing.Size(151, 20);
             this.txtCustomerID.TabIndex = 53;
             // 
@@ -184,7 +186,7 @@
             this.bookingListView.HideSelection = false;
             this.bookingListView.Location = new System.Drawing.Point(28, 109);
             this.bookingListView.Name = "bookingListView";
-            this.bookingListView.Size = new System.Drawing.Size(790, 261);
+            this.bookingListView.Size = new System.Drawing.Size(855, 261);
             this.bookingListView.TabIndex = 46;
             this.bookingListView.UseCompatibleStateImageBehavior = false;
             this.bookingListView.SelectedIndexChanged += new System.EventHandler(this.bookingListView_SelectedIndexChanged);
@@ -255,11 +257,24 @@
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             // 
+            // checkBoxPaid
+            // 
+            this.checkBoxPaid.AutoSize = true;
+            this.checkBoxPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.checkBoxPaid.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.checkBoxPaid.Location = new System.Drawing.Point(351, 566);
+            this.checkBoxPaid.Name = "checkBoxPaid";
+            this.checkBoxPaid.Size = new System.Drawing.Size(55, 21);
+            this.checkBoxPaid.TabIndex = 61;
+            this.checkBoxPaid.Text = "Paid";
+            this.checkBoxPaid.UseVisualStyleBackColor = true;
+            // 
             // BookingListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 608);
+            this.ClientSize = new System.Drawing.Size(895, 688);
+            this.Controls.Add(this.checkBoxPaid);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSubmit);
@@ -311,5 +326,6 @@
         private System.Windows.Forms.Label lblBookings;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox checkBoxPaid;
     }
 }

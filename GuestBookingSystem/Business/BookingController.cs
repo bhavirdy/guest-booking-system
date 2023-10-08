@@ -73,7 +73,7 @@ namespace GuestBookingSystem.Business
             return bookingDB.GenerateUniqueBookingID();
         }
 
-        public String getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
+        public int getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
         {
             return bookingDB.FindFirstAvailableRoom(arriveDate, leaveDate);
         }

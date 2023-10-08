@@ -155,9 +155,11 @@ namespace GuestBookingSystem.Presentation
             bookingListView.Columns.Insert(2, "ArriveDate", 150, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(3, "LeaveDate", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(4, "RoomID", 100, HorizontalAlignment.Left);
-            bookingListView.Columns.Insert(5, "Deposit", 100, HorizontalAlignment.Left);
-            bookingListView.Columns.Insert(6, "PricePerNight", 100, HorizontalAlignment.Left);
-            bookingListView.Columns.Insert(7, "TotalPrice", 100, HorizontalAlignment.Left);
+            //bookingListView.Columns.Insert(5, "Deposit", 100, HorizontalAlignment.Left);
+            //bookingListView.Columns.Insert(6, "PricePerNight", 100, HorizontalAlignment.Left);
+            //bookingListView.Columns.Insert(7, "TotalPrice", 100, HorizontalAlignment.Left);
+            bookingListView.Columns.Insert(5, "CardNumber", 100, HorizontalAlignment.Left);
+            bookingListView.Columns.Insert(6, "Paid", 100, HorizontalAlignment.Left);
 
             bookings = bookingController.Bookings;
 
@@ -169,9 +171,8 @@ namespace GuestBookingSystem.Presentation
                 bookingDetails.SubItems.Add(booking.ArriveDate.ToString());
                 bookingDetails.SubItems.Add(booking.LeaveDate.ToString());
                 bookingDetails.SubItems.Add(booking.RoomNumber.ToString());
-                bookingDetails.SubItems.Add(booking.Deposit.ToString());
-                bookingDetails.SubItems.Add(booking.PricePerNight.ToString());
-                bookingDetails.SubItems.Add(booking.TotalPrice.ToString());
+                bookingDetails.SubItems.Add(booking.CardNumber.ToString());
+                bookingDetails.SubItems.Add(booking.Paid.ToString());
 
                 bookingListView.Items.Add(bookingDetails);
             }
@@ -183,7 +184,6 @@ namespace GuestBookingSystem.Presentation
         {
             if ((state == FormStates.Edit) && value)
             {
-                txtCustomerID.Enabled = value;
                 txtCardNumber.Enabled = value;
                 dateArrival.Enabled = value;
                 dateDeparture.Enabled = value;
@@ -200,6 +200,7 @@ namespace GuestBookingSystem.Presentation
             txtCardNumber.Text = "";
             dateArrival.Value = DateTime.Now;
             dateDeparture.Value = DateTime.Now;
+            checkBoxPaid.Checked = false;
         }
 
         //adds the details of the booking to text boxes to be edited 
@@ -210,6 +211,7 @@ namespace GuestBookingSystem.Presentation
             dateArrival.Value = bookingTemp.ArriveDate;
             dateDeparture.Value = bookingTemp.LeaveDate;
             txtCardNumber.Text= bookingTemp.CardNumber;
+            checkBoxPaid.Checked = bookingTemp.Paid;
         }
 
         private void PopulateObject()
@@ -220,6 +222,10 @@ namespace GuestBookingSystem.Presentation
             booking.ArriveDate = dateArrival.Value;
             booking.LeaveDate = dateDeparture.Value;
             booking.CardNumber = txtCardNumber.Text;
+            booking.setDeposit();
+            booking.setPricePerNight();
+            booking.setTotalPrice();
+            booking.Paid = checkBoxPaid.Checked;
         }
 
 

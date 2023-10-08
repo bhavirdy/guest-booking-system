@@ -65,14 +65,18 @@ namespace GuestBookingSystem.Data
                     bookTemp = new Booking();
                     bookTemp.BookingID = Convert.ToString(myRow["BookingID"]).TrimEnd();
                     bookTemp.CustomerID = Convert.ToString(myRow["CustomerID"]).TrimEnd();
-                    bookTemp.RoomNumber = Convert.ToString(myRow["RoomID"]).TrimEnd();
+                    bookTemp.RoomNumber = Convert.ToInt32(myRow["RoomID"]);
                     bookTemp.ArriveDate = Convert.ToDateTime(myRow["ArriveDate"]);
                     bookTemp.LeaveDate = Convert.ToDateTime(myRow["LeaveDate"]);
+                    bookTemp.setDeposit();
+                    bookTemp.setPricePerNight();
+                    bookTemp.setTotalPrice();
+                    bookTemp.CardNumber = Convert.ToString(myRow["CardNumber"]).TrimEnd();
+                    bookTemp.Paid = Convert.ToBoolean(myRow["Paid"]);
                 }
                 bookings.Add(bookTemp);
             }
         }
-
       
         private void FillRow(DataRow rowTemp, Booking bookTemp, DB.DBOperation operation)
         {
@@ -88,6 +92,8 @@ namespace GuestBookingSystem.Data
             rowTemp["Deposit"] = bookTemp.Deposit;
             rowTemp["TotalPrice"] = bookTemp.TotalPrice;
             rowTemp["PricePerNight"] = bookTemp.PricePerNight;
+            rowTemp["CardNumber"] = bookTemp.CardNumber;
+            rowTemp["Paid"] = bookTemp.Paid;
         }
 
         private int FindRow(Booking bookingTemp, string table)
@@ -147,15 +153,15 @@ namespace GuestBookingSystem.Data
         private void BUILD_INSERT_Parameters(Booking bTemp)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@BookingID", SqlDbType.VarChar, 50, "BookingID");
+            param = new SqlParameter("@BookingID", SqlDbType.VarChar, 13, "BookingID");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 13, "CustomerID");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@ArriveDate", SqlDbType.DateTime, 8, "ArriveDate");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@LeaveDate", SqlDbType.DateTime, 8, "LeaveDate");
             daMain.InsertCommand.Parameters.Add(param);
-            param = new SqlParameter("@RoomID", SqlDbType.VarChar, 50, "RoomID");
+            param = new SqlParameter("@RoomID", SqlDbType.Int, 4, "RoomID");
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@Deposit", SqlDbType.Money, 8, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
@@ -163,22 +169,26 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter("@TotalPrice", SqlDbType.Money, 8, "TotalPrice");
             daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("@CardNumber", SqlDbType.VarChar, 16, "CardNumber");
+            daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("@Paid", SqlDbType.Bit, 1, "Paid");
+            daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void CREATE_INSERT_Command(Booking bTemp)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Booking (BookingID, CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice) VALUES (@BookingID, @CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Booking (BookingID, CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice, CardNumber, Paid) VALUES (@BookingID, @CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice, @CardNumber, @Paid)", cnMain);
             BUILD_INSERT_Parameters(bTemp);
         }
         private void BUILD_UPDATE_Parameters(Booking bookingTemp)
         {
             SqlParameter param = default(SqlParameter);
 
-            param = new SqlParameter("@Original_ID", SqlDbType.VarChar, 50, "BookingID");
+            param = new SqlParameter("@Original_ID", SqlDbType.VarChar, 13, "BookingID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 13, "CustomerID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -190,26 +200,34 @@ namespace GuestBookingSystem.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@RoomID", SqlDbType.VarChar, 50, "RoomID");
+            param = new SqlParameter("@RoomID", SqlDbType.Int, 4, "RoomID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Money, 50, "Deposit");
+            param = new SqlParameter("@Deposit", SqlDbType.Money, 8, "Deposit");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@PricePerNight", SqlDbType.Money, 50, "PricePerNight");
+            param = new SqlParameter("@PricePerNight", SqlDbType.Money, 8, "PricePerNight");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 50, "TotalPrice");
+            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 8, "TotalPrice");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CardNumber", SqlDbType.VarChar, 16, "CardNumber");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Paid", SqlDbType.Bit, 1, "Paid");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
         }
 
         private void CREATE_UPDATE_Command(Booking bookingTemp)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET CustomerID = @CustomerID, ArriveDate = @ArriveDate, LeaveDate = @LeaveDate, RoomID = @RoomID, Deposit = @Deposit, PricePerNight = @PricePerNight, TotalPrice = @TotalPrice " + "WHERE BookingID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET CustomerID = @CustomerID, ArriveDate = @ArriveDate, LeaveDate = @LeaveDate, RoomID = @RoomID, Deposit = @Deposit, PricePerNight = @PricePerNight, TotalPrice = @TotalPrice, CardNumber = @CardNumber, Paid = @Paid " + "WHERE BookingID = @Original_ID", cnMain);
             BUILD_UPDATE_Parameters(bookingTemp);
         }
 
@@ -247,7 +265,7 @@ namespace GuestBookingSystem.Data
             }
         }
 
-        public string GenerateUniqueBookingID(int length = 10)
+        public string GenerateUniqueBookingID(int length = 13)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder bookingID = new StringBuilder();
@@ -262,7 +280,7 @@ namespace GuestBookingSystem.Data
             return bookingID.ToString();
         }
 
-        public String FindFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
+        public int FindFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
         {
             cnMain.Open();
             using (var command = new SqlCommand("SELECT TOP 1 RoomID FROM Room WHERE RoomID NOT IN " +
@@ -275,7 +293,7 @@ namespace GuestBookingSystem.Data
                 command.Parameters.AddWithValue("@LeaveDate", leaveDate);
 
                 // Execute the query to find the first available room.
-                String availableRoomID = Convert.ToString(command.ExecuteScalar());
+                int availableRoomID = Convert.ToInt32(command.ExecuteScalar());
                 cnMain.Close();
 
                 return availableRoomID;

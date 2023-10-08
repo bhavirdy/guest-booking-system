@@ -131,24 +131,6 @@ namespace GuestBookingSystem.Presentation
         private bool checkNumbers(String value)
         {
 
-            //bool check = false;
-            //for (int i = 0; i <= value.Length; i++)
-            //{
-            //    string temp = value.Substring(i, i + 1);
-
-            //    for (int j = 0; j < numbersCheck.Length; j++)
-            //    {
-            //        if (!temp.Equals(numbersCheck[j]))
-            //        {
-            //            check = true;
-
-
-            //        }
-            //    }
-            //}
-
-            //return check;
-
             // Define a regular expression pattern for a 16-digit number
             string pattern = @"^\d{16}$";
 
@@ -202,7 +184,7 @@ namespace GuestBookingSystem.Presentation
             }
             else if (currentState == "Existing Customer")
             {
-                if (txtCustID.Text.Equals("") || txtCustID.TextLength != 3)
+                if (txtCustID.Text.Equals("") || txtCustID.TextLength != 13)
                 {
                     MessageBox.Show("Please enter a valid CustomerID");
                 }

@@ -37,8 +37,6 @@
             this.btnCancelC = new System.Windows.Forms.Button();
             this.btnClearC = new System.Windows.Forms.Button();
             this.btnSubmitC = new System.Windows.Forms.Button();
-            this.txtCustID = new System.Windows.Forms.TextBox();
-            this.lblCustID = new System.Windows.Forms.Label();
             this.txtTownOrCity = new System.Windows.Forms.TextBox();
             this.lblTownOrCity = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
@@ -165,26 +163,6 @@
             this.btnSubmitC.UseVisualStyleBackColor = true;
             this.btnSubmitC.Click += new System.EventHandler(this.btnSubmitC_Click);
             // 
-            // txtCustID
-            // 
-            this.txtCustID.Location = new System.Drawing.Point(219, 70);
-            this.txtCustID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCustID.Name = "txtCustID";
-            this.txtCustID.Size = new System.Drawing.Size(251, 20);
-            this.txtCustID.TabIndex = 25;
-            // 
-            // lblCustID
-            // 
-            this.lblCustID.AutoSize = true;
-            this.lblCustID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustID.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblCustID.Location = new System.Drawing.Point(37, 70);
-            this.lblCustID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCustID.Name = "lblCustID";
-            this.lblCustID.Size = new System.Drawing.Size(88, 18);
-            this.lblCustID.TabIndex = 24;
-            this.lblCustID.Text = "CustomerID";
-            // 
             // txtTownOrCity
             // 
             this.txtTownOrCity.Location = new System.Drawing.Point(219, 289);
@@ -300,8 +278,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 453);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtCustID);
-            this.Controls.Add(this.lblCustID);
             this.Controls.Add(this.txtTownOrCity);
             this.Controls.Add(this.lblTownOrCity);
             this.Controls.Add(this.txtPostalCode);
@@ -345,8 +321,6 @@
         private System.Windows.Forms.Button btnCancelC;
         private System.Windows.Forms.Button btnClearC;
         private System.Windows.Forms.Button btnSubmitC;
-        private System.Windows.Forms.TextBox txtCustID;
-        private System.Windows.Forms.Label lblCustID;
         private System.Windows.Forms.TextBox txtTownOrCity;
         private System.Windows.Forms.Label lblTownOrCity;
         private System.Windows.Forms.TextBox txtPostalCode;

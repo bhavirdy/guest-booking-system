@@ -127,6 +127,8 @@ namespace GuestBookingSystem.Business
             return customerDB.UpdateDataSource(custTemp);
         }
 
+        public String getUniqueCustomerID() { return customerDB.GenerateUniqueCustomerID(); }
+
         #endregion
     }
 }

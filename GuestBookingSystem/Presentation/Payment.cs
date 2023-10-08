@@ -39,5 +39,10 @@ namespace GuestBookingSystem.Presentation
             cl.Show();
             this.Close();
         }
+
+        private void Payment_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

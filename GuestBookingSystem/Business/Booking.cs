@@ -15,9 +15,9 @@ namespace GuestBookingSystem.Business
         private String customerID;
         private DateTime arriveDate;
         private DateTime leaveDate;
-        private String roomNumber;
+        private int roomNumber;
         private String cardNumber;
-        private String paid;
+        private Boolean paid;
         private double deposit;
         private double totalPrice;
         private double pricePerNight;
@@ -46,7 +46,7 @@ namespace GuestBookingSystem.Business
             set { leaveDate = value; }
         }
 
-        public String RoomNumber
+        public int RoomNumber
         {
             get { return roomNumber; }
             set { roomNumber = value; }
@@ -75,9 +75,9 @@ namespace GuestBookingSystem.Business
             set { cardNumber = value; }
             get { return cardNumber; }
         }
-        public String Paid
+        public Boolean Paid
         {
-            set { Paid = value; }
+            set { paid = value; }
             get { return paid; }
         }
 
@@ -97,8 +97,7 @@ namespace GuestBookingSystem.Business
 
         }
 
-        public Booking(String custTemp, DateTime aDate, DateTime lDate, String rNum)
-
+        public Booking(String custTemp, DateTime aDate, DateTime lDate, int rNum)
         {
             customerID = custTemp;
             arriveDate = aDate;
