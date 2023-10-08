@@ -83,15 +83,15 @@ namespace GuestBookingSystem.Business
         public int countCustomers(string prov)
         {
             int count = 0;
-            int index = 0;
-            while (index < customerCollection.Count)
+            for (int index = 0; index < customerCollection.Count; index++)
             {
-                if ((customerCollection[index].Province  == prov ))
+                if (customerCollection[index].Province == prov)
                 {
-                    count = count + 1;
+                    count++;
                 }
             }
             return count;
+
         }
 
         #endregion 

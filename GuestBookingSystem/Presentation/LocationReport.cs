@@ -43,36 +43,40 @@ namespace GuestBookingSystem.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int numCustEC = customerC.countCustomers("Eastern Cape");
+            int numCustEC = customerC.countCustomers("EC");
             int numCustFS = customerC.countCustomers("Free State");
             int numCustG = customerC.countCustomers("Gauteng");
-            int numCustKZN = customerC.countCustomers("KwaZulu-Natal");
+            int numCustKZN = customerC.countCustomers("KZN");
             int numCustL = customerC.countCustomers("Limpopo");
             int numCustM = customerC.countCustomers("Mpumalanga");
             int numCustNW = customerC.countCustomers("North West");
             int numCustNC = customerC.countCustomers("Northen Cape");
-            int numCustWC = customerC.countCustomers("Western Cape");
-            
-            chart1.Series["Customer Count"].ChartType = SeriesChartType.Column;
-            Series s = new Series();
+            int numCustWC = customerC.countCustomers("WC");
 
-            s.ChartType = SeriesChartType.Column;
+            // Create a series
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Column;
 
-            s.Points.Add(new DataPoint(0, numCustEC) { AxisLabel = "Eastern Cape" });
-            s.Points.Add(new DataPoint(1, numCustFS) { AxisLabel = "Free State" });
-            s.Points.Add(new DataPoint(2, numCustG) { AxisLabel = "Gauteng" });
-            s.Points.Add(new DataPoint(3, numCustKZN) { AxisLabel = "KwaZulu-Natal" });
-            s.Points.Add(new DataPoint(4, numCustL) { AxisLabel = "Limpopo" });
-            s.Points.Add(new DataPoint(5, numCustNW) { AxisLabel = "North West" });
-            s.Points.Add(new DataPoint(6, numCustM) { AxisLabel = "Mpumalanga" });
-            s.Points.Add(new DataPoint(7, numCustNC) { AxisLabel = "Northen Cape" });
-            s.Points.Add(new DataPoint(8, numCustWC) { AxisLabel = "Western Cape" });
-           
+            // Add data points to the series
+            series.Points.Add(new DataPoint(0, numCustEC) { AxisLabel = "EC" });
+            series.Points.Add(new DataPoint(1, numCustFS) { AxisLabel = "Free State" });
+            series.Points.Add(new DataPoint(2, numCustG) { AxisLabel = "Gauteng" });
+            series.Points.Add(new DataPoint(3, numCustKZN) { AxisLabel = "KZN" });
+            series.Points.Add(new DataPoint(4, numCustL) { AxisLabel = "Limpopo" });
+            series.Points.Add(new DataPoint(5, numCustNW) { AxisLabel = "North West" });
+            series.Points.Add(new DataPoint(6, numCustM) { AxisLabel = "Mpumalanga" });
+            series.Points.Add(new DataPoint(7, numCustNC) { AxisLabel = "Northen Cape" });
+            series.Points.Add(new DataPoint(8, numCustWC) { AxisLabel = "WC" });
+
+            // Add the series to the chart
+            chart1.Series.Clear(); // Clear existing series (if any)
+            chart1.Series.Add(series);
+
         }
 
         private void LocationReport_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
         }
         #endregion
     }
