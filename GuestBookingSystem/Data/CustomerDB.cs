@@ -118,23 +118,6 @@ namespace GuestBookingSystem.Data
             return returnValue;
         }
 
-        public string GenerateUniqueCustomerID()
-        {
-            //characters to be used in random customer id
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            StringBuilder bookingID = new StringBuilder();
-
-            //uses Random class to pick a random character from the string of chars
-            Random random = new Random();
-            for (int i = 0; i < 13; i++)
-            {
-                int index = random.Next(chars.Length);
-                bookingID.Append(chars[index]);
-            }
-
-            return bookingID.ToString();
-        }
-
         #endregion
 
         #region Database CRUD
@@ -288,8 +271,60 @@ namespace GuestBookingSystem.Data
 
             cnMain.Close();
 
-            // If no matching customer is found, return null or an empty string as appropriate
-            return null; // or return string.Empty; depending on your preference
+            return null;
+        }
+        public string GenerateUniqueCustomerID()
+        {
+            //characters to be used in booking id
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder customerID = new StringBuilder();
+
+            //uses Random class to build a random booking id of length 13
+            Random random = new Random();
+
+            //set a maximum number of attempts to generate a unique ID
+            int maxAttempts = 100;
+            int attemptCount = 0;
+
+            while (attemptCount < maxAttempts)
+            {
+                customerID.Clear();
+
+                for (int i = 0; i < 13; i++)
+                {
+                    int index = random.Next(chars.Length);
+                    customerID.Append(chars[index]);
+                }
+
+                //check if the generated cust ID already exists in the database
+                if (!IsCustomerIDExists(customerID.ToString()))
+                {
+                    return customerID.ToString(); //return the unique cust ID
+                }
+
+                attemptCount++;
+            }
+
+            throw new InvalidOperationException("Unable to generate a unique customer ID.");
+        }
+
+        private bool IsCustomerIDExists(string customerID)
+        {
+            cnMain.Open();
+
+            //sql command to check if the booking ID already exists in the Booking table
+            using (var command = new SqlCommand("SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID", cnMain))
+            {
+                command.Parameters.AddWithValue("@BookingID", customerID);
+
+                //execute the query and get the count
+                int count = (int)command.ExecuteScalar();
+
+                cnMain.Close();
+
+                //return true if the count is greater than zero (booking ID exists), otherwise return false
+                return count > 0;
+            }
         }
     }
 
