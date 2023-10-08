@@ -147,14 +147,6 @@ namespace GuestBookingSystem.Business
             //determine deposit
             deposit = 0.1 * totalPrice;
         }
-
-
-        public bool updateDates(DateTime newArriveDate, DateTime newLeaveDate)
-        {
-            this.ArriveDate = newArriveDate;
-            this.LeaveDate = newLeaveDate;
-            return true;
-        }
         #endregion
     }
 }
