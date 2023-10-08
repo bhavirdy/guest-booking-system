@@ -33,11 +33,6 @@ namespace GuestBookingSystem.Business
         public Room()
         { }
 
-        public Room(int roomIDTemp, int numBedsTemp) { 
-            roomID = roomIDTemp;
-            numBeds = numBedsTemp;
-        }
-
         #endregion 
     }
 }
