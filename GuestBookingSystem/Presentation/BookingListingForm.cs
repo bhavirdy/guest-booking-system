@@ -222,9 +222,9 @@ namespace GuestBookingSystem.Presentation
             booking.ArriveDate = dateArrival.Value;
             booking.LeaveDate = dateDeparture.Value;
             booking.CardNumber = txtCardNumber.Text;
-            booking.setDeposit();
             booking.setPricePerNight();
             booking.setTotalPrice();
+            booking.setDeposit();
             booking.Paid = checkBoxPaid.Checked;
         }
 

@@ -135,8 +135,7 @@ namespace GuestBookingSystem.Business
 
             if (numberOfNights < 0)
             {
-                // Handle invalid date range
-                throw new ArgumentException("Invalid date range. Departure date must be after arrival date.");
+                throw new ArgumentException("Invalid dates. Departure date must be after arrival date.");
             }
 
             totalPrice = numberOfNights * pricePerNight;

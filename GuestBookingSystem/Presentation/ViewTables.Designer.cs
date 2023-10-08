@@ -31,7 +31,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnBooking = new System.Windows.Forms.Button();
-            this.btnReceptionist = new System.Windows.Forms.Button();
             this.btnRoom = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -39,10 +38,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 186);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 186);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(801, 265);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 444);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnCustomer
@@ -65,19 +64,9 @@
             this.btnBooking.UseVisualStyleBackColor = true;
             this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
-            // btnReceptionist
-            // 
-            this.btnReceptionist.Location = new System.Drawing.Point(432, 73);
-            this.btnReceptionist.Name = "btnReceptionist";
-            this.btnReceptionist.Size = new System.Drawing.Size(131, 45);
-            this.btnReceptionist.TabIndex = 3;
-            this.btnReceptionist.Text = "View Receptionist Table";
-            this.btnReceptionist.UseVisualStyleBackColor = true;
-            this.btnReceptionist.Click += new System.EventHandler(this.btnReceptionist_Click);
-            // 
             // btnRoom
             // 
-            this.btnRoom.Location = new System.Drawing.Point(631, 73);
+            this.btnRoom.Location = new System.Drawing.Point(428, 73);
             this.btnRoom.Name = "btnRoom";
             this.btnRoom.Size = new System.Drawing.Size(131, 45);
             this.btnRoom.TabIndex = 4;
@@ -91,7 +80,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnRoom);
-            this.Controls.Add(this.btnReceptionist);
             this.Controls.Add(this.btnBooking);
             this.Controls.Add(this.btnCustomer);
             this.Controls.Add(this.dataGridView1);
@@ -109,7 +97,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnBooking;
-        private System.Windows.Forms.Button btnReceptionist;
         private System.Windows.Forms.Button btnRoom;
     }
 }

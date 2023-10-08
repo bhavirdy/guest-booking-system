@@ -85,9 +85,9 @@ namespace GuestBookingSystem.Presentation
             booking.LeaveDate = dateTimePickerDepartureDate.Value;
             booking.RoomNumber = bookingController.getFirstAvailableRoom(dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
             booking.CardNumber = txtCardNum.Text;
-            booking.setDeposit();
             booking.setPricePerNight();
             booking.setTotalPrice();
+            booking.setDeposit();
 
         }
 
