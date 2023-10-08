@@ -155,9 +155,6 @@ namespace GuestBookingSystem.Presentation
             bookingListView.Columns.Insert(2, "ArriveDate", 150, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(3, "LeaveDate", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(4, "RoomID", 100, HorizontalAlignment.Left);
-            //bookingListView.Columns.Insert(5, "Deposit", 100, HorizontalAlignment.Left);
-            //bookingListView.Columns.Insert(6, "PricePerNight", 100, HorizontalAlignment.Left);
-            //bookingListView.Columns.Insert(7, "TotalPrice", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(5, "CardNumber", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(6, "Paid", 100, HorizontalAlignment.Left);
 
