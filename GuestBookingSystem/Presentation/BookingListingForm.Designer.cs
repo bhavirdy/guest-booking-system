@@ -100,7 +100,6 @@
             this.dateArrival.Name = "dateArrival";
             this.dateArrival.Size = new System.Drawing.Size(151, 20);
             this.dateArrival.TabIndex = 54;
-            this.dateArrival.ValueChanged += new System.EventHandler(this.dateArrival_ValueChanged);
             // 
             // txtCustomerID
             // 
