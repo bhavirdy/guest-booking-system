@@ -315,7 +315,7 @@ namespace GuestBookingSystem.Data
             //sql command to check if the booking ID already exists in the Booking table
             using (var command = new SqlCommand("SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID", cnMain))
             {
-                command.Parameters.AddWithValue("@BookingID", customerID);
+                command.Parameters.AddWithValue("@CustomerID", customerID);
 
                 //execute the query and get the count
                 int count = (int)command.ExecuteScalar();
