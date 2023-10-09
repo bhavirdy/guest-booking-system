@@ -50,9 +50,10 @@ namespace GuestBookingSystem.Business
                     break;
 
                 case DB.DBOperation.Edit:
+                    bookings = bookingDB.AllBookings;
                     index = FindIndex(bookingTemp);
                     bookings.RemoveAt(index);
-                    bookings[index] = bookingTemp;
+                    bookings.Insert(index, bookingTemp);
                     break;
 
                 case DB.DBOperation.Delete:
