@@ -53,7 +53,7 @@ namespace GuestBookingSystem.Presentation
         {
             InitializeComponent();
             this.isOpen = true;
-            customerController = customerControllerTemp;
+            customerController = new CustomerController();
             this.Load += CustomerListingForm_Load;
             this.Activated += CustomerListingForm_Activated;
             this.FormClosed += CustomerListingForm_FormClosed;
@@ -153,7 +153,7 @@ namespace GuestBookingSystem.Presentation
             customerListView.Columns.Insert(7, "PostalCode", 100, HorizontalAlignment.Left);
             customerListView.Columns.Insert(8, "Phone", 100, HorizontalAlignment.Left);
 
-            customerController = new CustomerController();
+            //customerController = new CustomerController();
             customers = customerController.CustomerCollection;
 
             foreach (Customer customer in customers)
