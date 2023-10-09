@@ -271,7 +271,7 @@ namespace GuestBookingSystem.Data
 
             cnMain.Close();
 
-            return null;
+            return "-1";
         }
         public string GenerateUniqueCustomerID()
         {

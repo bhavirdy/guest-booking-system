@@ -72,7 +72,7 @@ namespace GuestBookingSystem.Presentation
         #region Utility Methods
         private string generateRef()
         {
-            
+
             string custStart = booking.CustomerID.ToString().Substring(0, 3);
             string cardNum = txtCardNum.ToString().Substring(0, 2);
 
@@ -84,8 +84,8 @@ namespace GuestBookingSystem.Presentation
 
             //based on surname and name find customer id
             CustomerDB customerDB = new CustomerDB();
-            booking.CustomerID = customerDB.FindCustomerID(txtName.Text,txtSurname.Text);
-            
+            booking.CustomerID = customerDB.FindCustomerID(txtName.Text, txtSurname.Text);
+
             booking.ArriveDate = dateTimePickerArrival.Value;
             booking.LeaveDate = dateTimePickerDepartureDate.Value;
             booking.RoomNumber = bookingController.getFirstAvailableRoom(dateTimePickerArrival.Value, dateTimePickerDepartureDate.Value);
@@ -136,27 +136,6 @@ namespace GuestBookingSystem.Presentation
                 label2.Visible = true;
             }
         }
-
-        private bool checkNumbers(String value)
-        {
-
-            //Define pattern for a 16-digit number
-            string pattern = @"^\d{16}$";
-
-            //Create a Regex object with the pattern
-            Regex regex = new Regex(pattern);
-
-            //Check if the TextBox's text matches the pattern
-            if (regex.IsMatch(value))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         #endregion
 
         #region Form Events
@@ -168,8 +147,6 @@ namespace GuestBookingSystem.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //integrity check
-            bool checkCard = checkNumbers(txtCardNum.Text);
 
             if (currentState == "New Customer")
             {
@@ -182,20 +159,8 @@ namespace GuestBookingSystem.Presentation
                 createCustomerForm.Show();
 
             }
-            else if (currentState == "Existing Customer")
+            else if (currentState == "Existing Customer" && IntegrityCheck())
             {
-                if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
-                {
-                    MessageBox.Show("Cannot choose a departure date that is before the arrival date");
-                }
-
-                else
-                if (txtCardNum.Text.Equals("") || checkCard == false)
-                {
-                    MessageBox.Show("Please enter a valid Card Number");
-                }
-                else
-                {
                     //add booking to DB
                     PopulateObject();
                     bookingController.DataMaintanence(booking, Data.DB.DBOperation.Add);
@@ -204,12 +169,11 @@ namespace GuestBookingSystem.Presentation
                     string referenceNum = generateRef();
                     Payment paymentForm = new Payment(booking.BookingID, booking.ArriveDate, booking.LeaveDate, booking.BookingID);
                     paymentForm.Show();
-                    
+
                     this.Close();
                     MessageBox.Show("Please ask the customer if they will make a deposit payment now or at a later date.");
                     ClearAll();
 
-                }
             }
         }
 
@@ -253,7 +217,61 @@ namespace GuestBookingSystem.Presentation
                 UpdateControlVisibility();
             }
         }
-    }
 
-    #endregion
+
+        #endregion
+
+        #region Integrity helper methods
+
+        private bool IntegrityCheck()
+        {
+            //Check for empty fields
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                string.IsNullOrWhiteSpace(txtSurname.Text) ||
+                string.IsNullOrWhiteSpace(txtCardNum.Text))
+            {
+                MessageBox.Show("Please ensure all the fields are filled.");
+                return false;
+            }
+
+            if (this.dateTimePickerDepartureDate.Value < this.dateTimePickerArrival.Value)
+            {
+                MessageBox.Show("Cannot choose a departure date that is before the arrival date");
+                return false;
+            }
+
+            if (!IsNDigitNumber(txtCardNum.Text, 16))
+            {
+                MessageBox.Show("Please enter a valid card number.");
+                return false;
+            }
+
+            CustomerDB customerDB = new CustomerDB();
+            String cID;
+            cID = customerDB.FindCustomerID(txtName.Text, txtSurname.Text);
+
+            if (cID == "-1")
+            {
+                MessageBox.Show("Please enter a valid customer name and surname.");
+                return false;
+            }
+
+            //checks passed
+            return true;
+        }
+
+        public static bool IsNDigitNumber(string input, int numberOfDigits)
+        {
+            //Define pattern for an n digit number
+            string pattern = @"^\d{" + numberOfDigits + "}$";
+
+            //Create a Regex object with the pattern
+            Regex regex = new Regex(pattern);
+
+            //Check if the input string matches pattern
+            return regex.IsMatch(input);
+        }
+
+        #endregion
+    }
 }
