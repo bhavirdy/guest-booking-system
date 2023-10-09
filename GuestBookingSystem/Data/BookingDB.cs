@@ -47,6 +47,8 @@ namespace GuestBookingSystem.Data
         #endregion
 
         #region Utility Methods
+
+        //retunrs the dataSet
         public DataSet GetDataSet()
         {
             return dsMain;
@@ -79,6 +81,7 @@ namespace GuestBookingSystem.Data
             }
         }
       
+        //adds the details from a booking into a row to be added in the database
         private void FillRow(DataRow rowTemp, Booking bookTemp, DB.DBOperation operation)
         {
             if (operation == DB.DBOperation.Add)
@@ -97,6 +100,7 @@ namespace GuestBookingSystem.Data
             rowTemp["Paid"] = bookTemp.Paid;
         }
 
+        //finds the row in the table for a specific booking
         private int FindRow(Booking bookingTemp, string table)
         {
             int rowIndex = 0;
@@ -125,6 +129,7 @@ namespace GuestBookingSystem.Data
 
         #region Database CRUD
 
+        //Changes the dataset 
         public void DataSetChange(Booking bookingTemp, DB.DBOperation operation)
         {
             DataRow rowTemp = null;
@@ -151,6 +156,7 @@ namespace GuestBookingSystem.Data
             }
         }
 
+        //creates the parameters to insert a new row into the table
         private void BUILD_INSERT_Parameters(Booking bTemp)
         {
             SqlParameter param = default(SqlParameter);
@@ -176,11 +182,14 @@ namespace GuestBookingSystem.Data
             daMain.InsertCommand.Parameters.Add(param);
         }
 
+        //inserts a new row 
         private void CREATE_INSERT_Command(Booking bTemp)
         {
             daMain.InsertCommand = new SqlCommand("INSERT into Booking (BookingID, CustomerID, ArriveDate, LeaveDate, RoomID, Deposit, PricePerNight, TotalPrice, CardNumber, Paid) VALUES (@BookingID, @CustomerID, @ArriveDate, @LeaveDate, @RoomID, @Deposit, @PricePerNight, @TotalPrice, @CardNumber, @Paid)", cnMain);
             BUILD_INSERT_Parameters(bTemp);
         }
+
+        //builds the parameters to update a row in the databse
         private void BUILD_UPDATE_Parameters(Booking bookingTemp)
         {
             SqlParameter param = default(SqlParameter);
@@ -226,12 +235,14 @@ namespace GuestBookingSystem.Data
             daMain.UpdateCommand.Parameters.Add(param);
         }
 
+        //updates the row 
         private void CREATE_UPDATE_Command(Booking bookingTemp)
         {
             daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET CustomerID = @CustomerID, ArriveDate = @ArriveDate, LeaveDate = @LeaveDate, RoomID = @RoomID, Deposit = @Deposit, PricePerNight = @PricePerNight, TotalPrice = @TotalPrice, CardNumber = @CardNumber, Paid = @Paid " + "WHERE BookingID = @Original_ID", cnMain);
             BUILD_UPDATE_Parameters(bookingTemp);
         }
 
+        //builds the delete parameters
         private void BUILD_DELETE_Parameters(Booking bookingTemp)
         {
             SqlParameter param = new SqlParameter("@BookingID", SqlDbType.VarChar, 50, "BookingID");
@@ -239,12 +250,14 @@ namespace GuestBookingSystem.Data
             daMain.DeleteCommand.Parameters.Add(param);
         }
 
+        //deletes the row
         private void CREATE_DELETE_Command(Booking bookingTemp)
         {
             daMain.DeleteCommand = new SqlCommand("DELETE FROM Booking WHERE BookingID = @BookingID", cnMain);
             BUILD_DELETE_Parameters(bookingTemp);
         }
 
+        //method to check what rooms are available for a given period
         public bool IsRoomAvailable(int roomID, DateTime arriveDate, DateTime leaveDate)
         {
             cnMain.Open();

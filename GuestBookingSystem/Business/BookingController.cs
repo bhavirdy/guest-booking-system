@@ -39,7 +39,7 @@ namespace GuestBookingSystem.Business
 
         #region Database Communication
 
-
+        //Method to edit the collection of bookings and make changes to the dataSet
         public void DataMaintanence(Booking bookingTemp, DB.DBOperation operation)
         {
             int index = 0;
@@ -64,15 +64,18 @@ namespace GuestBookingSystem.Business
             }
         }
 
+        //Method to edit the collection of bookings and make changes to the dataSet
         public bool FinalizeChanges(Booking bookingTemp)
         {
             return bookingDB.UpdateDataSource(bookingTemp);
         }
+        //method to geenrate a unique booking
         public String getUniqueBookingID()
         {
             return bookingDB.GenerateUniqueBookingID();
         }
 
+        //method to get the available rooms for a period
         public int getFirstAvailableRoom(DateTime arriveDate, DateTime leaveDate)
         {
             return bookingDB.FindFirstAvailableRoom(arriveDate, leaveDate);

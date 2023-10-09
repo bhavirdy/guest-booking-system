@@ -15,7 +15,7 @@ namespace GuestBookingSystem.Business
         #endregion
 
         #region Constructors
-
+        //default constructor
         public Customer()
         { }
 

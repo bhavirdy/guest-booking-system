@@ -59,7 +59,7 @@ namespace GuestBookingSystem.Presentation
             txtCount.Text = c.ToString();
 
         }
-        #endregion
+
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -107,5 +107,12 @@ namespace GuestBookingSystem.Presentation
             //refresh the chart
             chart1.Invalidate();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion 
     }
 }

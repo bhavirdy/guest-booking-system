@@ -228,5 +228,10 @@ namespace GuestBookingSystem.Presentation
 
 
         #endregion
+
+        private void dateArrival_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -59,9 +59,8 @@
             this.lblDepartureDateOut.Location = new System.Drawing.Point(204, 198);
             this.lblDepartureDateOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDepartureDateOut.Name = "lblDepartureDateOut";
-            this.lblDepartureDateOut.Size = new System.Drawing.Size(50, 16);
+            this.lblDepartureDateOut.Size = new System.Drawing.Size(0, 16);
             this.lblDepartureDateOut.TabIndex = 49;
-            this.lblDepartureDateOut.Text = "label7";
             // 
             // lblArrivalDateOut
             // 
@@ -70,9 +69,8 @@
             this.lblArrivalDateOut.Location = new System.Drawing.Point(204, 157);
             this.lblArrivalDateOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblArrivalDateOut.Name = "lblArrivalDateOut";
-            this.lblArrivalDateOut.Size = new System.Drawing.Size(50, 16);
+            this.lblArrivalDateOut.Size = new System.Drawing.Size(0, 16);
             this.lblArrivalDateOut.TabIndex = 48;
-            this.lblArrivalDateOut.Text = "label7";
             // 
             // lblRefNumOut
             // 
@@ -81,9 +79,9 @@
             this.lblRefNumOut.Location = new System.Drawing.Point(204, 102);
             this.lblRefNumOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRefNumOut.Name = "lblRefNumOut";
-            this.lblRefNumOut.Size = new System.Drawing.Size(34, 16);
+            this.lblRefNumOut.Size = new System.Drawing.Size(0, 16);
             this.lblRefNumOut.TabIndex = 46;
-            this.lblRefNumOut.Text = "Null";
+            this.lblRefNumOut.Click += new System.EventHandler(this.lblRefNumOut_Click);
             // 
             // button1
             // 
