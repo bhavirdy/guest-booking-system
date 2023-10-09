@@ -38,5 +38,10 @@ namespace GuestBookingSystem.Presentation
         {
             this.Close();
         }
+
+        private void lblRefNumOut_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

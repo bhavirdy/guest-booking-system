@@ -94,10 +94,11 @@ namespace GuestBookingSystem.Business
 
         }
 
-        #endregion 
+        #endregion
 
         #region DataBase Communication
 
+        //Method to edit the collection of customers and make changes to the dataSet 
         public void DataMaintanence(Customer custTemp, DB.DBOperation operation)
         {
             int index = 0;
@@ -122,11 +123,13 @@ namespace GuestBookingSystem.Business
             }
         }
 
+        //method to make changes to the database
         public bool FinalizeChanges(Customer custTemp)
         {
             return customerDB.UpdateDataSource(custTemp);
         }
 
+        //method to generate a unique customer ID
         public String getUniqueCustomerID() { return customerDB.GenerateUniqueCustomerID(); }
 
         #endregion

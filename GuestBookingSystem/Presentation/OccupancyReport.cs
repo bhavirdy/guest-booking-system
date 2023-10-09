@@ -107,5 +107,10 @@ namespace GuestBookingSystem.Presentation
             //refresh the chart
             chart1.Invalidate();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -79,5 +79,11 @@ namespace GuestBookingSystem.Presentation
             this.WindowState = FormWindowState.Maximized;
         }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+               
+        }
     }
 }
