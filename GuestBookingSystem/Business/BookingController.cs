@@ -18,8 +18,6 @@ namespace GuestBookingSystem.Business
         BookingDB bookingDB;
         Collection<Booking> bookings;
 
-        string[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-
         #endregion
 
         #region Property Members
