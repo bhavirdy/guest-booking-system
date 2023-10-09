@@ -111,9 +111,11 @@ namespace GuestBookingSystem.Business
                     break;
 
                 case DB.DBOperation.Edit:
+                    customerCollection = customerDB.AllCustomers;
                     index = FindIndex(custTemp);
+                    Console.WriteLine(index.ToString());
                     customerCollection.RemoveAt(index);
-                    customerCollection[index] = custTemp;
+                    customerCollection.Insert(index, custTemp);
                     break;
 
                 case DB.DBOperation.Delete:
