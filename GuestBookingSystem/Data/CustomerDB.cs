@@ -227,7 +227,7 @@ namespace GuestBookingSystem.Data
 
         private void BUILD_DELETE_Parameters(Customer custTemp)
         {
-            SqlParameter param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 50, "CustomerID");
+            SqlParameter param = new SqlParameter("@CustomerID", SqlDbType.VarChar, 13, "CustomerID");
             param.SourceVersion = DataRowVersion.Original; // Use Original version for DELETE
             daMain.DeleteCommand.Parameters.Add(param);
         }

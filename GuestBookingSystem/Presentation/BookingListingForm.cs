@@ -47,7 +47,7 @@ namespace GuestBookingSystem.Presentation
         {
             InitializeComponent();
             this.isOpen = true;
-            bookingController = bookingControllerTemp;
+            bookingController = new BookingController();
             this.Load += BookingListingForm_Load;
             this.Activated += BookingListingForm_Activated;
             this.FormClosed += BookingListingForm_FormClosed;
@@ -158,7 +158,6 @@ namespace GuestBookingSystem.Presentation
             bookingListView.Columns.Insert(5, "CardNumber", 100, HorizontalAlignment.Left);
             bookingListView.Columns.Insert(6, "Paid", 100, HorizontalAlignment.Left);
 
-            bookingController = new BookingController();
             bookings = bookingController.Bookings;
 
             foreach (Booking booking in bookings)
@@ -228,10 +227,5 @@ namespace GuestBookingSystem.Presentation
 
 
         #endregion
-
-        private void dateArrival_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
