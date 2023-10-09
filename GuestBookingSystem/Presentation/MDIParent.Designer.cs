@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.viewTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkAvailabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +46,6 @@
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewTablesToolStripMenuItem,
             this.bookingsToolStripMenuItem,
             this.customersToolStripMenuItem,
             this.reportsToolStripMenuItem});
@@ -57,13 +55,6 @@
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
-            // 
-            // viewTablesToolStripMenuItem
-            // 
-            this.viewTablesToolStripMenuItem.Name = "viewTablesToolStripMenuItem";
-            this.viewTablesToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.viewTablesToolStripMenuItem.Text = "View Tables";
-            this.viewTablesToolStripMenuItem.Click += new System.EventHandler(this.viewTablesToolStripMenuItem_Click);
             // 
             // bookingsToolStripMenuItem
             // 
@@ -77,7 +68,7 @@
             // checkAvailabilityToolStripMenuItem
             // 
             this.checkAvailabilityToolStripMenuItem.Name = "checkAvailabilityToolStripMenuItem";
-            this.checkAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.checkAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkAvailabilityToolStripMenuItem.Text = "Check Availability";
             this.checkAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.checkAvailabilityToolStripMenuItem_Click);
             // 
@@ -115,14 +106,14 @@
             // occupancyReportToolStripMenuItem
             // 
             this.occupancyReportToolStripMenuItem.Name = "occupancyReportToolStripMenuItem";
-            this.occupancyReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.occupancyReportToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.occupancyReportToolStripMenuItem.Text = "Occupancy Report";
             this.occupancyReportToolStripMenuItem.Click += new System.EventHandler(this.occupancyReportToolStripMenuItem_Click);
             // 
             // locationReportToolStripMenuItem
             // 
             this.locationReportToolStripMenuItem.Name = "locationReportToolStripMenuItem";
-            this.locationReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.locationReportToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.locationReportToolStripMenuItem.Text = "Location Report";
             this.locationReportToolStripMenuItem.Click += new System.EventHandler(this.locationReportToolStripMenuItem_Click);
             // 
@@ -151,7 +142,6 @@
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkAvailabilityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewTablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookingListingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerListingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;

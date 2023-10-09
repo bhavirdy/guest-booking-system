@@ -17,7 +17,6 @@ namespace GuestBookingSystem.Presentation
         private int childFormNumber = 0;
         private CheckAvailability checkAvailability;
         private MakeBookingForm makeBookingForm;
-        private ViewTables viewTables;
         private CustomerListingForm customerListingForm;
         private CustomerController customerController = new CustomerController();
         private OccupancyReport occupancyReport;
@@ -62,25 +61,6 @@ namespace GuestBookingSystem.Presentation
                 if (!makeBookingForm.IsOpen)
             {
                 MakeaBookingForm();
-            }
-        }
-
-        private void ViewTables()
-        {
-            viewTables = new ViewTables();
-            viewTables.MdiParent = this;
-            viewTables.Show();
-        }
-
-        private void viewTablesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (viewTables == null)
-            {
-                ViewTables();
-            }
-            else if (!viewTables.IsOpen)
-            {
-                ViewTables();
             }
         }
 
